@@ -1,4 +1,4 @@
-using Sandbox;
+﻿using Sandbox;
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
 partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
