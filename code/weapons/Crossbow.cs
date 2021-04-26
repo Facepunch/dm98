@@ -8,6 +8,7 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 	public override float PrimaryRate => 1;
 	public override int Bucket => 3;
 	public override AmmoType AmmoType => AmmoType.Crossbow;
+	public virtual int ClipSize => 1;
 
 	[Net]
 	public bool Zoomed { get; set; }
@@ -16,7 +17,7 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 	{
 		base.Spawn();
 
-		AmmoClip = 3;
+		AmmoClip = 1;
 		SetModel( "weapons/rust_crossbow/rust_crossbow.vmdl" );
 	}
 
@@ -53,6 +54,25 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 		if ( Zoomed )
 		{
 			cam.FieldOfView = 20;
+		}
+	}
+
+	public override void OnReloadFinish()
+	{
+		IsReloading = false;
+
+		TimeSincePrimaryAttack = 0;
+
+		if ( AmmoClip >= ClipSize )
+			return;
+
+		if ( Owner is DeathmatchPlayer player )
+		{
+			var ammo = player.TakeAmmo( AmmoType, 1 );
+			if ( ammo == 0 )
+				return;
+
+			AmmoClip += ammo;
 		}
 	}
 
