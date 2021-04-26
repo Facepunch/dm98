@@ -73,7 +73,6 @@ partial class Crossbow : BaseDmWeapon, IPlayerCamera, IPlayerInput
 				return;
 
 			AmmoClip += ammo;
-			FinishReload();
 		}
 	}
 
