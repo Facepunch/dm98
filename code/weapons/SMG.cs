@@ -1,10 +1,9 @@
 ﻿using Sandbox;
-using System;
 
 [Library( "dm_smg", Title = "SMG" )]
 [Hammer.EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
 partial class SMG : BaseDmWeapon
-{ 
+{
 	public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
 
 	public override float PrimaryRate => 15.0f;
@@ -62,7 +61,7 @@ partial class SMG : BaseDmWeapon
 
 		if ( Owner == Local.Pawn )
 		{
-			new Sandbox.ScreenShake.Perlin(0.5f, 4.0f, 1.0f, 0.5f);
+			new Sandbox.ScreenShake.Perlin( 0.5f, 4.0f, 1.0f, 0.5f );
 		}
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
@@ -72,7 +71,7 @@ partial class SMG : BaseDmWeapon
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
 		anim.SetAnimParameter( "holdtype", 2 ); // TODO this is shit
-		anim.SetAnimParameter( "aimat_weight", 1.0f );
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 
 }

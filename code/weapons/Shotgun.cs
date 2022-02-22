@@ -4,7 +4,7 @@
 [Library( "dm_shotgun", Title = "Shotgun" )]
 [Hammer.EditorModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" )]
 partial class Shotgun : BaseDmWeapon
-{ 
+{
 	public override string ViewModelPath => "weapons/rust_pumpshotgun/v_rust_pumpshotgun.vmdl";
 	public override float PrimaryRate => 1;
 	public override float SecondaryRate => 1;
@@ -17,12 +17,12 @@ partial class Shotgun : BaseDmWeapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );  
+		SetModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );
 
 		AmmoClip = 6;
 	}
 
-	public override void AttackPrimary() 
+	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
@@ -84,7 +84,7 @@ partial class Shotgun : BaseDmWeapon
 
 		if ( IsLocalPawn )
 		{
-			new Sandbox.ScreenShake.Perlin(1.0f, 1.5f, 2.0f);
+			new Sandbox.ScreenShake.Perlin( 1.0f, 1.5f, 2.0f );
 		}
 
 		CrosshairPanel?.CreateEvent( "fire" );
@@ -102,7 +102,7 @@ partial class Shotgun : BaseDmWeapon
 
 		if ( IsLocalPawn )
 		{
-			new Sandbox.ScreenShake.Perlin(3.0f, 3.0f, 3.0f);
+			new Sandbox.ScreenShake.Perlin( 3.0f, 3.0f, 3.0f );
 		}
 	}
 
@@ -144,6 +144,6 @@ partial class Shotgun : BaseDmWeapon
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
 		anim.SetAnimParameter( "holdtype", 2 ); // TODO this is shit
-		anim.SetAnimParameter( "aimat_weight", 1.0f );
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }
