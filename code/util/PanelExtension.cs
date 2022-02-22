@@ -20,7 +20,7 @@
 							.UseHitboxes()
 							.Run();
 
-			panel.PositionAtWorld( tr.EndPos );
+			panel.PositionAtWorld( tr.EndPosition );
 
 		}
 
