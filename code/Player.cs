@@ -19,7 +19,8 @@ partial class DeathmatchPlayer : Player
 
 		Controller = new WalkController();
 		Animator = new StandardPlayerAnimator();
-		Camera = new FirstPersonCamera();
+
+		CameraMode = new FirstPersonCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -55,7 +56,8 @@ partial class DeathmatchPlayer : Player
 		BecomeRagdollOnClient( LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ) );
 
 		Controller = null;
-		Camera = new SpectateRagdollCamera();
+
+		CameraMode = new SpectateRagdollCamera();
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
@@ -89,13 +91,13 @@ partial class DeathmatchPlayer : Player
 
 		if ( Input.Pressed( InputButton.View ) )
 		{
-			if ( Camera is ThirdPersonCamera )
+			if ( CameraMode is ThirdPersonCamera )
 			{
-				Camera = new FirstPersonCamera();
+				CameraMode = new FirstPersonCamera();
 			}
 			else
 			{
-				Camera = new ThirdPersonCamera();
+				CameraMode = new ThirdPersonCamera();
 			}
 		}
 

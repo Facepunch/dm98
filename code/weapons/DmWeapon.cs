@@ -71,7 +71,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 
 		IsReloading = true;
 
-		(Owner as AnimEntity).SetAnimBool( "b_reload", true );
+		(Owner as AnimEntity).SetAnimParameter( "b_reload", true );
 
 		StartReloadEffects();
 	}
@@ -109,7 +109,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 	[ClientRpc]
 	public virtual void StartReloadEffects()
 	{
-		ViewModelEntity?.SetAnimBool( "reload", true );
+		ViewModelEntity?.SetAnimParameter( "reload", true );
 
 		// TODO - player third person model reload
 	}
@@ -132,7 +132,7 @@ partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
 			new Sandbox.ScreenShake.Perlin();
 		}
 
-		ViewModelEntity?.SetAnimBool( "fire", true );
+		ViewModelEntity?.SetAnimParameter( "fire", true );
 		CrosshairPanel?.CreateEvent( "fire" );
 	}
 

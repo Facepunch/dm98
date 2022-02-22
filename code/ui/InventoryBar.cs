@@ -16,7 +16,7 @@ public class InventoryBar : Panel
 
 	public InventoryBar()
 	{
-		for ( int i=0; i<6; i++ )
+		for ( int i = 0; i < 6; i++ )
 		{
 			var icon = new InventoryColumn( i, this );
 			columns.Add( icon );
@@ -49,6 +49,7 @@ public class InventoryBar : Panel
 	public void ProcessClientInput( InputBuilder input )
 	{
 		bool wantOpen = IsOpen;
+		var localPlayer = Local.Pawn as Player;
 
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
@@ -69,7 +70,7 @@ public class InventoryBar : Panel
 		// We're not open, but we want to be
 		if ( IsOpen != wantOpen )
 		{
-			SelectedWeapon = Local.Pawn.ActiveChild as BaseDmWeapon;
+			SelectedWeapon = localPlayer?.ActiveChild as BaseDmWeapon;
 			IsOpen = true;
 		}
 
@@ -106,7 +107,7 @@ public class InventoryBar : Panel
 
 		input.MouseWheel = 0;
 
-		if ( oldSelected  != SelectedWeapon )
+		if ( oldSelected != SelectedWeapon )
 		{
 			Sound.FromScreen( "dm.ui_tap" );
 		}
@@ -132,7 +133,7 @@ public class InventoryBar : Panel
 
 		// Are we already selecting a weapon with this column?
 		var firstOfColumn = Weapons.Where( x => x.Bucket == columninput ).OrderBy( x => x.BucketWeight ).FirstOrDefault();
-		if ( firstOfColumn  == null )
+		if ( firstOfColumn == null )
 		{
 			// DOOP sound
 			return SelectedIndex;
