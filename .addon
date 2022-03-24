@@ -11,5 +11,14 @@
   ],
   "HasCode": true,
   "CodePath": "code",
-  "RootNamespace": "Dm98"
+  "RootNamespace": "Dm98",
+  "Metadata": {
+    "MinPlayers": 1,
+    "MaxPlayers": 32,
+    "GameNetworkType": 0,
+    "MapList": [
+      "legacy.dm_testingmap_03"
+    ],
+    "MapSelect": 2
+  }
 }
