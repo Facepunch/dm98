@@ -1,9 +1,4 @@
-﻿using Sandbox;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-partial class DeathmatchPlayer
+﻿partial class DeathmatchPlayer
 {
 	[Net]
 	public IList<int> Ammo { get; set; }
@@ -62,5 +57,6 @@ public enum AmmoType
 {
 	Pistol,
 	Buckshot,
-	Crossbow
+	Crossbow,
+	Python
 }

@@ -31,12 +31,15 @@
 
 		SupressPickupNotices = true;
 
+		Inventory.Add( new Crowbar() );
 		Inventory.Add( new Pistol(), true );
+		Inventory.Add( new Python() );
 		Inventory.Add( new Shotgun() );
 		Inventory.Add( new SMG() );
 		Inventory.Add( new Crossbow() );
 
 		GiveAmmo( AmmoType.Pistol, 100 );
+		GiveAmmo( AmmoType.Python, 36 );
 		GiveAmmo( AmmoType.Buckshot, 8 );
 		GiveAmmo( AmmoType.Crossbow, 4 );
 

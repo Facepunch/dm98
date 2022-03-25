@@ -1,15 +1,15 @@
 ﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-public class Vitals : Panel
+public class HealthHud : Panel
 {
-	public Label Health;
-	public Label Armour;
+	public IconPanel Icon;
+	public Label Value;
 
-	public Vitals()
+	public HealthHud()
 	{
-		Health = Add.Label( "100", "health" );
-		Armour = Add.Label( "100", "armour" );
+		Icon = Add.Icon( "add_box", "icon" );
+		Value = Add.Label( "0", "label" );
 	}
 
 	public override void Tick()
@@ -17,10 +17,33 @@ public class Vitals : Panel
 		var player = Local.Pawn as DeathmatchPlayer;
 		if ( player == null ) return;
 
-		Health.Text = $"{player.Health.CeilToInt()}";
-		Health.SetClass( "danger", player.Health < 40.0f );
+		Value.Text = $"{player.Health.CeilToInt()}";
 
-		Armour.Text = $"{player.Armour.CeilToInt()}";
-		Armour.SetClass( "danger", player.Health < 40.0f );
+		SetClass( "low", player.Health < 40.0f );
+		SetClass( "empty", player.Health <= 0.0f );
+	}
+}
+
+public class ArmourHud : Panel
+{
+	public IconPanel Icon;
+	public Label Value;
+
+	public ArmourHud()
+	{
+		Icon = Add.Icon( "shield", "icon" );
+		Value = Add.Label( "0", "label" );
+
+	}
+
+	public override void Tick()
+	{
+		var player = Local.Pawn as DeathmatchPlayer;
+		if ( player == null ) return;
+
+		Value.Text = $"{player.Armour.CeilToInt()}";
+
+		SetClass( "low", player.Armour < 40.0f );
+		SetClass( "empty", player.Armour <= 0.0f );
 	}
 }

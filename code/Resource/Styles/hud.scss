@@ -1,6 +1,6 @@
 ﻿
 $yellow: #ff0;
-$orange: #f70a;
+$orange: #f70;
 
 @import "_crosshair.scss";
 @import "_damageindicator.scss";
@@ -68,6 +68,14 @@ vitals
 {
 	background-image: url( /ui/weapons/dm_crossbow.png );
 }
+.dm_357 .icon
+{
+	background-image: url( /ui/weapons/dm_357.png );
+}
+.dm_crowbar .icon
+{
+	background-image: url( /ui/weapons/dm_crowbar.png );
+}
 
 .bottom-left
 {
@@ -113,11 +121,12 @@ vitals
 				border-radius: 3px 3px 2px 2px;
 				margin-left: 2px;
 				transition: all 0.1s ease-out;
-				box-shadow: 0px 0px 20px #f70a;
+				box-shadow: 0px 0px 20px $orange;
 
 				&.empty
 				{
-					opacity: 0.05;
+					background-color: #fa0;
+					opacity: 0.04;
 					box-shadow: none;
 				}
 			}
@@ -151,15 +160,41 @@ vitals
 	}
 }
 
-.inventory, .ammobar, vitals .health, vitals .armour
+.inventory, .ammobar, healthhud, armourhud
 {
-	background-color: #fa01;
+	background-color: rgba( #fa0, 0.06 );
 	padding: 16px;
 	margin: 5px;
 	font-size: 32px;
 	font-weight: bolder;
 	color: #ff0;
 	text-shadow: 0px 0px 10px $orange;
-	min-width: 100px;
+	min-width: 130px;
 	text-align: center;
+	align-items: center;
+	border: 1px solid rgba( #fa0, 0.08 );
+	border-radius: 3px;
+}
+
+iconpanel
+{
+	font-family: "Material Icons";
+	
+}
+
+healthhud, armourhud
+{
+	iconpanel
+	{
+		flex-grow: 1;
+		text-align: left;
+	}
+}
+
+armourhud
+{
+	&.empty
+	{
+		display: none;
+	}
 }

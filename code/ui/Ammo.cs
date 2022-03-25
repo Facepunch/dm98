@@ -62,45 +62,4 @@ public class Ammo : Panel
 			BulletPanels[i].SetClass( "empty", i >= weapon.AmmoClip );
 		}
 	}
-
-	public override void DrawContent( ref RenderState state )
-	{
-		base.DrawContent( ref state );
-
-
-	}
-
-	public override void DrawBackground( ref RenderState state )
-	{
-		base.DrawBackground( ref state );
-
-		return;
-
-		var player = Local.Pawn as Player;
-		if ( player == null ) return;
-
-		var weapon = player.ActiveChild as DeathmatchWeapon;
-		if ( weapon == null ) return;
-
-		var w = 10 * ScaleToScreen;
-		var h = 40 * ScaleToScreen;
-		var gap = 2 * ScaleToScreen;
-		var x = Box.Rect.right - w;
-		var y = Box.Rect.top;
-
-		Render.Draw2D.BlendMode = BlendMode.Lighten;
-
-		for ( int i = 0; i < weapon.ClipSize; i++ )
-		{
-			var rect = new Rect( x, y, w, h );
-
-			bool used = i < weapon.AmmoClip;
-			var color = Color.Yellow.WithAlpha( used ? 1.0f : 0.1f );
-			if ( weapon.AmmoClip == 0 ) color = Color.Red.WithAlpha( 0.2f );
-
-			Render.Draw2D.Box( rect, color, new( 0, 8, 0, 8 ) );
-
-			x -= w + gap;
-		}
-	}
 }

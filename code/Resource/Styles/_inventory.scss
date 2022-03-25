@@ -80,13 +80,15 @@ inventoryicon
 	margin-top: 5px;
 	mix-blend-mode: lighten;
 	color: #fc0;
-	background-color: #fa04;
+	background-color: #fa02;
 	font-size: 40px;
 	font-weight: lighter;
 	padding: 10px;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
+	border: 1px solid rgba( #fa0, 0.08 );
+	border-radius: 3px;
 
 	.icon
 	{
