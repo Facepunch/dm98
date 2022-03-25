@@ -1,8 +1,4 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
+﻿using Sandbox.UI;
 
 public class Crosshair : Panel
 {
@@ -10,7 +6,7 @@ public class Crosshair : Panel
 
 	public Crosshair()
 	{
-		for( int i=0; i<5; i++ )
+		for ( int i = 0; i < 5; i++ )
 		{
 			var p = Add.Panel( "element" );
 			p.AddClass( $"el{i}" );
@@ -20,7 +16,6 @@ public class Crosshair : Panel
 	public override void Tick()
 	{
 		base.Tick();
-		this.PositionAtCrosshair();
 
 		SetClass( "fire", fireCounter > 0 );
 
