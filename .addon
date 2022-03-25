@@ -7,7 +7,7 @@
   "HasAssets": true,
   "AssetsPath": "",
   "ResourcePaths": [
-    "/ui/*"
+    "/resource/*"
   ],
   "HasCode": true,
   "CodePath": "code",
@@ -17,7 +17,7 @@
     "MaxPlayers": 32,
     "GameNetworkType": 0,
     "MapList": [
-      "legacy.dm_testingmap_03"
+      "facepunch.datacore"
     ],
     "MapSelect": 2
   }
