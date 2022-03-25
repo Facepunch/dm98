@@ -90,3 +90,13 @@
 	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
 ]
 
+//
+// TripmineWeapon
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_tripmine.vmdl" ) = dm_tripmine : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+

@@ -60,5 +60,6 @@ public enum AmmoType
 	Buckshot,
 	Crossbow,
 	Python,
-	Grenade
+	Grenade,
+	Tripmine
 }

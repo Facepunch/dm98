@@ -1,7 +1,4 @@
-﻿using Sandbox;
-
-
-[Library( "dm_pistol", Title = "Pistol" )]
+﻿[Library( "dm_pistol", Title = "Pistol" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
 partial class Pistol : DeathmatchWeapon
 {
@@ -47,7 +44,7 @@ partial class Pistol : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.2f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.1f, 1.5f, 9.0f, 3.0f );
 
 	}
 }
