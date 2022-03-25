@@ -1,11 +1,4 @@
 ﻿using Sandbox;
-using System;
-using System.Linq;
-
-public class ClothingEntity : ModelEntity
-{
-
-}
 
 partial class DeathmatchPlayer
 {

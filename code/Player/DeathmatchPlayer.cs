@@ -1,10 +1,9 @@
-﻿using Sandbox;
-using System;
-using System.Linq;
-
-partial class DeathmatchPlayer : Player
+﻿partial class DeathmatchPlayer : Player
 {
 	TimeSince timeSinceDropped;
+
+	[Net]
+	public float Armour { get; set; } = 0;
 
 	public bool SupressPickupNotices { get; private set; }
 
@@ -122,7 +121,7 @@ partial class DeathmatchPlayer : Player
 		// If the current weapon is out of ammo and we last fired it over half a second ago
 		// lets try to switch to a better wepaon
 		//
-		if ( ActiveChild is BaseDmWeapon weapon && !weapon.IsUsable() && weapon.TimeSincePrimaryAttack > 0.5f && weapon.TimeSinceSecondaryAttack > 0.5f )
+		if ( ActiveChild is DeathmatchWeapon weapon && !weapon.IsUsable() && weapon.TimeSincePrimaryAttack > 0.5f && weapon.TimeSinceSecondaryAttack > 0.5f )
 		{
 			SwitchToBestWeapon();
 		}
@@ -130,7 +129,7 @@ partial class DeathmatchPlayer : Player
 
 	public void SwitchToBestWeapon()
 	{
-		var best = Children.Select( x => x as BaseDmWeapon )
+		var best = Children.Select( x => x as DeathmatchWeapon )
 			.Where( x => x.IsValid() && x.IsUsable() )
 			.OrderByDescending( x => x.BucketWeight )
 			.FirstOrDefault();

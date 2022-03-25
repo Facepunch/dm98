@@ -2,7 +2,7 @@
 
 [Library( "dm_smg", Title = "SMG" )]
 [Hammer.EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
-partial class SMG : BaseDmWeapon
+partial class SMG : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
 

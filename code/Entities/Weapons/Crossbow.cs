@@ -2,8 +2,8 @@
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
 [Hammer.EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
-partial class Crossbow : BaseDmWeapon
-{ 
+partial class Crossbow : DeathmatchWeapon
+{
 	public override string ViewModelPath => "weapons/rust_crossbow/v_rust_crossbow.vmdl";
 
 	public override float PrimaryRate => 1;
@@ -32,7 +32,6 @@ partial class Crossbow : BaseDmWeapon
 		ShootEffects();
 
 		if ( IsServer )
-		using ( Prediction.Off() )
 		{
 			var bolt = new CrossbowBolt();
 			bolt.Position = Owner.EyePosition;
@@ -59,7 +58,7 @@ partial class Crossbow : BaseDmWeapon
 		}
 	}
 
-	public override void BuildInput( InputBuilder owner ) 
+	public override void BuildInput( InputBuilder owner )
 	{
 		if ( Zoomed )
 		{

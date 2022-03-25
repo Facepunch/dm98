@@ -1,6 +1,4 @@
-﻿using Sandbox;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 /// <summary>
 /// Any entities that implement this interface are added as a record and respawned
@@ -76,7 +74,6 @@ public class ItemRespawn
 	/// </summary>
 	static async Task RespawnAsync( Record record )
 	{
-		// TODO - Take.Delay In Game Time 
 		await GameTask.Delay( 1000 * 30 );
 
 		// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned

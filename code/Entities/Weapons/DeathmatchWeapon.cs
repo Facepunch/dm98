@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-partial class BaseDmWeapon : BaseWeapon, IRespawnableEntity
+partial class DeathmatchWeapon : BaseWeapon, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual int ClipSize => 16;

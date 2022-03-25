@@ -1,22 +1,20 @@
 ﻿
 using Sandbox;
 using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
 
 class InventoryIcon : Panel
 {
-	public BaseDmWeapon Weapon;
+	public DeathmatchWeapon Weapon;
 	public Panel Icon;
 
-	public InventoryIcon( BaseDmWeapon weapon )
+	public InventoryIcon( DeathmatchWeapon weapon )
 	{
 		Weapon = weapon;
 		Icon = Add.Panel( "icon" );
 		AddClass( weapon.ClassInfo.Name );
 	}
 
-	internal void TickSelection( BaseDmWeapon selectedWeapon )
+	internal void TickSelection( DeathmatchWeapon selectedWeapon )
 	{
 		SetClass( "active", selectedWeapon == Weapon );
 		SetClass( "empty", !Weapon?.IsUsable() ?? true );

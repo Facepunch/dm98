@@ -1,6 +1,7 @@
-﻿using Sandbox;
-using System;
-using System.Linq;
+﻿global using Sandbox;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
 
 /// <summary>
 /// This is the heart of the gamemode. It's responsible
@@ -20,8 +21,6 @@ partial class DeathmatchGame : Game
 		{
 			new DeathmatchHud();
 		}
-
-		
 	}
 
 	public override void PostLevelLoaded()

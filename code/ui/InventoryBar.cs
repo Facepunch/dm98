@@ -9,10 +9,10 @@ using System.Linq;
 public class InventoryBar : Panel
 {
 	List<InventoryColumn> columns = new();
-	List<BaseDmWeapon> Weapons = new();
+	List<DeathmatchWeapon> Weapons = new();
 
 	public bool IsOpen;
-	BaseDmWeapon SelectedWeapon;
+	DeathmatchWeapon SelectedWeapon;
 
 	public InventoryBar()
 	{
@@ -33,7 +33,7 @@ public class InventoryBar : Panel
 		if ( player == null ) return;
 
 		Weapons.Clear();
-		Weapons.AddRange( player.Children.Select( x => x as BaseDmWeapon ).Where( x => x.IsValid() && x.IsUsable() ) );
+		Weapons.AddRange( player.Children.Select( x => x as DeathmatchWeapon ).Where( x => x.IsValid() && x.IsUsable() ) );
 
 		foreach ( var weapon in Weapons )
 		{
@@ -70,7 +70,7 @@ public class InventoryBar : Panel
 		// We're not open, but we want to be
 		if ( IsOpen != wantOpen )
 		{
-			SelectedWeapon = localPlayer?.ActiveChild as BaseDmWeapon;
+			SelectedWeapon = localPlayer?.ActiveChild as DeathmatchWeapon;
 			IsOpen = true;
 		}
 
@@ -146,8 +146,8 @@ public class InventoryBar : Panel
 	{
 		Assert.NotNull( SelectedWeapon );
 
-		BaseDmWeapon first = null;
-		BaseDmWeapon prev = null;
+		DeathmatchWeapon first = null;
+		DeathmatchWeapon prev = null;
 		foreach ( var weapon in Weapons.Where( x => x.Bucket == SelectedWeapon.Bucket ).OrderBy( x => x.BucketWeight ) )
 		{
 			if ( first == null ) first = weapon;
