@@ -7,7 +7,7 @@ partial class Crowbar : DeathmatchWeapon
 	public override float PrimaryRate => 2.0f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;
-	public override AmmoType AmmoType => base.AmmoType;
+	public override AmmoType AmmoType => AmmoType.None;
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
 

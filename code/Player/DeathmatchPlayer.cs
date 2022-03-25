@@ -37,11 +37,13 @@
 		Inventory.Add( new Shotgun() );
 		Inventory.Add( new SMG() );
 		Inventory.Add( new Crossbow() );
+		Inventory.Add( new GrenadeWeapon() );
 
 		GiveAmmo( AmmoType.Pistol, 100 );
 		GiveAmmo( AmmoType.Python, 36 );
 		GiveAmmo( AmmoType.Buckshot, 8 );
 		GiveAmmo( AmmoType.Crossbow, 4 );
+		GiveAmmo( AmmoType.Grenade, 2 );
 
 		SupressPickupNotices = false;
 		Health = 100;

@@ -55,8 +55,10 @@
 
 public enum AmmoType
 {
+	None,
 	Pistol,
 	Buckshot,
 	Crossbow,
-	Python
+	Python,
+	Grenade
 }

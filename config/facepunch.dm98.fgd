@@ -41,6 +41,16 @@
 ]
 
 //
+// GrenadeWeapon
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_grenade : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // Pistol
 //
 @PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_pistol : ""

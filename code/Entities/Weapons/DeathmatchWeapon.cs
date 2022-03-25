@@ -1,6 +1,4 @@
-﻿using Sandbox;
-
-partial class DeathmatchWeapon : BaseWeapon, IRespawnableEntity
+﻿partial class DeathmatchWeapon : BaseWeapon, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual int ClipSize => 16;
@@ -214,6 +212,7 @@ partial class DeathmatchWeapon : BaseWeapon, IRespawnableEntity
 	public bool IsUsable()
 	{
 		if ( AmmoClip > 0 ) return true;
+		if ( AmmoType == AmmoType.None ) return true;
 		return AvailableAmmo() > 0;
 	}
 
