@@ -1,7 +1,4 @@
-﻿using Sandbox;
-using System;
-
-partial class DmViewModel : BaseViewModel
+﻿partial class DmViewModel : BaseViewModel
 {
 	float walkBob = 0;
 
@@ -21,7 +18,7 @@ partial class DmViewModel : BaseViewModel
 		//
 		// Bob up and down based on our walk movement
 		//
-		var speed = Owner.Velocity.Length.LerpInverse( 0, 320 );
+		var speed = Owner.Velocity.Length.LerpInverse( 0, 400 );
 		var left = camSetup.Rotation.Left;
 		var up = camSetup.Rotation.Up;
 
@@ -31,6 +28,12 @@ partial class DmViewModel : BaseViewModel
 		}
 
 		Position += up * MathF.Sin( walkBob ) * speed * -1;
-		Position += left * MathF.Sin( walkBob * 0.6f ) * speed * -0.5f;
+		Position += left * MathF.Sin( walkBob * 0.5f ) * speed * -0.5f;
+
+		var uitx = new Sandbox.UI.PanelTransform();
+		uitx.AddTranslateY( MathF.Sin( walkBob * 1.0f ) * speed * -4.0f );
+		uitx.AddTranslateX( MathF.Sin( walkBob * 0.5f ) * speed * -3.0f );
+
+		HudRootPanel.Current.Style.Transform = uitx;
 	}
 }
