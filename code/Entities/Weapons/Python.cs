@@ -12,6 +12,9 @@ partial class Python : DeathmatchWeapon
 
 	public override int Bucket => 1;
 
+	[Net]
+	public bool Zoomed { get; set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -53,4 +56,22 @@ partial class Python : DeathmatchWeapon
 		}
 
 	}
+
+	public override void Simulate( Client cl )
+	{
+		base.Simulate( cl );
+
+		Zoomed = Input.Down( InputButton.Attack2 );
+	}
+
+	public override void PostCameraSetup( ref CameraSetup camSetup )
+	{
+		base.PostCameraSetup( ref camSetup );
+
+		if ( Zoomed )
+		{
+			camSetup.FieldOfView = 40;
+		}
+	}
+
 }
