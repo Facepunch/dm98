@@ -6,6 +6,8 @@
 	public virtual int Bucket => 1;
 	public virtual int BucketWeight => 100;
 
+	public virtual int Order => (Bucket * 1000) + BucketWeight;
+
 	[Net, Predicted]
 	public int AmmoClip { get; set; }
 

@@ -1,7 +1,4 @@
-﻿using Sandbox;
-using Sandbox.UI;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Sandbox.UI;
 
 /// <summary>
 /// The main inventory panel, top left of the screen.
@@ -89,16 +86,18 @@ public class InventoryBar : Panel
 			return;
 		}
 
+		var sortedWeapons = Weapons.OrderBy( x => x.Order ).ToList();
+
 		// get our current index
 		var oldSelected = SelectedWeapon;
-		int SelectedIndex = Weapons.IndexOf( SelectedWeapon );
-		SelectedIndex = SlotPressInput( input, SelectedIndex );
+		int SelectedIndex = sortedWeapons.IndexOf( SelectedWeapon );
+		SelectedIndex = SlotPressInput( input, SelectedIndex, sortedWeapons );
 
 		// forward if mouse wheel was pressed
 		SelectedIndex += input.MouseWheel;
 		SelectedIndex = SelectedIndex.UnsignedMod( Weapons.Count );
 
-		SelectedWeapon = Weapons[SelectedIndex];
+		SelectedWeapon = sortedWeapons[SelectedIndex];
 
 		for ( int i = 0; i < 6; i++ )
 		{
@@ -113,7 +112,7 @@ public class InventoryBar : Panel
 		}
 	}
 
-	int SlotPressInput( InputBuilder input, int SelectedIndex )
+	int SlotPressInput( InputBuilder input, int SelectedIndex, List<DeathmatchWeapon> sortedWeapons )
 	{
 		var columninput = -1;
 
@@ -128,33 +127,33 @@ public class InventoryBar : Panel
 
 		if ( SelectedWeapon.IsValid() && SelectedWeapon.Bucket == columninput )
 		{
-			return NextInBucket();
+			return NextInBucket( sortedWeapons );
 		}
 
 		// Are we already selecting a weapon with this column?
-		var firstOfColumn = Weapons.Where( x => x.Bucket == columninput ).OrderBy( x => x.BucketWeight ).FirstOrDefault();
+		var firstOfColumn = sortedWeapons.Where( x => x.Bucket == columninput ).FirstOrDefault();
 		if ( firstOfColumn == null )
 		{
 			// DOOP sound
 			return SelectedIndex;
 		}
 
-		return Weapons.IndexOf( firstOfColumn );
+		return sortedWeapons.IndexOf( firstOfColumn );
 	}
 
-	int NextInBucket()
+	int NextInBucket( List<DeathmatchWeapon> sortedWeapons )
 	{
 		Assert.NotNull( SelectedWeapon );
 
 		DeathmatchWeapon first = null;
 		DeathmatchWeapon prev = null;
-		foreach ( var weapon in Weapons.Where( x => x.Bucket == SelectedWeapon.Bucket ).OrderBy( x => x.BucketWeight ) )
+		foreach ( var weapon in sortedWeapons.Where( x => x.Bucket == SelectedWeapon.Bucket ) )
 		{
 			if ( first == null ) first = weapon;
-			if ( prev == SelectedWeapon ) return Weapons.IndexOf( weapon );
+			if ( prev == SelectedWeapon ) return sortedWeapons.IndexOf( weapon );
 			prev = weapon;
 		}
 
-		return Weapons.IndexOf( first );
+		return sortedWeapons.IndexOf( first );
 	}
 }
