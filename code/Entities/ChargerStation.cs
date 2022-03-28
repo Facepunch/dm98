@@ -1,13 +1,14 @@
 ﻿using Hammer;
+using Sandbox;
+using Sandbox.Internal;
+using System.Linq;
 
-/// <summary>
-/// This charger gradually replenishes the player's health on use. Once out of charge, it will recharge after a set time.
-/// </summary>
 [Library( "dm_healthcharger" )]
 [Hammer.SupportsSolid]
 [Hammer.EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
 [Model( Model = "models/gameplay/charger/charger_station.vmdl" )]
-
+[EntityTool( "Health Charger", "DM98", "Health Charging Station." )]
+[BoundsHelper( "mins", "maxs", false, true )]
 partial class ChargerStation : KeyframeEntity, IUse
 {
 	/// <summary>
@@ -29,6 +30,16 @@ partial class ChargerStation : KeyframeEntity, IUse
 
 	private TimeSince TimeSinceUsed;
 
+	public PickupTrigger PickupTrigger { get; protected set; }
+
+	public bool CanUse;
+
+	[Net]
+	public Vector3 Mins { get; set; } = new Vector3( 0, -32, -32 );
+
+	[Net]
+	public Vector3 Maxs { get; set; } = new Vector3( 48, 32, 32 );
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -36,6 +47,12 @@ partial class ChargerStation : KeyframeEntity, IUse
 		ChargerPower = DefaultChargerPower;
 
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
+
+		var trigger = new BaseTrigger();
+		trigger.SetParent( this, null, Transform.Zero );
+		trigger.SetupPhysicsFromOBB( PhysicsMotionType.Static, Mins, Maxs );
+		trigger.Transmit = TransmitType.Always;
+		trigger.EnableTouchPersists = true;
 	}
 
 	public bool IsUsable( Entity user )
@@ -51,6 +68,9 @@ partial class ChargerStation : KeyframeEntity, IUse
 			SetState( false );
 			return false;
 		}
+
+		if(CanUse == false) return false;
+
 		if ( user is DeathmatchPlayer player )
 		{
 			if ( player.Health >= 100 ) return false;
@@ -83,6 +103,18 @@ partial class ChargerStation : KeyframeEntity, IUse
 		}
 
 		return false;
+	}
+
+	public override void StartTouch ( Entity other )
+	{
+		if ( other is not DeathmatchPlayer player ) return;
+		CanUse = true;
+	}
+
+	public override void EndTouch ( Entity other )
+	{
+		if ( other is not DeathmatchPlayer player ) return;
+		CanUse = false;
 	}
 
 	public void SetState( bool state )
