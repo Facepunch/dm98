@@ -9,18 +9,20 @@ global using System.Linq;
 /// </summary>
 partial class DeathmatchGame : Game
 {
+	[Net]
+	DeathmatchHud Hud { get; set; }
+
 	StandardPostProcess postProcess;
 
 	public DeathmatchGame()
 	{
 		//
 		// Create the HUD entity. This is always broadcast to all clients
-		// and will create the UI panels clientside. It's accessible 
-		// globally via Hud.Current, so we don't need to store it.
+		// and will create the UI panels clientside.
 		//
 		if ( IsServer )
 		{
-			new DeathmatchHud();
+			Hud = new DeathmatchHud();
 
 			PrecacheParticles();
 		}
@@ -48,6 +50,13 @@ partial class DeathmatchGame : Game
 		player.Respawn();
 
 		cl.Pawn = player;
+	}
+
+	public override void OnKilled( Client client, Entity pawn )
+	{
+		base.OnKilled( client, pawn );
+
+		Hud.OnPlayerDied( To.Everyone, pawn as DeathmatchPlayer );
 	}
 
 	public override void FrameSimulate( Client cl )

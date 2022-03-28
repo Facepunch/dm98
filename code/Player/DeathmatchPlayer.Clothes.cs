@@ -1,6 +1,4 @@
-﻿using Sandbox;
-
-partial class DeathmatchPlayer
+﻿public partial class DeathmatchPlayer
 {
 	public Clothing.Container Clothing { get; protected set; }
 

@@ -4,6 +4,8 @@ public class HudRootPanel : RootPanel
 {
 	public static HudRootPanel Current;
 
+	public Scoreboard Scoreboard { get; set; }
+
 	public HudRootPanel()
 	{
 		Current = this;
@@ -19,7 +21,7 @@ public class HudRootPanel : RootPanel
 
 		AddChild<ChatBox>();
 		AddChild<KillFeed>();
-		AddChild<Scoreboard>();
+		Scoreboard = AddChild<Scoreboard>();
 		AddChild<VoiceList>();
 	}
 

@@ -1,14 +1,11 @@
-﻿[Library]
-public partial class DeathmatchHud : HudEntity<HudRootPanel>
+﻿public partial class DeathmatchHud : HudEntity<HudRootPanel>
 {
-	public DeathmatchHud()
-	{
-	}
-
 	[ClientRpc]
-	public void OnPlayerDied( string victim, string attacker = null )
+	public void OnPlayerDied( DeathmatchPlayer player )
 	{
 		Host.AssertClient();
+
+		RootPanel.Scoreboard.SortingDirty = true;
 	}
 
 	[ClientRpc]
