@@ -21,6 +21,8 @@ partial class DeathmatchGame : Game
 		if ( IsServer )
 		{
 			new DeathmatchHud();
+
+			PrecacheParticles();
 		}
 
 		if ( IsClient )
