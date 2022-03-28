@@ -15,7 +15,7 @@ partial class Python : DeathmatchWeapon
 
 	public override int Bucket => 1;
 
-	[Net]
+	[Net, Predicted]
 	public bool Zoomed { get; set; }
 
 	public override void Spawn()
@@ -74,6 +74,7 @@ partial class Python : DeathmatchWeapon
 		if ( Zoomed )
 		{
 			camSetup.FieldOfView = 40;
+			camSetup.ViewModel.FieldOfView = 40;
 		}
 	}
 

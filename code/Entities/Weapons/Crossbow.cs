@@ -1,5 +1,4 @@
-﻿using Sandbox;
-using Hammer;
+﻿using Hammer;
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
 [Hammer.EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
@@ -12,7 +11,7 @@ partial class Crossbow : DeathmatchWeapon
 	public override int Bucket => 3;
 	public override AmmoType AmmoType => AmmoType.Crossbow;
 
-	[Net]
+	[Net, Predicted]
 	public bool Zoomed { get; set; }
 
 	public override void Spawn()
@@ -57,6 +56,7 @@ partial class Crossbow : DeathmatchWeapon
 		if ( Zoomed )
 		{
 			camSetup.FieldOfView = 20;
+			camSetup.ViewModel.FieldOfView = 40;
 		}
 	}
 
