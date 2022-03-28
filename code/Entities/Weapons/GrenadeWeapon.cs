@@ -1,7 +1,7 @@
 ﻿using Hammer;
 
 [Library( "dm_grenade", Title = "Grenade" )]
-[Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[Hammer.EditorModel( "models/dm_grenade.vmdl" )]
 [EntityTool( "Grenade", "DM98", "Grenade Weapon." )]
 partial class GrenadeWeapon : DeathmatchWeapon
 {
@@ -18,7 +18,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+		SetModel( "models/dm_grenade.vmdl" );
 		AmmoClip = 1;
 	}
 
