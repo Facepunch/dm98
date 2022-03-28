@@ -94,7 +94,7 @@ public class InventoryBar : Panel
 		SelectedIndex = SlotPressInput( input, SelectedIndex, sortedWeapons );
 
 		// forward if mouse wheel was pressed
-		SelectedIndex += input.MouseWheel;
+		SelectedIndex -= input.MouseWheel;
 		SelectedIndex = SelectedIndex.UnsignedMod( Weapons.Count );
 
 		SelectedWeapon = sortedWeapons[SelectedIndex];
