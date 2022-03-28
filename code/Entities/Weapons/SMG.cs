@@ -1,5 +1,4 @@
-﻿using Sandbox;
-using Hammer;
+﻿using Hammer;
 
 [Library( "dm_smg", Title = "SMG" )]
 [Hammer.EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
@@ -44,7 +43,7 @@ partial class SMG : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
+		ShootBullet( 0.1f, 1.5f, 9.0f, 3.0f );
 
 	}
 
