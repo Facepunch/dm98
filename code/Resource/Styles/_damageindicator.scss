@@ -6,7 +6,6 @@
 	right: 0;
 	top: 0;
 	bottom: 0;
-	position: absolute;
 
 	hitpoint
 	{
@@ -14,13 +13,14 @@
 		left: 50%;
 		top: 50%;
 		width: 600px;
-		height: 600px;
-		border-radius: 1000px;
-		border: 20px solid transparent;
+		height: 400px;
+		border-radius: 300px;
+		border: 0px solid yellow;
 		border-bottom: 20px solid #f00;
 		transition: opacity 0.5s ease-out;
 		opacity: 0.8;
-		transform-origin: 0% 0%;
+		transform-origin: 0% -20%;
+		background: linear-gradient( to bottom, red, rgba( red, 0 ) 50% );
 
 		label
 		{
