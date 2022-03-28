@@ -161,6 +161,7 @@
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
 		setup.FieldOfView = 70;
+		setup.ZNear = 0.1f;
 
 		base.PostCameraSetup( ref setup );
 
