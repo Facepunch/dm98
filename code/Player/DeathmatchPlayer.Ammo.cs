@@ -1,6 +1,6 @@
-﻿partial class DeathmatchPlayer
+﻿public partial class DeathmatchPlayer
 {
-	[Net]
+	[Net, Local]
 	public IList<int> Ammo { get; set; }
 
 	public void ClearAmmo()
