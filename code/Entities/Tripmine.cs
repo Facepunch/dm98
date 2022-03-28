@@ -3,6 +3,7 @@
 partial class Tripmine : ModelEntity
 {
 	Particles LaserParticle;
+	LaserTrigger LaserTrigger;
 
 	public Tripmine()
 	{
@@ -25,6 +26,11 @@ partial class Tripmine : ModelEntity
 
 		LaserParticle.SetPosition( 1, tr.EndPosition );
 
+		LaserTrigger = new LaserTrigger();
+		LaserTrigger.SetParent( this, "laser", Transform.Zero );
+		LaserTrigger.CreateTrigger( tr.Distance );
+		LaserTrigger.OnTriggered = ( e ) => _ = Explode( 0.2f );
+
 		// armed chirp
 
 		if ( tr.Entity != null && tr.Entity is not WorldEntity )
@@ -37,11 +43,16 @@ partial class Tripmine : ModelEntity
 	{
 		base.TakeDamage( info );
 
-		_ = Explode( 0.4f );
+		_ = Explode( 0.3f );
 	}
+
+	bool exploding = false;
 
 	async Task Explode( float delay )
 	{
+		if ( exploding ) return;
+
+		exploding = true;
 		await Task.DelaySeconds( delay );
 
 		if ( !IsValid ) return;
@@ -53,5 +64,33 @@ partial class Tripmine : ModelEntity
 		LaserParticle = null;
 
 		Delete();
+	}
+}
+
+public class LaserTrigger : ModelEntity
+{
+	public Action<Entity> OnTriggered { get; set; }
+
+	public override void Spawn()
+	{
+		base.Spawn();
+
+		// Client doesn't need to know about this ;)
+		Transmit = TransmitType.Never;
+	}
+
+	public void CreateTrigger( float length )
+	{
+		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, new Capsule( Vector3.Zero, Rotation.Forward * length, 0.2f ) );
+		CollisionGroup = CollisionGroup.Trigger;
+	}
+
+	public override void StartTouch( Entity other )
+	{
+		base.StartTouch( other );
+
+		if ( other is WorldEntity ) return;
+
+		OnTriggered?.Invoke( other );
 	}
 }
