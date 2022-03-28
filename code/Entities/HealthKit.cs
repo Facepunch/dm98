@@ -5,11 +5,13 @@
 [EntityTool( "Health Kit", "DM98", "Health Kit Give 25 hp." )]
 partial class HealthKit : DeathmatchWeapon, IRespawnableEntity
 {
+	public static readonly Model WorldModel = Model.Load( "models/gameplay/healthkit/healthkit.vmdl" );
+
 	public override void Spawn()
 	{
 		base.Spawn();
 
-		SetModel( "models/gameplay/healthkit/healthkit.vmdl" );
+		Model = WorldModel;
 
 		PhysicsEnabled = true;
 		UsePhysicsCollision = true;

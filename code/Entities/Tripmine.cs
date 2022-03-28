@@ -2,6 +2,8 @@
 
 partial class Tripmine : ModelEntity
 {
+	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
+
 	Particles LaserParticle;
 	LaserTrigger LaserTrigger;
 
@@ -9,7 +11,7 @@ partial class Tripmine : ModelEntity
 	{
 		base.Spawn();
 
-		Model = Model.Load( "models/dm_tripmine.vmdl" );
+		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 	}
 

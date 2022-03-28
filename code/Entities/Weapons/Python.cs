@@ -5,6 +5,7 @@
 [EntityTool( ".357 Magnum Revolver", "DM98", ".357 Magnum Revolver Weapon." )]
 partial class Python : DeathmatchWeapon
 {
+	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override float PrimaryRate => 2.0f;
@@ -22,7 +23,7 @@ partial class Python : DeathmatchWeapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+		Model = WorldModel;
 		AmmoClip = 6;
 	}
 

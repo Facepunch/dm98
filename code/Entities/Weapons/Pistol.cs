@@ -5,6 +5,7 @@
 [EntityTool( "Pistol", "DM98", "Pistol Weapon." )]
 partial class Pistol : DeathmatchWeapon
 {
+	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override float PrimaryRate => 15.0f;
@@ -17,7 +18,7 @@ partial class Pistol : DeathmatchWeapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+		Model = WorldModel;
 		AmmoClip = 12;
 	}
 

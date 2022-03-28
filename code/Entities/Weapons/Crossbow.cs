@@ -5,6 +5,7 @@
 [EntityTool( "Crossbow", "DM98", "Crossbow Weapon." )]
 partial class Crossbow : DeathmatchWeapon
 {
+	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow.vmdl" );
 	public override string ViewModelPath => "weapons/rust_crossbow/v_rust_crossbow.vmdl";
 
 	public override float PrimaryRate => 1;
@@ -19,7 +20,7 @@ partial class Crossbow : DeathmatchWeapon
 		base.Spawn();
 
 		AmmoClip = 3;
-		SetModel( "weapons/rust_crossbow/rust_crossbow.vmdl" );
+		Model = WorldModel;
 	}
 
 	public override void AttackPrimary()

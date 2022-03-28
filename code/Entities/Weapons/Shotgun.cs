@@ -6,6 +6,7 @@ using Hammer;
 [EntityTool( "Shotgun", "DM98", "Shotgun Weapon." )]
 partial class Shotgun : DeathmatchWeapon
 {
+	public static readonly Model WorldModel = Model.Load( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pumpshotgun/v_rust_pumpshotgun.vmdl";
 	public override float PrimaryRate => 1;
 	public override float SecondaryRate => 1;
@@ -18,8 +19,7 @@ partial class Shotgun : DeathmatchWeapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );
-
+		Model = WorldModel;
 		AmmoClip = 6;
 	}
 

@@ -5,13 +5,15 @@
 [Hammer.Skip]
 partial class CrossbowBolt : ModelEntity
 {
+	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow_bolt.vmdl" );
+
 	bool Stuck;
 
 	public override void Spawn()
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_crossbow/rust_crossbow_bolt.vmdl" );
+		Model = WorldModel;
 	}
 
 

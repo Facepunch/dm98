@@ -5,6 +5,7 @@
 [EntityTool( "Tripmine", "DM98", "Tripmine Weapon." )]
 partial class TripmineWeapon : DeathmatchWeapon
 {
+	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override float PrimaryRate => 1.0f;

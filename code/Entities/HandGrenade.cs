@@ -2,11 +2,13 @@
 
 partial class HandGrenade : BasePhysics
 {
+	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
+
 	public override void Spawn()
 	{
 		base.Spawn();
 
-		Model = Model.Load( "models/dm_grenade.vmdl" );
+		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 
