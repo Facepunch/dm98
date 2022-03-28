@@ -43,12 +43,14 @@ partial class DmInventory : BaseInventory
 			return false;
 		}
 
+		if ( ent is HealthKit && player.Health >= player.MaxHealth ) return false;
+
 		if ( weapon != null && notices )
 		{
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
 			PickupFeed.OnPickup( To.Single( player ), $"{ent.ClassInfo.Title}" );
 		}
-
+		
 
 		ItemRespawn.Taken( ent );
 		return base.Add( ent, makeActive );

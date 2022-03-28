@@ -5,6 +5,9 @@
 	[Net]
 	public float Armour { get; set; } = 0;
 
+	[Net]
+	public float MaxHealth { get; set; } = 100;
+
 	public bool SupressPickupNotices { get; private set; }
 
 	public DeathmatchPlayer()
