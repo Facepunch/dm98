@@ -5,8 +5,10 @@ partial class Tripmine : ModelEntity
 	Particles LaserParticle;
 	LaserTrigger LaserTrigger;
 
-	public Tripmine()
+	public override void Spawn()
 	{
+		base.Spawn();
+
 		Model = Model.Load( "models/dm_tripmine.vmdl" );
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 	}
