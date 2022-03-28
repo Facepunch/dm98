@@ -75,7 +75,7 @@ public class NameTag : WorldPanel
 
 	internal NameTag( string title, long? steamid )
 	{
-		StyleSheet.Load( "/styles/nametag.scss" );
+		StyleSheet.Load( "Resource/styles/nametag.scss" );
 
 		if ( steamid != null )
 		{
