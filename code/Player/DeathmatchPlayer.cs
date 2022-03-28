@@ -160,6 +160,8 @@
 
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
+		setup.FieldOfView = 70;
+
 		base.PostCameraSetup( ref setup );
 
 		if ( lastCameraRot == Rotation.Identity )
