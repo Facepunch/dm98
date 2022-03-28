@@ -23,7 +23,14 @@
 //
 // ChargerStation
 //
-@PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) model() = dm_healthcharger : "This charger gradually replenishes the player's health on use. Once out of charge, it will recharge after a set time."
+@PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) model() box_world_aligned( "mins", "maxs" ) 
+metadata
+{
+	entity_tool_name = "Health Charger"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Health Charging Station."
+}
+= dm_healthcharger : ""
 [
 	model(resource:vmdl) { report = true hide_when_solid = true }: "World Model" : "models/gameplay/charger/charger_station.vmdl" : "The model this entity should use."
 	skin(materialgroup) { group = "Rendering" hide_when_solid = true } : "Skin" : "default" : "Some models have multiple versions of their textures, called skins." 
@@ -36,9 +43,33 @@
 ]
 
 //
+// HealthKit
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/gameplay/healthkit/healthkit.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Health Kit"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Health Kit Give 25 hp."
+}
+= dm_healthkit : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // Crossbow
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) = dm_crossbow : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Crossbow"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Crossbow Weapon."
+}
+= dm_crossbow : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -48,7 +79,14 @@
 //
 // Crowbar
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_crowbar : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Crowbar"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Crowbar Weapon."
+}
+= dm_crowbar : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -58,7 +96,14 @@
 //
 // GrenadeWeapon
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_grenade : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Grenade"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Grenade Weapon."
+}
+= dm_grenade : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -68,7 +113,14 @@
 //
 // Pistol
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_pistol : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Pistol"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Pistol Weapon."
+}
+= dm_pistol : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -78,7 +130,14 @@
 //
 // Python
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) = dm_357 : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+metadata
+{
+	entity_tool_name = ".357 Magnum Revolver"
+	entity_tool_group = "DM98"
+	entity_tool_tip = ".357 Magnum Revolver Weapon."
+}
+= dm_357 : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -88,7 +147,14 @@
 //
 // Shotgun
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) = dm_shotgun : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Shotgun"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Shotgun Weapon."
+}
+= dm_shotgun : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -98,7 +164,14 @@
 //
 // SMG
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_smg/rust_smg.vmdl" ) = dm_smg : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_smg/rust_smg.vmdl" ) 
+metadata
+{
+	entity_tool_name = "SMG"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "SMG Weapon."
+}
+= dm_smg : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
@@ -108,7 +181,14 @@
 //
 // TripmineWeapon
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_tripmine.vmdl" ) = dm_tripmine : ""
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_tripmine.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Tripmine"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Tripmine Weapon."
+}
+= dm_tripmine : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 
