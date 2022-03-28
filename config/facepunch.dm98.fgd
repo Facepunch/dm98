@@ -14,13 +14,6 @@
 ]
 
 //
-// DeathmatchGame
-//
-@PointClass base(BaseProperties_facepunch_dm98) = dm98 : "This is the heart of the gamemode. It's responsible for creating the player and stuff."
-[
-]
-
-//
 // ChargerStation
 //
 @PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) model() box_world_aligned( "mins", "maxs" ) 
@@ -96,7 +89,7 @@ metadata
 //
 // GrenadeWeapon
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_grenade.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Grenade"
