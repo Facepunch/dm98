@@ -1,6 +1,4 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
+﻿using Sandbox.UI;
 
 class InventoryIcon : Panel
 {
@@ -25,6 +23,6 @@ class InventoryIcon : Panel
 		base.Tick();
 
 		if ( !Weapon.IsValid() || Weapon.Owner != Local.Pawn )
-			Delete();
+			Delete( true );
 	}
 }
