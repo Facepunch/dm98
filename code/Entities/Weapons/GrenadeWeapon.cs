@@ -5,7 +5,7 @@
 [EntityTool( "Grenade", "DM98", "Grenade Weapon." )]
 partial class GrenadeWeapon : DeathmatchWeapon
 {
-	public static readonly Model WorldModel = Model.Load( "weapons/dm_grenade.vmdl" );
+	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override float PrimaryRate => 1.0f;
