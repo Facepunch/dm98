@@ -5,8 +5,9 @@
 		volume = 1.0
 		sounds = 
 		[
-			"sounds/kenney/ui/confirmation_001.vsnd",
-			"sounds/kenney/ui/confirmation_002.vsnd",
+			"sounds/electrical/beep.vsnd",
+			"sounds/electrical/beepfast.vsnd",
+			"sounds/electrical/beepfast2.vsnd",
 		]
 		VolumeRandom = 0.0
 		Pitch = 0.9

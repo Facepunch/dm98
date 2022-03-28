@@ -5,8 +5,7 @@
 		volume = 1.0
 		sounds = 
 		[
-			"sounds/kenney/ui/error_005.vsnd",
-			"sounds/kenney/ui/error_006.vsnd",
+			"sounds/electrical/electrowibblewibble.vsnd",
 		]
 		VolumeRandom = 0.0
 		Pitch = 0.9
