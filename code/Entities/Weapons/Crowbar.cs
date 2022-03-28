@@ -1,5 +1,8 @@
-﻿[Library( "dm_crowbar", Title = "Crowbar" )]
+﻿using Hammer;
+
+[Library( "dm_crowbar", Title = "Crowbar" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[EntityTool( "Crowbar", "DM98", "Crowbar Weapon." )]
 partial class Crowbar : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";

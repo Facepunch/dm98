@@ -1,5 +1,8 @@
-﻿[Library( "dm_tripmine", Title = "Tripmine" )]
+﻿using Hammer;
+
+[Library( "dm_tripmine", Title = "Tripmine" )]
 [Hammer.EditorModel( "models/dm_tripmine.vmdl" )]
+[EntityTool( "Tripmine", "DM98", "Tripmine Weapon." )]
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";

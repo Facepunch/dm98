@@ -1,7 +1,9 @@
 ﻿using Sandbox;
+using Hammer;
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
 [Hammer.EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
+[EntityTool( "Crossbow", "DM98", "Crossbow Weapon." )]
 partial class Crossbow : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_crossbow/v_rust_crossbow.vmdl";

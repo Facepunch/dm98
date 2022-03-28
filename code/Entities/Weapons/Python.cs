@@ -1,5 +1,8 @@
-﻿[Library( "dm_357", Title = ".357 Magnum Revolver" )]
+﻿using Hammer;
+
+[Library( "dm_357", Title = ".357 Magnum Revolver" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[EntityTool( ".357 Magnum Revolver", "DM98", ".357 Magnum Revolver Weapon." )]
 partial class Python : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";

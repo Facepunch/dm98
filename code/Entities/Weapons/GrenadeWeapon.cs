@@ -1,5 +1,8 @@
-﻿[Library( "dm_grenade", Title = "Grenade" )]
+﻿using Hammer;
+
+[Library( "dm_grenade", Title = "Grenade" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[EntityTool( "Grenade", "DM98", "Grenade Weapon." )]
 partial class GrenadeWeapon : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";

@@ -1,7 +1,9 @@
 ﻿using Sandbox;
+using Hammer;
 
 [Library( "dm_smg", Title = "SMG" )]
 [Hammer.EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
+[EntityTool( "SMG", "DM98", "SMG Weapon." )]
 partial class SMG : DeathmatchWeapon
 {
 	public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
