@@ -63,6 +63,8 @@ partial class GrenadeWeapon : DeathmatchWeapon
 			_ = grenade.BlowIn( 4.0f );
 		}
 
+		Reload();
+
 		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
 		{
 			Delete();
