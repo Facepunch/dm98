@@ -237,9 +237,9 @@
 	{
 		LastDamage = info;
 
-		// hack - hitbox 0 is head
-		// we should be able to get this from somewhere
-		if ( info.HitboxIndex == 0 )
+		// hack - hitbox group 1 is head
+		// we should be able to get this from somewhere (it's pretty specific to citizen though?)
+		if ( GetHitboxGroup( info.HitboxIndex ) == 1 )
 		{
 			info.Damage *= 2.0f;
 		}
