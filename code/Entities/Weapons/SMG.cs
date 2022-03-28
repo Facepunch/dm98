@@ -49,6 +49,9 @@ partial class SMG : DeathmatchWeapon
 
 	public override void AttackSecondary()
 	{
+		// Screw this for now
+		return;
+
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
