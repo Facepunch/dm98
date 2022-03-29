@@ -13,7 +13,11 @@
 
 	private void AddCameraEffects( ref CameraSetup camSetup )
 	{
-		Rotation = Local.Pawn.EyeRotation;
+		//Rotation = Local.Pawn.EyeRotation;
+
+		if ( Local.Pawn.LifeState == LifeState.Dead )
+			return;
+
 
 		//
 		// Bob up and down based on our walk movement
