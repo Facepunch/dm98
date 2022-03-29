@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 
+[Library( "dm_grenade", Title = "Hand Grenade" )]
 partial class HandGrenade : BasePhysics
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );

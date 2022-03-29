@@ -36,6 +36,16 @@ metadata
 ]
 
 //
+// HandGrenade
+//
+@PointClass base(BaseProperties_facepunch_dm98, BasePhysicsSimulated) = dm_grenade : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // HealthKit
 //
 @PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/gameplay/healthkit/healthkit.vmdl" ) 
@@ -46,6 +56,16 @@ metadata
 	entity_tool_tip = "Health Kit Give 25 hp."
 }
 = dm_healthkit : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// Tripmine
+//
+@PointClass base(BaseProperties_facepunch_dm98) = dm_tripmine : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 

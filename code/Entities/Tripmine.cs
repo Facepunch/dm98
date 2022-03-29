@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 
+[Library( "dm_tripmine", Title = "Tripmine" )]
 partial class Tripmine : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
