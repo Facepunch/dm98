@@ -57,7 +57,7 @@ partial class Python : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.01f, 1.5f, 40.0f, 3.0f );
+		ShootBullet( 0.01f, 1.5f, 40.0f, 2.0f );
 
 		if ( IsClient && IsLocalPawn )
 		{

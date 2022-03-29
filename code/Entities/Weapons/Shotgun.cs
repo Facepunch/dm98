@@ -49,7 +49,7 @@ partial class Shotgun : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.15f, 0.3f, 5.0f, 2.0f, 7 );
+		ShootBullet( 0.2f, 0.3f, 20.0f, 2.0f, 4 );
 	}
 
 	public override void AttackSecondary()
@@ -74,7 +74,7 @@ partial class Shotgun : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.4f, 0.3f, 5.0f, 2.0f, 14 );
+		ShootBullet( 0.4f, 0.3f, 20.0f, 2.0f, 8 );
 	}
 
 	[ClientRpc]

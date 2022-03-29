@@ -49,7 +49,7 @@ partial class CrossbowBolt : ModelEntity
 
 			if ( tr.Entity.IsValid() )
 			{
-				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 51.0f )
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 20 )
 													.UsingTraceResult( tr )
 													.WithAttacker( Owner )
 													.WithWeapon( this );

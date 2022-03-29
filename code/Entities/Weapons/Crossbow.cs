@@ -38,6 +38,9 @@ partial class Crossbow : DeathmatchWeapon
 
 		ShootEffects();
 
+		// TODO - if zoomed in then instant hit, no travel, 120 damage
+
+
 		if ( IsServer )
 		{
 			var bolt = new CrossbowBolt();
