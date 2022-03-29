@@ -47,6 +47,11 @@ partial class Tripmine : ModelEntity
 	{
 		base.TakeDamage( info );
 
+		if ( info.Attacker.IsValid() )
+		{
+			Owner = info.Attacker;
+		}
+
 		_ = Explode( 0.3f );
 	}
 
