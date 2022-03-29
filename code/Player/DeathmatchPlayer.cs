@@ -255,12 +255,6 @@
 			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
 
 			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
-
-			// Did we die from this damage?
-			if ( LifeState == LifeState.Dead )
-			{
-				KillSounds.PlayerKilled( this, attacker, info );
-			}
 		}
 	}
 
