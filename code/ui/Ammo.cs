@@ -42,7 +42,7 @@ public class Ammo : Panel
 
 	void RebuildAmmoBar( DeathmatchWeapon weapon )
 	{
-		AmmoBar.DeleteChildren();
+		AmmoBar.DeleteChildren( true );
 		BulletPanels.Clear();
 
 		AmmoBar.SetClass( "is-crossbow", weapon is Crossbow );

@@ -82,8 +82,8 @@
 
 	&.dm_pistol
 	{
-		opacity: 0.2;
-		transition: opacity 0.3s ease-out;
+		opacity: 0.4;
+		transition: opacity 0.2s ease-out;
 
 		.el0, .el1, .el2, .el3
 		{
@@ -131,13 +131,11 @@
 
 		&.fire
 		{
-			opacity: 0.9;
-			transition: opacity 0.01s ease-out;
+			transition: all 0.01s ease-out;
 
 			.el0, .el1, .el2, .el3
 			{
 				transition: all 0.01s ease-in;
-				background-color: #fa0;
 			}
 
 			.el0

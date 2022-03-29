@@ -1,6 +1,4 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
+﻿using Sandbox.UI;
 
 public partial class KillFeed : Sandbox.UI.KillFeed
 {
@@ -17,8 +15,6 @@ public partial class KillFeed : Sandbox.UI.KillFeed
 
 		e.Right.Text = right;
 		e.Right.SetClass( "me", rsteamid == Local.PlayerId );
-
-		Log.Info( "METHOD: " + method );
 
 		return e;
 	}
