@@ -1,15 +1,7 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
+﻿using Sandbox.UI.Construct;
 
 public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 {
-	/// <summary>
-	/// Does the scoreboard need to be resorted? e.g if a player has died.
-	/// </summary>
-	public bool SortingDirty { get; set; } = true;
-
 	protected override void AddHeader()
 	{
 		Header = Add.Panel( "header" );
@@ -19,15 +11,23 @@ public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 		Header.Add.Label( "ping", "ping" );
 	}
 
+	RealTimeSince timeSinceSorted;
+
 	public override void Tick()
 	{
 		base.Tick();
 
 		if ( !IsVisible ) return;
 
-		// Only sort when dirty as this can get noticeably laggy called every frame.
-		if ( SortingDirty ) Canvas.SortChildren<ScoreboardEntry>( ( x ) => -x.Client.GetInt( "kills" ) );
-		SortingDirty = false;
+		if ( timeSinceSorted > 0.1f )
+		{
+			timeSinceSorted = 0;
+
+			//
+			// Sort by number of kills, then number of deaths
+			//
+			Canvas.SortChildren<ScoreboardEntry>( ( x ) => (-x.Client.GetInt( "kills" ) * 1000) + x.Client.GetInt( "deaths" ) );
+		}
 	}
 }
 

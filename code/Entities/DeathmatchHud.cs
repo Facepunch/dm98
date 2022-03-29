@@ -4,8 +4,6 @@
 	public void OnPlayerDied( DeathmatchPlayer player )
 	{
 		Host.AssertClient();
-
-		RootPanel.Scoreboard.SortingDirty = true;
 	}
 
 	[ClientRpc]
