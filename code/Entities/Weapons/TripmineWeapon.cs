@@ -59,7 +59,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 				Owner = Owner
 			};
 
-			_ = grenade.Arm( 0.5f );
+			_ = grenade.Arm( 1.0f );
 		}
 
 		TakeAmmo( 1 );
