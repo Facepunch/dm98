@@ -182,6 +182,13 @@ vitals
 				margin-left: 5px;
 				border-radius: 1px 1px 1px 1px;
 			}
+
+			&.is-smg .bullet
+			{
+				width: 4px;
+				margin-left: 2px;
+				border-radius: 2px 2px 1px 1px;
+			}
 		}
 
 		label
@@ -196,7 +203,7 @@ vitals
 	}
 }
 
-.inventory, .ammobar, healthhud, armourhud, gamehud
+.inventory, .ammobar, healthhud, armourhud, gamehud, pickupfeed .entry
 {
 	background-color: rgba( #fa0, 0.06 );
 	padding: 16px;

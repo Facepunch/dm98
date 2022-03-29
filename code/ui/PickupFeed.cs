@@ -1,8 +1,5 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
+﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
 using System.Threading.Tasks;
 
 public partial class PickupFeed : Panel
@@ -23,7 +20,7 @@ public partial class PickupFeed : Panel
 		// TODO - icons for weapons?
 		// TOPO - icons for ammo?
 
-		Current?.AddEntry( $"\n{text}" );		
+		Current?.AddEntry( text );
 	}
 
 	/// <summary>
@@ -32,8 +29,10 @@ public partial class PickupFeed : Panel
 	/// </summary>
 	private async Task AddEntry( string text )
 	{
-		var panel = Current.Add.Label( text );
-		await Task.Delay( 500 );
+		var panel = Current.Add.Panel( "entry" );
+
+		panel.Add.Label( text );
+		await GameTask.DelayRealtimeSeconds( 1.0f );
 		panel.Delete();
 	}
 }
