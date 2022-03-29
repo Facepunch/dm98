@@ -6,7 +6,7 @@
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "";
 
 	public override float PrimaryRate => 1.0f;
 	public override float SecondaryRate => 1.0f;
@@ -71,5 +71,11 @@ partial class TripmineWeapon : DeathmatchWeapon
 			Delete();
 			player.SwitchToBestWeapon();
 		}
+	}
+
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", 4 ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

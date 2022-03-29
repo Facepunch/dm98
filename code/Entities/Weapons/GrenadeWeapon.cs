@@ -6,7 +6,7 @@
 partial class GrenadeWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "";
 
 	public override float PrimaryRate => 1.0f;
 	public override float SecondaryRate => 1.0f;
@@ -64,6 +64,8 @@ partial class GrenadeWeapon : DeathmatchWeapon
 			_ = grenade.BlowIn( 4.0f );
 		}
 
+		player.SetAnimParameter( "b_attack", true );
+
 		Reload();
 
 		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
@@ -71,5 +73,11 @@ partial class GrenadeWeapon : DeathmatchWeapon
 			Delete();
 			player.SwitchToBestWeapon();
 		}
+	}
+
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }
