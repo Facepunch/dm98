@@ -57,8 +57,6 @@
 			}
 		}
 
-		Log.Info( $"Touchy: {other}" );
-
 		Delete();
 	}
 
