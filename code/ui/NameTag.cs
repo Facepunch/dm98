@@ -1,9 +1,5 @@
-﻿
-using Sandbox;
-using Sandbox.UI;
+﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System.Collections.Generic;
-using System.Linq;
 
 /// <summary>
 /// When a player is within radius of the camera we add this to their entity.
@@ -52,7 +48,11 @@ internal class NameTagComponent : EntityComponent<DeathmatchPlayer>
 				continue;
 			}
 
-			if ( player.Position.Distance( CurrentView.Position ) > 500 )
+			var shouldRemove = player.Position.Distance( CurrentView.Position ) > 500;
+			shouldRemove = shouldRemove || player.LifeState != LifeState.Alive;
+			shouldRemove = shouldRemove || player.IsDormant;
+
+			if ( shouldRemove )
 			{
 				var c = player.Components.Get<NameTagComponent>();
 				c?.Remove();
