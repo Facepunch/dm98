@@ -1,8 +1,4 @@
-﻿using Sandbox;
-using System;
-using System.Linq;
-
-partial class DmInventory : BaseInventory
+﻿partial class DmInventory : BaseInventory
 {
 
 
@@ -27,12 +23,14 @@ partial class DmInventory : BaseInventory
 
 			if ( ammo > 0 )
 			{
-				player.GiveAmmo( ammoType, ammo );
+				var taken = player.GiveAmmo( ammoType, ammo );
+				if ( taken == 0 )
+					return false;
 
-				if ( notices )
+				if ( notices && taken > 0 )
 				{
 					Sound.FromWorld( "dm.pickup_ammo", ent.Position );
-					PickupFeed.OnPickup( To.Single( player ), $"+{ammo} {ammoType}" );
+					PickupFeed.OnPickup( To.Single( player ), $"+{taken} {ammoType}" );
 				}
 			}
 
@@ -50,7 +48,7 @@ partial class DmInventory : BaseInventory
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
 			PickupFeed.OnPickup( To.Single( player ), $"{ent.ClassInfo.Title}" );
 		}
-		
+
 
 		ItemRespawn.Taken( ent );
 		return base.Add( ent, makeActive );
