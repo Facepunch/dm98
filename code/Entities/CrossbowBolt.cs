@@ -1,7 +1,4 @@
-﻿using Sandbox;
-
-
-[Library( "crossbow_bolt" )]
+﻿[Library( "crossbow_bolt" )]
 [Hammer.Skip]
 partial class CrossbowBolt : ModelEntity
 {
@@ -52,7 +49,7 @@ partial class CrossbowBolt : ModelEntity
 
 			if ( tr.Entity.IsValid() )
 			{
-				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 60.0f )
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 51.0f )
 													.UsingTraceResult( tr )
 													.WithAttacker( Owner )
 													.WithWeapon( this );

@@ -1,5 +1,4 @@
-﻿using Sandbox;
-using Hammer;
+﻿using Hammer;
 
 [Library( "dm_shotgun", Title = "Shotgun" )]
 [Hammer.EditorModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" )]
@@ -50,7 +49,7 @@ partial class Shotgun : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.15f, 0.3f, 9.0f, 3.0f, 10 );
+		ShootBullet( 0.15f, 0.3f, 5.0f, 2.0f, 7 );
 	}
 
 	public override void AttackSecondary()
@@ -75,7 +74,7 @@ partial class Shotgun : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.4f, 0.3f, 8.0f, 3.0f, 20 );
+		ShootBullet( 0.4f, 0.3f, 5.0f, 2.0f, 14 );
 	}
 
 	[ClientRpc]

@@ -53,7 +53,7 @@ partial class Pistol : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.05f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.05f, 1.5f, 8.0f, 3.0f );
 
 	}
 
@@ -79,6 +79,6 @@ partial class Pistol : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.4f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.4f, 1.5f, 8.0f, 3.0f );
 	}
 }

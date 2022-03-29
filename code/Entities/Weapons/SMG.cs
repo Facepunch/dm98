@@ -8,9 +8,9 @@ partial class SMG : DeathmatchWeapon
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_smg/rust_smg.vmdl" );
 	public override string ViewModelPath => "weapons/rust_smg/v_rust_smg.vmdl";
 
-	public override float PrimaryRate => 15.0f;
+	public override float PrimaryRate => 16.0f;
 	public override float SecondaryRate => 1.0f;
-	public override int ClipSize => 30;
+	public override int ClipSize => 50;
 	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
 
@@ -49,7 +49,7 @@ partial class SMG : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.1f, 1.5f, 12.0f, 2.0f );
+		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
 
 	}
 
