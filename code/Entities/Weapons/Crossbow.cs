@@ -28,6 +28,11 @@ partial class Crossbow : DeathmatchWeapon
 		if ( !TakeAmmo( 1 ) )
 		{
 			DryFire();
+
+			if ( AvailableAmmo() > 0 )
+			{
+				Reload();
+			}
 			return;
 		}
 
