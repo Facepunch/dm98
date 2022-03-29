@@ -10,6 +10,9 @@
 
 	public bool SupressPickupNotices { get; private set; }
 
+	public int ComboKillCount { get; set; } = 0;
+	public TimeSince TimeSinceLastKill { get; set; }
+
 	public DeathmatchPlayer()
 	{
 		Inventory = new DmInventory( this );
@@ -252,6 +255,12 @@
 			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
 
 			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+
+			// Did we die from this damage?
+			if ( LifeState == LifeState.Dead )
+			{
+				KillSounds.PlayerKilled( this, attacker, info );
+			}
 		}
 	}
 
@@ -270,5 +279,11 @@
 		//DebugOverlay.Sphere( pos, 5.0f, Color.Red, false, 50.0f );
 
 		DamageIndicator.Current?.OnHit( pos );
+	}
+
+	[ClientRpc]
+	public void PlaySoundFromScreen( string sound )
+	{
+		Sound.FromScreen( sound );
 	}
 }
