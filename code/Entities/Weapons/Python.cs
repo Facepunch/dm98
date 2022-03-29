@@ -41,7 +41,7 @@ partial class Python : DeathmatchWeapon
 		{
 			DryFire();
 
-			if( AvailableAmmo() > 0 )
+			if ( AvailableAmmo() > 0 )
 			{
 				Reload();
 			}
@@ -57,7 +57,7 @@ partial class Python : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.2f, 1.5f, 40.0f, 3.0f );
+		ShootBullet( 0.01f, 1.5f, 40.0f, 3.0f );
 
 		if ( IsClient && IsLocalPawn )
 		{

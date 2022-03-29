@@ -42,7 +42,7 @@ partial class Crowbar : DeathmatchWeapon
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
 		forward = forward.Normal;
 
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 5 ) )
+		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 8 ) )
 		{
 			tr.Surface.DoBulletImpact( tr );
 

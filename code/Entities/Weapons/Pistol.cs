@@ -8,8 +8,8 @@ partial class Pistol : DeathmatchWeapon
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
-	public override float PrimaryRate => 15.0f;
-	public override float SecondaryRate => 7.5f;
+	public override float PrimaryRate => 6.0f;
+	public override float SecondaryRate => 4.5f;
 	public override float ReloadTime => 3.0f;
 
 	public override int Bucket => 1;
@@ -53,7 +53,7 @@ partial class Pistol : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.1f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.05f, 1.5f, 9.0f, 3.0f );
 
 	}
 
@@ -79,6 +79,6 @@ partial class Pistol : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.32f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.4f, 1.5f, 9.0f, 3.0f );
 	}
 }

@@ -49,7 +49,7 @@ partial class SMG : DeathmatchWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.1f, 1.5f, 9.0f, 3.0f );
+		ShootBullet( 0.1f, 1.5f, 12.0f, 2.0f );
 
 	}
 
