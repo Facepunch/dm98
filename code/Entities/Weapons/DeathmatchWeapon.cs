@@ -185,7 +185,7 @@
 	[ClientRpc]
 	public virtual void DryFire()
 	{
-		// CLICK
+		PlaySound( "dm.dryfire" );
 	}
 
 	public override void CreateViewModel()
