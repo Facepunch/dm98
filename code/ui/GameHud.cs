@@ -21,7 +21,9 @@ internal class GameHud : Panel
 		var game = Game.Current as DeathmatchGame;
 		if ( !game.IsValid() ) return;
 
-		Timer.Text = TimeSpan.FromSeconds( game.StateTimer ).ToString( @"m\:ss" );
+		var span = TimeSpan.FromSeconds( (game.StateTimer * 60).Clamp( 0, float.MaxValue ) );
+
+		Timer.Text = span.ToString( @"hh\:mm\:ss" );
 		State.Text = game.GameState.ToString();
 	}
 

@@ -18,6 +18,9 @@
 		if ( Local.Pawn.LifeState == LifeState.Dead )
 			return;
 
+		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
+			return;
+
 
 		//
 		// Bob up and down based on our walk movement

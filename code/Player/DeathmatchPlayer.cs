@@ -86,9 +86,23 @@
 		}
 	}
 
+	public override void BuildInput( InputBuilder input )
+	{
+		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
+		{
+			input.ViewAngles = input.OriginalViewAngles;
+			return;
+		};
+
+		base.BuildInput( input );
+	}
+
 
 	public override void Simulate( Client cl )
 	{
+		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
+			return;
+
 		base.Simulate( cl );
 
 		//

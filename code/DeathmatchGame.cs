@@ -2,6 +2,7 @@
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
+global using System.Threading.Tasks;
 
 /// <summary>
 /// This is the heart of the gamemode. It's responsible
@@ -25,6 +26,8 @@ partial class DeathmatchGame : Game
 			Hud = new DeathmatchHud();
 
 			PrecacheParticles();
+
+			_ = GameLoopAsync();
 		}
 
 		if ( IsClient )

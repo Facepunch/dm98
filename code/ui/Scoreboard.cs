@@ -29,6 +29,14 @@ public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 			Canvas.SortChildren<ScoreboardEntry>( ( x ) => (-x.Client.GetInt( "kills" ) * 1000) + x.Client.GetInt( "deaths" ) );
 		}
 	}
+
+	public override bool ShouldBeOpen()
+	{
+		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
+			return true;
+
+		return base.ShouldBeOpen();
+	}
 }
 
 public class ScoreboardEntry : Sandbox.UI.ScoreboardEntry

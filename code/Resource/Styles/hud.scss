@@ -12,232 +12,248 @@ $orange: #f70;
 
 rootpanel
 {
-	background-color: rgba( #333, 0 );
-	transition: background-color 0.2s ease-in;
-	transform-origin: 50% 50%;
+    background-color: rgba( #333, 0 );
+    transition: background-color 0.2s ease-in;
+    transform-origin: 50% 50%;
 
-	&.spawnmenuopen
-	{
-		transition: background-color 0.3s ease-out;
-		background-color: rgba( #333, 0.9 );
-	}
+    &.spawnmenuopen
+    {
+        transition: background-color 0.3s ease-out;
+        background-color: rgba( #333, 0.9 );
+    }
 
-	&.devcamera
-	{
-		display: none;
-	}
+    &.devcamera
+    {
+        display: none;
+    }
 }
 
 vitals
 {
-	font-size: 64px;
-	color: #ff0;
-	mix-blend-mode: lighten;
-	font-family: Roboto;
+    font-size: 64px;
+    color: #ff0;
+    mix-blend-mode: lighten;
+    font-family: Roboto;
 
-	label
-	{
-		text-shadow: 0px 0px 20px #f70a;
+    label
+    {
+        text-shadow: 0px 0px 20px #f70a;
 
-		&.danger
-		{
-			color: #f00;
-			text-shadow: 0px 0px 10px #f005;
-		}
-	}
+        &.danger
+        {
+            color: #f00;
+            text-shadow: 0px 0px 10px #f005;
+        }
+    }
 }
 
 
 
 .dm_pistol .icon
 {
-	background-image: url( /ui/weapons/dm_pistol.png );
+    background-image: url( /ui/weapons/dm_pistol.png );
 }
 
 .dm_shotgun .icon
 {
-	background-image: url( /ui/weapons/dm_shotgun.png );
+    background-image: url( /ui/weapons/dm_shotgun.png );
 }
 
 .dm_smg .icon
 {
-	background-image: url( /ui/weapons/dm_smg.png );
+    background-image: url( /ui/weapons/dm_smg.png );
 }
 
 .dm_crossbow .icon, .crossbow_bolt .icon
 {
-	background-image: url( /ui/weapons/dm_crossbow.png );
+    background-image: url( /ui/weapons/dm_crossbow.png );
 }
 
 .dm_357 .icon
 {
-	background-image: url( /ui/weapons/dm_357.png );
+    background-image: url( /ui/weapons/dm_357.png );
 }
 
 .dm_crowbar .icon
 {
-	background-image: url( /ui/weapons/dm_crowbar.png );
+    background-image: url( /ui/weapons/dm_crowbar.png );
 }
 
 .dm_grenade .icon, .dm_handgrenade .icon
 {
-	background-image: url( /ui/weapons/dm_grenade.png );
+    background-image: url( /ui/weapons/dm_grenade.png );
 }
 
 .dm_tripmine .icon
 {
-	background-image: url( /ui/weapons/dm_tripmine.png );
+    background-image: url( /ui/weapons/dm_tripmine.png );
 }
 
 .bottom-left
 {
-	left: 128px;
+    left: 128px;
 }
 
 .bottom-right
 {
-	right: 128px;
+    right: 128px;
 }
 
 .bottom-left, .bottom-right
 {
-	mix-blend-mode: lighten;
-	position: absolute;
-	bottom: 64px;
+    mix-blend-mode: lighten;
+    position: absolute;
+    bottom: 64px;
 }
 
-.top-middle {
-	top: 32px;
-	width: 100%;
-	flex-direction: column;
-	align-items: center;
+.top-middle
+{
+    top: 32px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
 
-	gamehud {
-		font-family: Roboto;
-		font-size: 20px;
-		flex-direction: column;
-		justify-content: center;
+    gamehud
+    {
+        font-family: Roboto;
+        font-size: 20px;
+        flex-direction: column;
+        justify-content: center;
 
-		.game-state {
-			font-size: 12px;
-			font-weight: 400;
-			text-transform: uppercase;
-		}
+        .game-state
+        {
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
 
-		.game-timer {
-			font-size: 32px;
-		}
-	}
+        .game-timer
+        {
+            font-size: 32px;
+        }
+    }
 }
 
 .bottom-right
 {
-	ammo
-	{
-		flex-direction: row;
-		mix-blend-mode: lighten;
-		font-family: Roboto;
-		width: 100%;
-		height: 100%;
+    ammo
+    {
+        flex-direction: row;
+        mix-blend-mode: lighten;
+        font-family: Roboto;
+        width: 100%;
+        height: 100%;
 
-		.ammobar
-		{
-			flex-direction: row-reverse;
-			flex-shrink: 0;
-			align-items: center;
+        .ammobar
+        {
+            flex-direction: row-reverse;
+            flex-shrink: 0;
+            align-items: center;
 
 
-			.bullet
-			{
-				width: 8px;
-				flex-shrink: 0;
-				flex-grow: 0;
-				height: 30px;
-				background-color: $yellow;
-				border-radius: 3px 3px 2px 2px;
-				margin-left: 2px;
-				transition: all 0.1s ease-out;
-				box-shadow: 0px 0px 20px $orange;
+            .bullet
+            {
+                width: 8px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                height: 30px;
+                background-color: $yellow;
+                border-radius: 3px 3px 2px 2px;
+                margin-left: 2px;
+                transition: all 0.1s ease-out;
+                box-shadow: 0px 0px 20px $orange;
 
-				&.empty
-				{
-					background-color: #fa0;
-					opacity: 0.04;
-					box-shadow: none;
-				}
-			}
+                &.empty
+                {
+                    background-color: #fa0;
+                    opacity: 0.04;
+                    box-shadow: none;
+                }
+            }
 
-			&.is-shotgun .bullet
-			{
-				width: 12px;
-				height: 35px;
-				margin-left: 10px;
-				border-radius: 1px 1px 1px 1px;
-			}
+            &.is-shotgun .bullet
+            {
+                width: 12px;
+                height: 35px;
+                margin-left: 10px;
+                border-radius: 1px 1px 1px 1px;
+            }
 
-			&.is-crossbow .bullet
-			{
-				width: 3px;
-				height: 35px;
-				margin-left: 5px;
-				border-radius: 1px 1px 1px 1px;
-			}
+            &.is-crossbow .bullet
+            {
+                width: 3px;
+                height: 35px;
+                margin-left: 5px;
+                border-radius: 1px 1px 1px 1px;
+            }
 
-			&.is-smg .bullet
-			{
-				width: 4px;
-				margin-left: 2px;
-				border-radius: 2px 2px 1px 1px;
-			}
-		}
+            &.is-smg .bullet
+            {
+                width: 4px;
+                margin-left: 2px;
+                border-radius: 2px 2px 1px 1px;
+            }
+        }
 
-		label
-		{
-			text-align: right;
+        label
+        {
+            text-align: right;
 
-			&.danger
-			{
-				color: #f00;
-			}
-		}
-	}
+            &.danger
+            {
+                color: #f00;
+            }
+        }
+    }
 }
 
 .inventory, .ammobar, healthhud, armourhud, gamehud, pickupfeed .entry
 {
-	background-color: rgba( #fa0, 0.06 );
-	padding: 16px;
-	margin: 5px;
-	font-size: 32px;
-	font-weight: bolder;
-	color: #ff0;
-	text-shadow: 0px 0px 10px $orange;
-	min-width: 130px;
-	text-align: center;
-	align-items: center;
-	border: 1px solid rgba( #fa0, 0.08 );
-	border-radius: 3px;
+    background-color: rgba( #fa0, 0.06 );
+    padding: 16px;
+    margin: 5px;
+    font-size: 32px;
+    font-weight: bolder;
+    color: #ff0;
+    text-shadow: 0px 0px 10px $orange;
+    min-width: 130px;
+    text-align: center;
+    align-items: center;
+    border: 1px solid rgba( #fa0, 0.08 );
+    border-radius: 3px;
 }
 
 iconpanel
 {
-	font-family: "Material Icons";
-	
+    font-family: "Material Icons";
 }
 
 healthhud, armourhud
 {
-	iconpanel
-	{
-		flex-grow: 1;
-		text-align: left;
-	}
+    iconpanel
+    {
+        flex-grow: 1;
+        text-align: left;
+    }
 }
 
 armourhud
 {
-	&.empty
-	{
-		display: none;
-	}
+    &.empty
+    {
+        display: none;
+    }
+}
+
+.game-end
+{
+    chatbox, .top-middle
+    {
+        z-index: 1000;
+    }
+
+    inventorybar, .bottom-right, .bottom-left
+    {
+        display: none;
+    }
 }

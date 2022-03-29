@@ -1,112 +1,62 @@
 ﻿
+
+
 partial class DeathmatchGame : Game
 {
+	public static GameStates CurrentState => (Current as DeathmatchGame)?.GameState ?? GameStates.WaitingForPlayers;
 
 	[Net]
-	public float StateTimer { get; set; } = 1f;
+	public RealTimeUntil StateTimer { get; set; } = 0f;
+
 	[Net]
 	public GameStates GameState { get; set; } = GameStates.WaitingForPlayers;
 	[Net]
 	public string NextMap { get; set; } = "facepunch.datacore";
 
-	[Event.Tick.Server]
-	private void OnTick()
+	[AdminCmd]
+	public static void SkipStage()
 	{
-		if ( StateTimer > 0 )
-		{
-			StateTimer -= Time.Delta;
+		if ( Current is not DeathmatchGame dmg ) return;
 
-			if( StateTimer <= 0 )
-			{
-				MoveToNextState();
-			}
-		}
-
-		if( GameState == GameStates.Live && !HasEnoughPlayers() )
-		{
-			StartMapVote();
-		}
+		dmg.StateTimer = 1;
 	}
 
-	private void MoveToNextState()
+	private async Task WaitStateTimer()
 	{
-		switch ( GameState )
+		while ( StateTimer > 0 )
 		{
-			case GameStates.WaitingForPlayers:
-				if ( !HasEnoughPlayers() )
-				{
-					StateTimer = 1f;
-					break;
-				}
-				StartIntro();
-				break;
-			case GameStates.Warmup:
-				if ( !HasEnoughPlayers() )
-				{
-					RestartGame();
-					break;
-				}
-				StartGame();
-				break;
-			case GameStates.Live:
-				EndGame();
-				break;
-			case GameStates.GameEnd:
-				StartMapVote();
-				break;
-			case GameStates.MapVote:
-				GotoNextMap();
-				break;
+			await GameTask.DelayRealtimeSeconds( 1.0f );
 		}
+
+		// extra second for fun
+		await GameTask.DelayRealtimeSeconds( 1.0f );
 	}
 
-	private void RestartGame()
+	private async Task GameLoopAsync()
 	{
-		Host.AssertServer();
-
 		GameState = GameStates.WaitingForPlayers;
-		StateTimer = 1f;
 
-		FreshStart();
-	}
-
-	private void StartIntro()
-	{
-		Host.AssertServer();
+		while ( !HasEnoughPlayers() )
+		{
+			await GameTask.DelayRealtimeSeconds( 1.0f );
+		}
 
 		GameState = GameStates.Warmup;
-		StateTimer = 30f;
-	}
-
-	private void StartGame()
-	{
-		Host.AssertServer();
+		StateTimer = 10;
+		await WaitStateTimer();
 
 		GameState = GameStates.Live;
-		StateTimer = 15 * 60f;
-
+		StateTimer = 10 * 60;
 		FreshStart();
-	}
-
-	private void EndGame()
-	{
-		Host.AssertServer();
+		await WaitStateTimer();
 
 		GameState = GameStates.GameEnd;
-		StateTimer = 60f;
-	}
-
-	private void StartMapVote()
-	{
-		Host.AssertServer();
+		StateTimer = 20000f;
+		await WaitStateTimer();
 
 		GameState = GameStates.MapVote;
-		StateTimer = 60f;
-	}
-
-	private void GotoNextMap()
-	{
-		Host.AssertServer();
+		StateTimer = 10f;
+		await WaitStateTimer();
 
 		Global.ChangeLevel( NextMap );
 	}

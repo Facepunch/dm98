@@ -45,6 +45,8 @@ public class InventoryBar : Panel
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )
 	{
+		if ( DeathmatchGame.CurrentState != DeathmatchGame.GameStates.Live ) return;
+
 		bool wantOpen = IsOpen;
 		var localPlayer = Local.Pawn as Player;
 
