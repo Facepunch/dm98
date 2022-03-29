@@ -1,12 +1,12 @@
 ﻿using Hammer;
 
 [Library( "dm_crowbar", Title = "Crowbar" )]
-[Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[Hammer.EditorModel( "models/dm_crowbar.vmdl" )]
 [EntityTool( "Crowbar", "DM98", "Crowbar Weapon." )]
 partial class Crowbar : DeathmatchWeapon
 {
-	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public static Model WorldModel = Model.Load( "models/dm_crowbar.vmdl" );
+	public override string ViewModelPath => "";
 
 	public override float PrimaryRate => 2.0f;
 	public override float SecondaryRate => 1.0f;
@@ -49,12 +49,23 @@ partial class Crowbar : DeathmatchWeapon
 			if ( !IsServer ) continue;
 			if ( !tr.Entity.IsValid() ) continue;
 
-			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 100 * 1, 5 )
+			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 100 * 1, 15 )
 				.UsingTraceResult( tr )
 				.WithAttacker( Owner )
 				.WithWeapon( this );
 
 			tr.Entity.TakeDamage( damageInfo );
 		}
+
+		if ( Owner is DeathmatchPlayer player )
+		{
+			player.SetAnimParameter( "b_attack", true );
+		}
+	}
+
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

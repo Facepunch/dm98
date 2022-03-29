@@ -92,7 +92,7 @@ metadata
 //
 // Crowbar
 //
-@PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_pistol/rust_pistol.vmdl" ) 
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_crowbar.vmdl" ) 
 metadata
 {
 	entity_tool_name = "Crowbar"
