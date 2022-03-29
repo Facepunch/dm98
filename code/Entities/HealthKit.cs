@@ -33,8 +33,7 @@ partial class HealthKit : DeathmatchWeapon, IRespawnableEntity
 
 		pl.Health = newhealth;
 
-		PickedUp(this);
-		Log.Info( "Picked" );
+		PickedUp( this );
 	}
 
 	public void PickedUp( Entity ent )
