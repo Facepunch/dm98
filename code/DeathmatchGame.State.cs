@@ -25,11 +25,11 @@ partial class DeathmatchGame : Game
 	{
 		while ( StateTimer > 0 )
 		{
-			await GameTask.DelayRealtimeSeconds( 1.0f );
+			await Task.DelayRealtimeSeconds( 1.0f );
 		}
 
 		// extra second for fun
-		await GameTask.DelayRealtimeSeconds( 1.0f );
+		await Task.DelayRealtimeSeconds( 1.0f );
 	}
 
 	private async Task GameLoopAsync()
@@ -38,7 +38,7 @@ partial class DeathmatchGame : Game
 
 		while ( !HasEnoughPlayers() )
 		{
-			await GameTask.DelayRealtimeSeconds( 1.0f );
+			await Task.DelayRealtimeSeconds( 1.0f );
 		}
 
 		GameState = GameStates.Warmup;

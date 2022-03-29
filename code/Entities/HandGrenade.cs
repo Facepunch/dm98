@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-[Library( "dm_handgrenade", Title = "Hand Grenade" )]
+﻿[Library( "dm_handgrenade", Title = "Hand Grenade" )]
 partial class HandGrenade : BasePhysics
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
@@ -15,7 +13,7 @@ partial class HandGrenade : BasePhysics
 
 	public async Task BlowIn( float seconds )
 	{
-		await GameTask.DelaySeconds( seconds );
+		await Task.DelaySeconds( seconds );
 
 		Sound.FromWorld( "rust_pumpshotgun.shootdouble", Position );
 		Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", Position );

@@ -1,6 +1,5 @@
 ﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System.Threading.Tasks;
 
 public partial class PickupFeed : Panel
 {
@@ -32,7 +31,7 @@ public partial class PickupFeed : Panel
 		var panel = Current.Add.Panel( "entry" );
 
 		panel.Add.Label( text );
-		await GameTask.DelayRealtimeSeconds( 1.0f );
+		await Task.DelayRealtimeSeconds( 1.0f );
 		panel.Delete();
 	}
 }

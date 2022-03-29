@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-[Library( "dm_tripmine", Title = "Tripmine" )]
+﻿[Library( "dm_tripmine", Title = "Tripmine" )]
 partial class Tripmine : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
@@ -20,7 +18,7 @@ partial class Tripmine : ModelEntity
 	{
 		// arming noise
 
-		await GameTask.DelaySeconds( seconds );
+		await Task.DelaySeconds( seconds );
 
 		LaserParticle = Particles.Create( "particles/tripmine_laser.vpcf", this, "laser", true );
 		LaserParticle.SetPosition( 0, Position );
