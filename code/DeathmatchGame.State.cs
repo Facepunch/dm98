@@ -51,11 +51,11 @@ partial class DeathmatchGame : Game
 		await WaitStateTimer();
 
 		GameState = GameStates.GameEnd;
-		StateTimer = 20000f;
+		StateTimer = 15.0f;
 		await WaitStateTimer();
 
 		GameState = GameStates.MapVote;
-		StateTimer = 10f;
+		StateTimer = 10.0f;
 		await WaitStateTimer();
 
 		Global.ChangeLevel( NextMap );

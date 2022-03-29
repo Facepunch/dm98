@@ -78,5 +78,28 @@ partial class DeathmatchGame : Game
 		postProcess.Vignette.Roundness = 1.5f;
 		postProcess.Vignette.Smoothness = 0.5f;
 		postProcess.Vignette.Color = Color.Black;
+
+		postProcess.Saturate.Enabled = true;
+		postProcess.Saturate.Amount = 1;
+
+		if ( Local.Pawn is DeathmatchPlayer localPlayer )
+		{
+			var timeSinceDamage = localPlayer.TimeSinceDamage.Relative;
+			var damageUi = timeSinceDamage.LerpInverse( 2, 0, true );
+			if ( damageUi > 0 )
+			{
+				postProcess.Saturate.Amount -= damageUi;
+				postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, damageUi );
+				postProcess.Vignette.Intensity += damageUi;
+			}
+		}
+
+		if ( CurrentState == GameStates.Warmup )
+		{
+			postProcess.FilmGrain.Intensity = 0.4f;
+			postProcess.FilmGrain.Response = 0.5f;
+
+			postProcess.Saturate.Amount = 0;
+		}
 	}
 }
