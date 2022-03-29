@@ -15,6 +15,7 @@ partial class Python : DeathmatchWeapon
 	public override AmmoType AmmoType => AmmoType.Python;
 
 	public override int Bucket => 1;
+	public override int BucketWeight => 10;
 
 	[Net, Predicted]
 	public bool Zoomed { get; set; }
