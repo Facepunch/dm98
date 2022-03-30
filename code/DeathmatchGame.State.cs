@@ -3,13 +3,13 @@
 
 partial class DeathmatchGame : Game
 {
-	public static GameStates CurrentState => (Current as DeathmatchGame)?.GameState ?? GameStates.WaitingForPlayers;
+	public static GameStates CurrentState => (Current as DeathmatchGame)?.GameState ?? GameStates.Warmup;
 
 	[Net]
 	public RealTimeUntil StateTimer { get; set; } = 0f;
 
 	[Net]
-	public GameStates GameState { get; set; } = GameStates.WaitingForPlayers;
+	public GameStates GameState { get; set; } = GameStates.Warmup;
 	[Net]
 	public string NextMap { get; set; } = "facepunch.datacore";
 
@@ -34,13 +34,6 @@ partial class DeathmatchGame : Game
 
 	private async Task GameLoopAsync()
 	{
-		GameState = GameStates.WaitingForPlayers;
-
-		while ( !HasEnoughPlayers() )
-		{
-			await Task.DelayRealtimeSeconds( 1.0f );
-		}
-
 		GameState = GameStates.Warmup;
 		StateTimer = 10;
 		await WaitStateTimer();
@@ -82,7 +75,6 @@ partial class DeathmatchGame : Game
 
 	public enum GameStates
 	{
-		WaitingForPlayers,
 		Warmup,
 		Live,
 		GameEnd,
