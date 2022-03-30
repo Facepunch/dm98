@@ -10,34 +10,20 @@
 				children = 
 				[
 					{
-						_class = "RenderPrimitiveBox"
-						name = "box"
+						_class = "RenderMeshFile"
+						filename = "models/gameplay/weapons/tripmine/fbx/low_poly.fbx"
+						import_translation = [ 250.0, 0.0, -200.0 ]
+						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_scale = 0.02
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
 						parent_bone = ""
-						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 5.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						max_u = 1.0
-						max_v = 1.0
-						dimensions = [ 10.0, 20.0, 10.0 ]
-						segments_x = 1
-						segments_y = 1
-						segments_z = 1
-						invert = false
-					},
-					{
-						_class = "RenderPrimitiveBox"
-						name = "Lens"
-						parent_bone = ""
-						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 10.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						max_u = 1.0
-						max_v = 1.0
-						dimensions = [ 5.0, 5.0, 5.0 ]
-						segments_x = 1
-						segments_y = 1
-						segments_z = 1
-						invert = false
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
 					},
 				]
 			},
@@ -83,8 +69,8 @@
 						remaps = 
 						[
 							{
-								from = "dev/helper/testgrid.vmat"
-								to = "models/dm_tripmine.vmat"
+								from = "tripmine.vmat"
+								to = "materials/weapons/tripmine.vmat"
 							},
 						]
 						use_global_default = false
