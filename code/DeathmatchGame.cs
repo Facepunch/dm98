@@ -82,17 +82,39 @@ partial class DeathmatchGame : Game
 		postProcess.Saturate.Enabled = true;
 		postProcess.Saturate.Amount = 1;
 
+		postProcess.Blur.Enabled = false;
+
 		if ( Local.Pawn is DeathmatchPlayer localPlayer )
 		{
 			var timeSinceDamage = localPlayer.TimeSinceDamage.Relative;
-			var damageUi = timeSinceDamage.LerpInverse( 2, 0, true );
+			var damageUi = timeSinceDamage.LerpInverse( 0.25f, 0.0f, true );
 			if ( damageUi > 0 )
 			{
 				postProcess.Saturate.Amount -= damageUi;
 				postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, damageUi );
 				postProcess.Vignette.Intensity += damageUi;
+				postProcess.Vignette.Smoothness += damageUi;
+				postProcess.Vignette.Roundness += damageUi;
+
+				postProcess.Blur.Enabled = true;
+				postProcess.Blur.Strength = damageUi * 0.5f;
 			}
+
+
+			var healthDelta = localPlayer.Health.LerpInverse( 0, 100.0f, true );
+
+
+			postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, 1 - healthDelta );
+			postProcess.Vignette.Intensity += (1- healthDelta) * 0.5f;
+			postProcess.Vignette.Smoothness += (1 - healthDelta);
+			postProcess.Vignette.Roundness += (1 - healthDelta) * 0.5f;
+			postProcess.Saturate.Amount *= healthDelta;
+			postProcess.FilmGrain.Intensity += (1 - healthDelta) * 0.5f;
+
 		}
+
+
+
 
 		if ( CurrentState == GameStates.Warmup )
 		{
