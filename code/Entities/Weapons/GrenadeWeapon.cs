@@ -63,7 +63,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 				grenade.SetInteractsExclude( CollisionLayer.Player );
 				grenade.SetInteractsAs( CollisionLayer.Debris );
 
-				_ = grenade.BlowIn( 4.0f );
+				_ = grenade.BlowIn( 3.0f );
 			}
 
 		player.SetAnimParameter( "b_attack", true );
