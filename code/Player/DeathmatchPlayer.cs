@@ -251,10 +251,12 @@
 
 		base.TakeDamage( info );
 
-		if ( info.Attacker is DeathmatchPlayer attacker && attacker != this )
+		if ( info.Attacker is DeathmatchPlayer attacker )
 		{
-			// Note - sending this only to the attacker!
-			attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
+			if ( attacker != this )
+			{
+				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
+			}
 
 			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
 		}
@@ -274,6 +276,8 @@
 	[ClientRpc]
 	public void TookDamage( Vector3 pos )
 	{
+		//DebugOverlay.Sphere( pos, 10.0f, Color.Red, true, 10.0f );
+
 		TimeSinceDamage = 0;
 		DamageIndicator.Current?.OnHit( pos );
 	}
@@ -282,5 +286,14 @@
 	public void PlaySoundFromScreen( string sound )
 	{
 		Sound.FromScreen( sound );
+	}
+
+	[ClientCmd]
+	public static void InflictDamage()
+	{
+		if ( Local.Pawn is DeathmatchPlayer ply )
+		{
+			ply.TookDamage( ply.Position + ply.EyeRotation.Forward * 100.0f );
+		}
 	}
 }
