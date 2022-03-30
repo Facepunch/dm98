@@ -163,8 +163,8 @@
 				if ( tr.Distance > 200 )
 				{
 					var system = Particles.Create( "particles/tracer.standard.vpcf" );
-					system.SetPosition( 0, tr.StartPosition );
-					system.SetPosition( 1, tr.EndPosition );
+					system?.SetPosition( 0, tr.StartPosition );
+					system?.SetPosition( 1, tr.EndPosition );
 				}
 
 				if ( !IsServer ) continue;

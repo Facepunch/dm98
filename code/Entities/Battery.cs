@@ -1,9 +1,9 @@
 ﻿using Hammer;
 
-[Library( "dm_battery", Title = "HealthKit" )]
-[Hammer.EditorModel( "models/dm_battery.vmdl" )]
+[Library( "dm_battery", Title = "Battery" )]
+[EditorModel( "models/dm_battery.vmdl" )]
 [EntityTool( "Battery", "DM98", "Gives 25 Armour" )]
-partial class Battery : DeathmatchWeapon, IRespawnableEntity
+partial class Battery : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
 
@@ -20,12 +20,12 @@ partial class Battery : DeathmatchWeapon, IRespawnableEntity
 		SetInteractsAs( CollisionLayer.Debris );
 	}
 
-	public override void Touch( Entity other )
+	public override void StartTouch( Entity other )
 	{
-		base.Touch( other );
+		base.StartTouch( other );
 
 		if ( other is not DeathmatchPlayer player ) return;
-		if ( player.Armour >= player.Armour ) return;
+		if ( player.Armour >= 100 ) return;
 
 		var newhealth = player.Armour + 25;
 

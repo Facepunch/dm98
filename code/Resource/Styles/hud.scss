@@ -241,7 +241,7 @@ armourhud
 {
     &.empty
     {
-        display: none;
+        opacity: 0.1;
     }
 }
 

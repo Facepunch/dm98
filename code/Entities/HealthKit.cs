@@ -1,9 +1,9 @@
 ﻿using Hammer;
 
 [Library( "dm_healthkit", Title = "HealthKit" )]
-[Hammer.EditorModel( "models/gameplay/healthkit/healthkit.vmdl" )]
+[EditorModel( "models/gameplay/healthkit/healthkit.vmdl" )]
 [EntityTool( "Health Kit", "DM98", "Health Kit Give 25 hp." )]
-partial class HealthKit : DeathmatchWeapon, IRespawnableEntity
+partial class HealthKit : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/gameplay/healthkit/healthkit.vmdl" );
 
@@ -20,9 +20,9 @@ partial class HealthKit : DeathmatchWeapon, IRespawnableEntity
 		SetInteractsAs( CollisionLayer.Debris );
 	}
 
-	public override void Touch( Entity other )
+	public override void StartTouch( Entity other )
 	{
-		base.Touch( other );
+		base.StartTouch( other );
 
 		if ( other is not DeathmatchPlayer pl ) return;
 		if ( pl.Health >= pl.MaxHealth ) return;
@@ -33,14 +33,8 @@ partial class HealthKit : DeathmatchWeapon, IRespawnableEntity
 
 		pl.Health = newhealth;
 
-		PickedUp( this );
-	}
-
-	public void PickedUp( Entity ent )
-	{
-		//As the Entity is not weapon, this is so the player does not have it in their inventory.
-		Sound.FromWorld( "dm.item_health", ent.Position );
-		ItemRespawn.Taken( ent );
+		Sound.FromWorld( "dm.item_health", Position );
+		ItemRespawn.Taken( this );
 		Delete();
 	}
 }

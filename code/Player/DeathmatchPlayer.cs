@@ -240,6 +240,9 @@
 
 	public override void TakeDamage( DamageInfo info )
 	{
+		if ( LifeState == LifeState.Dead )
+			return;
+
 		LastDamage = info;
 
 		// hack - hitbox group 1 is head
@@ -249,7 +252,35 @@
 			info.Damage *= 2.0f;
 		}
 
-		base.TakeDamage( info );
+		this.ProceduralHitReaction( info );
+
+		LastAttacker = info.Attacker;
+		LastAttackerWeapon = info.Weapon;
+
+		if ( IsServer && Armour > 0 )
+		{
+			Armour -= info.Damage;
+
+			if ( Armour < 0 )
+			{
+				info.Damage = Armour * -1;
+				Armour = 0;
+			}
+			else
+			{
+				info.Damage = 0;
+			}
+		}
+
+		if ( Health > 0 && info.Damage > 0 )
+		{
+			Health -= info.Damage;
+			if ( Health <= 0 )
+			{
+				Health = 0;
+				OnKilled();
+			}
+		}
 
 		if ( info.Attacker is DeathmatchPlayer attacker )
 		{
@@ -259,6 +290,17 @@
 			}
 
 			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+		}
+
+		//
+		// Add a score to the killer
+		//
+		if ( LifeState == LifeState.Dead && info.Attacker != null )
+		{
+			if ( info.Attacker.Client != null && info.Attacker != this )
+			{
+				info.Attacker.Client.AddInt( "kills" );
+			}
 		}
 	}
 
