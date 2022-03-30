@@ -46,23 +46,25 @@ partial class GrenadeWeapon : DeathmatchWeapon
 
 		Rand.SetSeed( Time.Tick );
 
+
 		if ( IsServer )
-		{
-			var grenade = new HandGrenade
+			using ( Prediction.Off() )
 			{
-				Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
-				Owner = Owner
-			};
+				var grenade = new HandGrenade
+				{
+					Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
+					Owner = Owner
+				};
 
-			grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f + Owner.EyeRotation.Up * 200.0f + Owner.Velocity;
+				grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f + Owner.EyeRotation.Up * 200.0f + Owner.Velocity;
 
-			// This is fucked in the head, lets sort this this year
-			grenade.CollisionGroup = CollisionGroup.Debris;
-			grenade.SetInteractsExclude( CollisionLayer.Player );
-			grenade.SetInteractsAs( CollisionLayer.Debris );
+				// This is fucked in the head, lets sort this this year
+				grenade.CollisionGroup = CollisionGroup.Debris;
+				grenade.SetInteractsExclude( CollisionLayer.Player );
+				grenade.SetInteractsAs( CollisionLayer.Debris );
 
-			_ = grenade.BlowIn( 4.0f );
-		}
+				_ = grenade.BlowIn( 4.0f );
+			}
 
 		player.SetAnimParameter( "b_attack", true );
 
