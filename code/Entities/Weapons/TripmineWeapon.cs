@@ -2,6 +2,7 @@
 
 [Hammer.EditorModel( "models/dm_tripmine.vmdl" )]
 [EntityTool( "Tripmine", "DM98", "Tripmine Weapon." )]
+[Library( "dm_tripmine", Title = "Tripmine" )]
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
