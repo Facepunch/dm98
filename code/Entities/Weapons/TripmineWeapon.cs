@@ -1,6 +1,5 @@
 ﻿using Hammer;
 
-[Library( "dm_tripmine", Title = "Tripmine" )]
 [Hammer.EditorModel( "models/dm_tripmine.vmdl" )]
 [EntityTool( "Tripmine", "DM98", "Tripmine Weapon." )]
 partial class TripmineWeapon : DeathmatchWeapon
