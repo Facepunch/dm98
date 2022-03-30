@@ -14,6 +14,86 @@
 ]
 
 //
+// Ammo9mmClip
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_ammo_9mmclip.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ammo - 9mm Clip"
+	entity_tool_group = "DM98"
+}
+= dm_ammo9mmclip : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// Ammo9mmBox
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_ammo_9mmbox.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ammo - 9mm Box"
+	entity_tool_group = "DM98"
+}
+= dm_ammo9mmbox : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// AmmoBuckshot
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_ammo_buckshot.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ammo - Buckshot"
+	entity_tool_group = "DM98"
+}
+= dm_ammobuckshot : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// Ammo357
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_ammo_357.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ammo - 357"
+	entity_tool_group = "DM98"
+}
+= dm_ammo357 : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// AmmoCrossbow
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_ammo_crossbow.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Ammo - Crossbow"
+	entity_tool_group = "DM98"
+}
+= dm_ammocrossbow : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // Battery
 //
 @PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_battery.vmdl" ) 
