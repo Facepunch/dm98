@@ -1,7 +1,4 @@
 ﻿using Hammer;
-using Sandbox;
-using Sandbox.Internal;
-using System.Linq;
 
 [Library( "dm_healthcharger" )]
 [Hammer.SupportsSolid]
@@ -27,6 +24,13 @@ partial class ChargerStation : KeyframeEntity, IUse
 	[Net]
 	[Property( "chargerresettime", Title = "Charger Reset Time" )]
 	public float ChargerResetTime { get; set; } = 60f;
+
+	/// <summary>
+	/// This controls the time it takes for the charger to refill, Default Value is 60.
+	/// </summary>
+	[Net]
+	[Property( "armourcharger", Title = "Is Armour Charger" )]
+	public bool IsArmourCharger { get; set; } = false;
 
 	private TimeSince TimeSinceUsed;
 
@@ -69,49 +73,50 @@ partial class ChargerStation : KeyframeEntity, IUse
 			return false;
 		}
 
-		if(CanUse == false) return false;
+		if ( CanUse == false ) return false;
 
-		if ( user is DeathmatchPlayer player )
+		if ( user is not DeathmatchPlayer player )
+			return false;
+
+
+		if ( !IsArmourCharger && player.Health >= 100 ) return false;
+		if ( IsArmourCharger && player.Armour >= 100 ) return false;
+
+		// standard rate of 10 health per second
+		var add = 10 * Time.Delta;
+
+		// check if charger has enough power to heal
+		if ( add > ChargerPower )
+			add = ChargerPower;
+
+		TimeSinceUsed = 0;
+
+		ChargerPower -= add;
+
+		if ( IsArmourCharger )
 		{
-			if ( player.Health >= 100 ) return false;
+			player.Armour += add;
+			player.Armour.Clamp( 0, 100 );
+			return player.Armour >= 100;
+		}
 
-			// standard rate of 10 health per second
-			var add = 10 * Time.Delta;
-
-			// check if charger has enough power to heal
-			if ( add > ChargerPower )
-				add = ChargerPower;
-
-			TimeSinceUsed = 0;
-
-			// fill up til full health
-			if ( player.Health + add >= 100 )
-			{
-				add = 100 - player.Health;
-
-				player.Health += add;
-				ChargerPower -= add;
-
-				// stop using if we finished healing
-				return false;
-			}
-
+		if ( !IsArmourCharger )
+		{
 			player.Health += add;
-			ChargerPower -= add;
-
-			return true;
+			player.Health.Clamp( 0, 100 );
+			return player.Health >= 100;
 		}
 
 		return false;
 	}
 
-	public override void StartTouch ( Entity other )
+	public override void StartTouch( Entity other )
 	{
 		if ( other is not DeathmatchPlayer player ) return;
 		CanUse = true;
 	}
 
-	public override void EndTouch ( Entity other )
+	public override void EndTouch( Entity other )
 	{
 		if ( other is not DeathmatchPlayer player ) return;
 		CanUse = false;
