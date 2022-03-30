@@ -14,6 +14,23 @@
 ]
 
 //
+// Battery
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_battery.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Battery"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Gives 25 Armour"
+}
+= dm_battery : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // ChargerStation
 //
 @PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) model() box_world_aligned( "mins", "maxs" ) 
