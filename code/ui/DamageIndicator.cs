@@ -39,7 +39,7 @@ public partial class DamageIndicator : Panel
 			var pt = new PanelTransform();
 
 			pt.AddTranslateX( Length.Percent( -50.0f ) );
-			pt.AddTranslateY( Length.Percent( -50.0f ) );
+			pt.AddTranslateY( Length.Percent( -0.0f ) );
 			pt.AddRotation( 0, 0, angle.RadianToDegree() );
 
 			Style.Transform = pt;
@@ -50,7 +50,7 @@ public partial class DamageIndicator : Panel
 		{
 			await Task.Delay( 200 );
 			AddClass( "dying" );
-			await Task.Delay( 500 );
+			await Task.Delay( 200 );
 			Delete();
 		}
 

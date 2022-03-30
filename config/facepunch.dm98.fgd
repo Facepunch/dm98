@@ -63,16 +63,6 @@ metadata
 ]
 
 //
-// Tripmine
-//
-@PointClass base(BaseProperties_facepunch_dm98) = dm_tripmine : ""
-[
-	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
-
-	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
-]
-
-//
 // Crossbow
 //
 @PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) 
@@ -185,6 +175,23 @@ metadata
 	entity_tool_tip = "SMG Weapon."
 }
 = dm_smg : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
+// TripmineWeapon
+//
+@PointClass base(BaseProperties_facepunch_dm98) editormodel( "models/dm_tripmine.vmdl" ) 
+metadata
+{
+	entity_tool_name = "Tripmine"
+	entity_tool_group = "DM98"
+	entity_tool_tip = "Tripmine Weapon."
+}
+= dm_tripmine : ""
 [
 	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
 

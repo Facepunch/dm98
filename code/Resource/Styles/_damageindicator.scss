@@ -12,15 +12,14 @@
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		width: 600px;
-		height: 400px;
-		border-radius: 300px;
+		width: 100px;
+		height: 350px;
+		border-radius: 0px;
 		border: 0px solid yellow;
-		border-bottom: 20px solid #f00;
-		transition: opacity 0.5s ease-out;
-		opacity: 0.8;
-		transform-origin: 0% -20%;
-		background: linear-gradient( to bottom, red, rgba( red, 0 ) 50% );
+		border-bottom: 10px solid #f00;
+		transition: opacity 0.2s linear;
+		opacity: 0.5;
+		transform-origin: 0% 0%;
 
 		label
 		{
