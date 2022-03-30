@@ -6,7 +6,7 @@
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
-	public override string ViewModelPath => "";
+	public override string ViewModelPath => "models/v_dm_tripmine.vmdl";
 
 	public override float PrimaryRate => 1.0f;
 	public override float SecondaryRate => 1.0f;
@@ -19,7 +19,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 	{
 		base.Spawn();
 
-		SetModel( "models/dm_tripmine.vmdl" );
+		Model = WorldModel;
 		AmmoClip = 1;
 	}
 
