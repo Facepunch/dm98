@@ -14,11 +14,11 @@
 						name = "box"
 						parent_bone = ""
 						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 0.0, 0.0, 7.040061 ]
+						origin = [ -0.070128, 0.0, 0.827471 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						max_u = 1.0
 						max_v = 1.0
-						dimensions = [ 10.0, 10.0, 13.822604 ]
+						dimensions = [ 2.441733, 10.0, 1.173521 ]
 						segments_x = 1
 						segments_y = 1
 						segments_z = 1
@@ -38,27 +38,9 @@
 						collision_interact_as = ""
 						collision_interact_with = ""
 						collision_interact_exclude = ""
-						origin = [ -0.134631, 0.20999, 6.036602 ]
+						origin = [ 0.0, 0.0, 2.514281 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 12.159899, 13.616497, 22.073204 ]
-					},
-				]
-			},
-			{
-				_class = "MaterialGroupList"
-				children = 
-				[
-					{
-						_class = "DefaultMaterialGroup"
-						remaps = 
-						[
-							{
-								from = "dev/helper/testgrid.vmat"
-								to = "models/dm_battery.vmat"
-							},
-						]
-						use_global_default = false
-						global_default_material = ""
+						dimensions = [ 10.0, 10.0, 4.971438 ]
 					},
 				]
 			},
