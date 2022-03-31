@@ -70,7 +70,11 @@ partial class DeathmatchGame : Game
 			cl.SetInt( "deaths", 0 );
 		}
 
-		All.OfType<DeathmatchPlayer>().ToList().ForEach( x => x.Respawn() );
+		All.OfType<DeathmatchPlayer>().ToList().ForEach( x =>
+		{
+			x.Inventory.DeleteContents();
+			x.Respawn();
+		} );
 	}
 
 	public enum GameStates
