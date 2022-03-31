@@ -37,6 +37,7 @@
 
 		SupressPickupNotices = true;
 
+		Inventory.DeleteContents();
 		Inventory.Add( new Crowbar() );
 		Inventory.Add( new Pistol(), true );
 
@@ -44,6 +45,7 @@
 
 		SupressPickupNotices = false;
 		Health = 100;
+		Armour = 0;
 
 		base.Respawn();
 	}

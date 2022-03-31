@@ -72,7 +72,6 @@ partial class DeathmatchGame : Game
 
 		All.OfType<DeathmatchPlayer>().ToList().ForEach( x =>
 		{
-			x.Inventory.DeleteContents();
 			x.Respawn();
 		} );
 	}
