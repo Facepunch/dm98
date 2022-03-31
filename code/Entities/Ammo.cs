@@ -23,6 +23,23 @@ partial class BaseAmmo : ModelEntity, IRespawnableEntity
 	public override void Touch( Entity other )
 	{
 		base.Touch( other );
+
+		if ( other is not DeathmatchPlayer player )
+			return;
+
+		if ( other.LifeState != LifeState.Alive )
+			return;
+
+		var ammoTaken = player.GiveAmmo( AmmoType, AmmoAmount );
+
+		if ( ammoTaken == 0 )
+			return;
+
+		Sound.FromWorld( "dm.pickup_ammo", Position );
+		PickupFeed.OnPickup( To.Single( player ), $"+{ammoTaken} {AmmoType}" );
+
+		ItemRespawn.Taken( this );
+		Delete();
 	}
 }
 
