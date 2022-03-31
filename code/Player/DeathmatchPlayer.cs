@@ -22,7 +22,14 @@
 	{
 		SetModel( "models/citizen/citizen.vmdl" );
 
-		Controller = new WalkController();
+		Controller = new WalkController
+		{
+			WalkSpeed = 270,
+			SprintSpeed = 100,
+			DefaultSpeed = 270,
+
+		};
+
 		Animator = new StandardPlayerAnimator();
 
 		CameraMode = new FirstPersonCamera();
