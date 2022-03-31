@@ -34,6 +34,8 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		player.Armour = newhealth;
 
 		Sound.FromWorld( "dm.item_battery", Position );
+		PickupFeed.OnPickup( To.Single( player ), $"+25 Armour" );
+
 		ItemRespawn.Taken( this );
 		Delete();
 	}
