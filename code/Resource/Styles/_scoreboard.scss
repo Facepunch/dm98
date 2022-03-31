@@ -12,7 +12,7 @@
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
-	transition: all 0.1s ease-out;
+	transition: all 0.3s ease-out;
 	transform: scale( 1.05 );
 	transform-origin: 50% 50%;
 	background-size: 100% 100%;
@@ -24,6 +24,7 @@
 	{
 		opacity: 1;
 		transform: scale( 1 );
+		transition: all 0.1s ease-out;
 	}
 
 	.name

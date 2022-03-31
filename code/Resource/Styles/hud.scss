@@ -91,19 +91,19 @@ vitals
 
 .bottom-left
 {
-    left: 128px;
+    left: 200px;
 }
 
 .bottom-right
 {
-    right: 128px;
+    right: 200px;
 }
 
 .bottom-left, .bottom-right
 {
     mix-blend-mode: lighten;
     position: absolute;
-    bottom: 64px;
+    bottom: 100px;
 }
 
 .top-middle
