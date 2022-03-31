@@ -2,7 +2,7 @@
 pickupfeed
 {
 	position: absolute;
-	right: 100px;
+	right: 220px;
 	bottom: 250px;
 	flex-direction: column;
 	text-align: right;
@@ -14,16 +14,10 @@ pickupfeed
 		opacity: 1;
 		height: 50px;
 		overflow: hidden;
-		padding: 16px;
-		//
-		// Pseudo class set for the first time of its life
-		//
-		&:intro
-		{
-			height: 0px;
-			padding: 0px 16px;
-			opacity: 0;
-		}
+		justify-content: flex-end;
+		align-items: center;
+		min-width: 300px;
+		font-size: 30px;
 		//
 		// Pseudo class set for the last frame of its life
 		// (and keeps the panel alive until transition ends)
@@ -38,6 +32,39 @@ pickupfeed
 		{
 			white-space: nowrap;
 			min-width: 200px;
+			color: #fa0;
+			width: 100%;
+			text-align: right;
+		}
+
+		.icon
+		{
+			width: 100%;
+			height: 100px;
+			background-size: contain;
+			background-position: right center;
+			background-repeat: no-repeat;
+			background-image-tint: #fa0;
+		}
+		//
+		// Pseudo class set for the first time of its life
+		//
+		&:intro
+		{
+			height: 0px;
+			padding: 0px 16px;
+			opacity: 0;
+			color: white;
+
+			.icon
+			{
+				background-image-tint: #fff;
+			}
+
+			label
+			{
+				color: #fff;
+			}
 		}
 	}
 }

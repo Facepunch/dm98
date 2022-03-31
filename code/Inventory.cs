@@ -46,7 +46,7 @@
 		if ( weapon != null && notices )
 		{
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
-			PickupFeed.OnPickup( To.Single( player ), $"{ent.ClassInfo.Title}" );
+			PickupFeed.OnPickupWeapon( To.Single( player ), ent.ClassInfo.Name );
 		}
 
 

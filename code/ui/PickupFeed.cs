@@ -16,10 +16,16 @@ public partial class PickupFeed : Panel
 	[ClientRpc]
 	public static void OnPickup( string text )
 	{
-		// TODO - icons for weapons?
-		// TOPO - icons for ammo?
-
 		Current?.AddEntry( text );
+	}
+
+	/// <summary>
+	/// An RPC which can be called from the server 
+	/// </summary>
+	[ClientRpc]
+	public static void OnPickupWeapon( string text )
+	{
+		Current?.AddWeaponEntry( text );
 	}
 
 	/// <summary>
@@ -31,7 +37,16 @@ public partial class PickupFeed : Panel
 		var panel = Current.Add.Panel( "entry" );
 
 		panel.Add.Label( text );
-		await Task.DelayRealtimeSeconds( 1.0f );
+		await Task.DelayRealtimeSeconds( 2.0f );
+		panel.Delete();
+	}
+
+	private async Task AddWeaponEntry( string text )
+	{
+		var panel = Current.Add.Panel( "entry" );
+		panel.AddClass( text ); ;
+		panel.Add.Panel( "icon" );
+		await Task.DelayRealtimeSeconds( 2.0f );
 		panel.Delete();
 	}
 }
