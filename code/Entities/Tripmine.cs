@@ -20,6 +20,8 @@ partial class Tripmine : ModelEntity
 
 		await Task.DelaySeconds( seconds );
 
+		if ( !IsValid ) return;
+
 		LaserParticle = Particles.Create( "particles/tripmine_laser.vpcf", this, "laser", true );
 		LaserParticle.SetPosition( 0, Position );
 
