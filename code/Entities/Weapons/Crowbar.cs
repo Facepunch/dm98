@@ -6,7 +6,7 @@
 partial class Crowbar : DeathmatchWeapon
 {
 	public static Model WorldModel = Model.Load( "models/dm_crowbar.vmdl" );
-	public override string ViewModelPath => "";
+	public override string ViewModelPath => "models/v_dm_crowbar.vmdl";
 
 	public override float PrimaryRate => 2.0f;
 	public override float SecondaryRate => 1.0f;

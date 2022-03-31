@@ -6,7 +6,7 @@
 partial class GrenadeWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
-	public override string ViewModelPath => "";
+	public override string ViewModelPath => "models/v_dm_grenade.vmdl";
 
 	public override float PrimaryRate => 1.0f;
 	public override float SecondaryRate => 1.0f;
