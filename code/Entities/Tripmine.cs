@@ -62,6 +62,9 @@ partial class Tripmine : ModelEntity
 	{
 		if ( exploding ) return;
 
+		LaserParticle?.Destroy( true );
+		LaserParticle = null;
+
 		exploding = true;
 		await Task.DelaySeconds( delay );
 
