@@ -8,9 +8,9 @@ partial class TripmineWeapon : DeathmatchWeapon
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
 	public override string ViewModelPath => "models/v_dm_tripmine.vmdl";
 
-	public override float PrimaryRate => 1.0f;
-	public override float SecondaryRate => 1.0f;
-	public override float ReloadTime => 1.0f;
+	public override float PrimaryRate => 100.0f;
+	public override float SecondaryRate => 100.0f;
+	public override float ReloadTime => 0.1f;
 	public override AmmoType AmmoType => AmmoType.Tripmine;
 	public override int ClipSize => 1;
 	public override int Bucket => 5;
@@ -65,8 +65,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 		TakeAmmo( 1 );
 		Reload();
 
-
-		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
+		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Tripmine ) == 0 )
 		{
 			Delete();
 			player.SwitchToBestWeapon();
