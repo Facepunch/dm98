@@ -1,11 +1,12 @@
 ﻿using Hammer;
 
-[Library( "dm_healthcharger" )]
+/// <summary>
+/// A wall-mounted device that gives a limited amount of health and armour.
+/// </summary>
+[Library( "dm_chargerstation" )]
 [Hammer.SupportsSolid]
 [Hammer.EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
-[Model( Model = "models/gameplay/charger/charger_station.vmdl" )]
-[EntityTool( "Health Charger", "DM98", "Health Charging Station." )]
-[BoundsHelper( "mins", "maxs", false, true )]
+[EntityTool( "Charger Station", "DM98", "Charging Station for either Health or Armour." )]
 partial class ChargerStation : KeyframeEntity, IUse
 {
 	/// <summary>
@@ -32,6 +33,9 @@ partial class ChargerStation : KeyframeEntity, IUse
 	[Property( "armourcharger", Title = "Is Armour Charger" )]
 	public bool IsArmourCharger { get; set; } = false;
 
+	public static readonly Model HealthChargerModel = Model.Load( "models/gameplay/charger/charger_station.vmdl" );
+	public static readonly Model ArmourChargerModel = Model.Load( "models/gameplay/charger/armour_charger_station.vmdl");
+
 	private TimeSince TimeSinceUsed;
 
 	public PickupTrigger PickupTrigger { get; protected set; }
@@ -57,6 +61,15 @@ partial class ChargerStation : KeyframeEntity, IUse
 		trigger.SetupPhysicsFromOBB( PhysicsMotionType.Static, Mins, Maxs );
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
+
+		if(!IsArmourCharger)
+		{
+			Model = HealthChargerModel;
+		}
+		else
+		{
+			Model = ArmourChargerModel;
+		}
 	}
 
 	public bool IsUsable( Entity user )

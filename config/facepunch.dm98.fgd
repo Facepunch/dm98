@@ -113,18 +113,15 @@ metadata
 //
 // ChargerStation
 //
-@PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) model() box_world_aligned( "mins", "maxs" ) 
+@PointClass base(BaseProperties_facepunch_dm98) tags( SupportsSolids ) editormodel( "models/gameplay/charger/charger_station.vmdl" ) 
 metadata
 {
-	entity_tool_name = "Health Charger"
+	entity_tool_name = "Charger Station"
 	entity_tool_group = "DM98"
-	entity_tool_tip = "Health Charging Station."
+	entity_tool_tip = "Charging Station for either Health or Armour."
 }
-= dm_healthcharger : ""
+= dm_chargerstation : "A wall-mounted device that gives a limited amount of health and armour."
 [
-	model(resource:vmdl) { report = true hide_when_solid = true }: "World Model" : "models/gameplay/charger/charger_station.vmdl" : "The model this entity should use."
-	skin(materialgroup) { group = "Rendering" hide_when_solid = true } : "Skin" : "default" : "Some models have multiple versions of their textures, called skins." 
-	bodygroups(bodygroupchoices) { group = "Rendering" hide_when_solid = true } : "Body Groups" : "" : "Some models have multiple variations of certain items, such as characters having different hair styles, etc."
 	chargerpower(float) : "Charger Power" : "50" : "This controls the amount of charge in the station, Default Value is 50."
 	chargerresettime(float) : "Charger Reset Time" : "60" : "This controls the time it takes for the charger to refill, Default Value is 60."
 	armourcharger(boolean) : "Is Armour Charger" : 0 : "This controls the time it takes for the charger to refill, Default Value is 60."
