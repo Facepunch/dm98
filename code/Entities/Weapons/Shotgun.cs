@@ -14,12 +14,25 @@ partial class Shotgun : DeathmatchWeapon
 	public override float ReloadTime => 0.5f;
 	public override int Bucket => 2;
 
+	[Net, Predicted]
+	public bool StopReloading { get; set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
 
 		Model = WorldModel;
 		AmmoClip = 6;
+	}
+
+	public override void Simulate( Client owner )
+	{
+		base.Simulate( owner );
+
+		if ( IsReloading && ( Input.Pressed( InputButton.Attack1 ) || Input.Pressed( InputButton.Attack2 ) ) )
+		{
+			StopReloading = true;
+		}
 	}
 
 	public override void AttackPrimary()
@@ -113,6 +126,9 @@ partial class Shotgun : DeathmatchWeapon
 
 	public override void OnReloadFinish()
 	{
+		var stop = StopReloading;
+
+		StopReloading = false;
 		IsReloading = false;
 
 		TimeSincePrimaryAttack = 0;
@@ -129,7 +145,7 @@ partial class Shotgun : DeathmatchWeapon
 
 			AmmoClip += ammo;
 
-			if ( AmmoClip < ClipSize )
+			if ( AmmoClip < ClipSize && !stop )
 			{
 				Reload();
 			}
