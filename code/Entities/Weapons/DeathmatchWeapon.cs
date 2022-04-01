@@ -207,6 +207,7 @@
 		ViewModelEntity.Owner = Owner;
 		ViewModelEntity.EnableViewmodelRendering = true;
 		ViewModelEntity.SetModel( ViewModelPath );
+		ViewModelEntity.SetAnimParameter( "deploy", true );
 	}
 
 	public override void CreateHudElements()
