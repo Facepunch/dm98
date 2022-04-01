@@ -44,6 +44,8 @@ partial class GrenadeWeapon : DeathmatchWeapon
 		// woosh sound
 		// screen shake
 
+		PlaySound( "dm.grenade_throw" );
+
 		Rand.SetSeed( Time.Tick );
 
 
