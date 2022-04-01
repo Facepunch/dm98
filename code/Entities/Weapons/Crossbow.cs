@@ -37,6 +37,7 @@ partial class Crossbow : DeathmatchWeapon
 		}
 
 		ShootEffects();
+		PlaySound( "rust_crossbow.shoot" );
 
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
 
