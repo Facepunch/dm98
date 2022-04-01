@@ -12,7 +12,7 @@ partial class Tripmine : ModelEntity
 		base.Spawn();
 
 		Model = WorldModel;
-		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		//SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 	}
 
 	public async Task Arm( float seconds )
