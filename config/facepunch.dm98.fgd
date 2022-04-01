@@ -158,6 +158,16 @@ metadata
 ]
 
 //
+// Tripmine
+//
+@PointClass base(BaseProperties_facepunch_dm98) = dm_tripmine_planted : ""
+[
+	enable_shadows(boolean) { group = "Rendering" } : "Shadow Casting" : 1 : "Whether this entity should cast shadows or not"
+
+	input SetColor(string) : "Sets the color of this entity. Format is '255 255 255 255'."
+]
+
+//
 // Crossbow
 //
 @PointClass base(BaseProperties_facepunch_dm98) editormodel( "weapons/rust_crossbow/rust_crossbow.vmdl" ) 

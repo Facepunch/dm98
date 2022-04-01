@@ -1,4 +1,5 @@
 ﻿
+[Library( "dm_tripmine_planted", Title = "Planted Tripmine" )]
 partial class Tripmine : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
