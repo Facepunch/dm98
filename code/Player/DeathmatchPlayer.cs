@@ -27,6 +27,7 @@
 			WalkSpeed = 270,
 			SprintSpeed = 100,
 			DefaultSpeed = 270,
+			AirAcceleration = 10,
 
 		};
 
