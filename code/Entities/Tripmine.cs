@@ -17,9 +17,12 @@ partial class Tripmine : ModelEntity
 
 	public async Task Arm( float seconds )
 	{
-		// arming noise
+		// todo: PlaySound doesn't play any sound unless there's a little delay here?
+		await Task.DelaySeconds( .01f ); 
 
-		await Task.DelaySeconds( seconds );
+		PlaySound( "dm.tripmine_arming" );
+
+		await Task.DelaySeconds( seconds - .01f );
 
 		if ( !IsValid ) return;
 
@@ -37,7 +40,7 @@ partial class Tripmine : ModelEntity
 		LaserTrigger.CreateTrigger( tr.Distance );
 		LaserTrigger.OnTriggered = ( e ) => _ = Explode( 0.2f );
 
-		// armed chirp
+		PlaySound( "dm.tripmine_armed" );
 
 		if ( tr.Entity != null && tr.Entity is not WorldEntity )
 		{
@@ -62,6 +65,8 @@ partial class Tripmine : ModelEntity
 	async Task Explode( float delay )
 	{
 		if ( exploding ) return;
+
+		PlaySound( "dm.tripmine_activated" );
 
 		LaserParticle?.Destroy( true );
 		LaserParticle = null;
