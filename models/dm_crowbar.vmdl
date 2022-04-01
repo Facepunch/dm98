@@ -14,11 +14,26 @@
 						name = "box"
 						parent_bone = ""
 						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 0.0, 0.0, 15.0 ]
+						origin = [ -2.611916, -1.205795, 7.867661 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						max_u = 1.0
 						max_v = 1.0
 						dimensions = [ 2.0, 2.0, 30.0 ]
+						segments_x = 1
+						segments_y = 1
+						segments_z = 1
+						invert = false
+					},
+					{
+						_class = "RenderPrimitiveBox"
+						name = "box_copy"
+						parent_bone = ""
+						material_name = "dev/helper/testgrid.vmat"
+						origin = [ -2.611916, -3.009859, 21.371681 ]
+						angles = [ -0.0, 0.0, 30.342039 ]
+						max_u = 1.0
+						max_v = 1.0
+						dimensions = [ 2.0, 5.519733, 1.689961 ]
 						segments_x = 1
 						segments_y = 1
 						segments_z = 1

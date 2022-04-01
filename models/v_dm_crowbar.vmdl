@@ -12,13 +12,32 @@
 					{
 						_class = "RenderPrimitiveBox"
 						name = "box"
-						parent_bone = ""
+						parent_bone = "hold_R"
 						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 16.0, -6.0, -12.0 ]
-						angles = [ 12.0, 10.0, 16.0 ]
+						origin = [ -1.661168, 0.433919, 4.858996 ]
+						angles = [ 0.0, 0.0, 0.0 ]
 						max_u = 1.0
 						max_v = 1.0
-						dimensions = [ 2.0, 2.0, 30.0 ]
+						dimensions = [ 1.0, 1.0, 15.0 ]
+						segments_x = 1
+						segments_y = 1
+						segments_z = 1
+						invert = false
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_rendermeshlist.vmdl_prefab"
+					},
+					{
+						_class = "RenderPrimitiveBox"
+						name = "box_copy"
+						parent_bone = "hold_R"
+						material_name = "dev/helper/testgrid.vmat"
+						origin = [ -1.661168, -0.316508, 11.757262 ]
+						angles = [ 0.000001, -0.000001, 29.583698 ]
+						max_u = 1.0
+						max_v = 1.0
+						dimensions = [ 1.0, 2.271559, 0.527835 ]
 						segments_x = 1
 						segments_y = 1
 						segments_z = 1
@@ -27,21 +46,223 @@
 				]
 			},
 			{
-				_class = "Skeleton"
+				_class = "AnimConstraintList"
 				children = 
 				[
 					{
-						_class = "Bone"
-						name = "hold_r"
-						origin = [ 0.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						do_not_discard = true
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_animconstraintlist.vmdl_prefab"
 					},
 				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						note = "Converting from centimeters to inches."
+						scale = 0.3937
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+					{
+						_class = "ModelModifier_Translate"
+						translation = [ 3.0, -5.0, -2.0 ]
+					},
+				]
+			},
+			{
+				_class = "BoneMarkupList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_bonemarkuplist.vmdl_prefab"
+					},
+				]
+				bone_cull_type = "Leaf Only"
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_weightlistlist.vmdl_prefab"
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_gamedatalist.vmdl_prefab"
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "viewmodelarms_light.vmat"
+								to = "models/first_person/materials/viewmodelarms_light.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_hitboxsetlist.vmdl_prefab"
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "bindPose"
+						note = "There\'s a little bit of inaccuracy in the bone orientations unless compression is disabled. This is probably fine insofar as it should match up whatever inaccuracy is introduced in all other animations. bindPose_internal is, however, perfect."
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = true
+						source_filename = "models/first_person/first_person_arms.fbx"
+						start_frame = -1
+						end_frame = 30
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_animset_punching.vmdl_prefab"
+					},
+					{
+						_class = "Prefab"
+						target_file = "models/first_person/prefabs/first_person_arms_animset_adjustmentlayers.vmdl_prefab"
+					},
+					{
+						_class = "AnimBindPose"
+						name = "bindPose_internal"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						frame_count = 1
+						frame_rate = 30
+					},
+					{
+						_class = "AnimFile"
+						name = "bindPose1"
+						note = "There\'s a little bit of inaccuracy in the bone orientations unless compression is disabled. This is probably fine insofar as it should match up whatever inaccuracy is introduced in all other animations. bindPose_internal is, however, perfect."
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = true
+						source_filename = "models/first_person/first_person_arms.fbx"
+						start_frame = -1
+						end_frame = 30
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "bindPose_delta"
+						children = 
+						[
+							{
+								_class = "AnimSubtract"
+								anim_name = "bindPose_delta"
+								frame = 0
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = true
+						source_filename = "models/first_person/first_person_arms.fbx"
+						start_frame = -1
+						end_frame = 30
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "refPose_zero"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/first_person/animations/FPArms@refPose_zero.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "models/first_person/first_person_arms_punching.vanmgrph"
 	}
 }

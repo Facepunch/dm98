@@ -57,7 +57,9 @@ partial class Crowbar : DeathmatchWeapon
 
 			tr.Entity.TakeDamage( damageInfo );
 		}
-
+		ViewModelEntity?.SetAnimParameter( "attack_has_hit", true );
+		ViewModelEntity?.SetAnimParameter( "attack", true );
+		ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
 		if ( Owner is DeathmatchPlayer player )
 		{
 			player.SetAnimParameter( "b_attack", true );
@@ -68,5 +70,12 @@ partial class Crowbar : DeathmatchWeapon
 	{
 		anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+
+		if ( Owner.IsValid() )
+		{
+			ViewModelEntity?.SetAnimParameter( "b_grounded", Owner.GroundEntity.IsValid() );
+			ViewModelEntity?.SetAnimParameter( "aim_pitch", Owner.EyeRotation.Pitch() );
+
+		}
 	}
 }
