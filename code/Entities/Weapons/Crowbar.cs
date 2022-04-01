@@ -35,6 +35,7 @@ partial class Crowbar : DeathmatchWeapon
 
 		// woosh sound
 		// screen shake
+		PlaySound( "dm.crowbar_attack" );
 
 		Rand.SetSeed( Time.Tick );
 
