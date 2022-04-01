@@ -31,7 +31,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "metal.weapon"
+						surface_prop = "plastic"
 						collision_group = ""
 						collision_interact_as = ""
 						collision_interact_with = ""
