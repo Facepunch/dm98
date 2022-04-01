@@ -12,7 +12,7 @@ partial class Tripmine : ModelEntity
 		base.Spawn();
 
 		Model = WorldModel;
-		//SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+
 	}
 
 	public async Task Arm( float seconds )
@@ -25,7 +25,7 @@ partial class Tripmine : ModelEntity
 		await Task.DelaySeconds( seconds - .01f );
 
 		if ( !IsValid ) return;
-
+		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		LaserParticle = Particles.Create( "particles/tripmine_laser.vpcf", this, "laser", true );
 		LaserParticle.SetPosition( 0, Position );
 
