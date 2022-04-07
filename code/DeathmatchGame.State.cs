@@ -47,11 +47,13 @@ partial class DeathmatchGame : Game
 		StateTimer = 10.0f;
 		await WaitStateTimer();
 
-		//GameState = GameStates.MapVote;
-		//StateTimer = 10.0f;
-		//await WaitStateTimer();
+		GameState = GameStates.MapVote;
+		var mapVote = new MapVoteEntity();
+		mapVote.VoteTimeLeft = 10.0f;
+		StateTimer = mapVote.VoteTimeLeft;
+		await WaitStateTimer();
 
-		Global.ChangeLevel( NextMap );
+		Global.ChangeLevel( mapVote.WinningMap );
 	}
 
 	private bool HasEnoughPlayers()

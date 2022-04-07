@@ -1,0 +1,81 @@
+﻿
+$yellow: #ff0;
+$orange: #f70;
+
+mapicon
+{
+    background-color: red;
+    margin: 10px;
+    background-position: center;
+    background-size: cover;
+    aspect-ratio: 1;
+    width: 400px;
+    cursor: pointer;
+    opacity: 0.7;
+    color: $yellow;
+    text-shadow: 0px 0px 10px $orange;
+
+    &:hover
+    {
+        transform: scale( 1.02 );
+        opacity: 1;
+    }
+
+    .votes
+    {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba( black, 0.9 );
+        padding: 10px 15px;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 22px;
+        min-height: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info
+    {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba( black, 0.9 );
+        flex-direction: column;
+        padding: 5px;
+        border-radius: 3px;
+
+        .orgavatar
+        {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: black;
+            background-position: center;
+            background-size: cover;
+            mix-blend-mode: lighten;
+        }
+
+        .title
+        {
+            font-weight: bolder;
+            margin-left: 50px;
+            font-size: 20px;
+            mix-blend-mode: lighten;
+        }
+
+        .orgname
+        {
+            font-weight: bolder;
+            margin-left: 50px;
+            font-size: 13px;
+            opacity: 0.5;
+            text-shadow: 0px 0px 4px rgba( $orange, 0.2 );
+            mix-blend-mode: lighten;
+        }
+    }
+}

@@ -1,0 +1,68 @@
+﻿
+$yellow: #ff0;
+$orange: #f70;
+
+mapvotepanel
+{
+    background-color: #111;
+    position: absolute;
+    left: -50px;
+    right: -50px;
+    top: -50px;
+    bottom: -50px;
+    font-family: "Trebuchet MS";
+    pointer-events: all;
+    z-index: 99;
+}
+
+mapvotepanel > .inner
+{
+    margin: 150px 250px;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+mapvotepanel > .inner > .header
+{
+    flex-direction: row;
+
+    .left
+    {
+        flex-grow: 1;
+        flex-direction: column;
+
+        .title
+        {
+            font-size: 50px;
+            font-weight: bold;
+            color: $yellow;
+            text-shadow: 0px 0px 10px $orange;
+        }
+
+        .subtitle
+        {
+            font-size: 24px;
+            font-weight: bold;
+            color: $yellow;
+            text-shadow: 0px 0px 7px $orange;
+        }
+    }
+
+    .right
+    {
+        .countdown
+        {
+            font-size: 50px;
+            font-weight: bold;
+            color: $yellow;
+            text-shadow: 0px 0px 10px $orange;
+        }
+    }
+}
+
+mapvotepanel > .inner > .body
+{
+    flex-grow: 1;
+    margin: 50px;
+    flex-wrap: wrap;
+}

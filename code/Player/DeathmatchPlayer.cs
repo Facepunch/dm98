@@ -378,4 +378,11 @@
 
 		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
 	}
+
+	[AdminCmd]
+	public static void MapVote()
+	{
+		var vote = new MapVoteEntity();
+	}
+
 }
