@@ -2,10 +2,11 @@
 
 partial class BaseAmmo : ModelEntity, IRespawnableEntity
 {
-	public static readonly Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
+	//public static Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
 
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;
+	public virtual Model WorldModel => Model.Load( "models/dm_battery.vmdl" );
 
 	public override void Spawn()
 	{
@@ -51,6 +52,8 @@ partial class Ammo9mmClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
 	public override int AmmoAmount => 17;
+	public override Model WorldModel => Model.Load( "models/dm_ammo_9mmclip.vmdl" );
+
 }
 
 [Library( "dm_ammo9mmbox" )]
@@ -60,6 +63,8 @@ partial class Ammo9mmBox : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
 	public override int AmmoAmount => 200;
+
+	public override Model WorldModel => Model.Load( "models/dm_ammo_9mmbox.vmdl" );
 }
 
 
@@ -71,6 +76,8 @@ partial class AmmoBuckshot : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Buckshot;
 	public override int AmmoAmount => 12;
+
+	public override Model WorldModel => Model.Load( "models/dm_ammo_buckshot.vmdl" );
 }
 
 [Library( "dm_ammo357" )]
@@ -80,6 +87,8 @@ partial class Ammo357 : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Python;
 	public override int AmmoAmount => 6;
+
+	public override Model WorldModel => Model.Load( "models/dm_ammo_357.vmdl" );
 }
 
 [Library( "dm_ammocrossbow" )]
@@ -89,4 +98,6 @@ partial class AmmoCrossbow : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Crossbow;
 	public override int AmmoAmount => 5;
+
+	public override Model WorldModel => Model.Load( "models/dm_ammo_crossbow.vmdl" );
 }
