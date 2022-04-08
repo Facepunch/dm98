@@ -91,7 +91,21 @@
 
 		Inventory.DeleteContents();
 
-		BecomeRagdollOnClient( LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ) );
+		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
+		{
+			using ( Prediction.Off() )
+			{
+				var particles = Particles.Create( "particles/gib.vpcf" );
+				if ( particles != null )
+				{
+					particles.SetPosition( 0, Position + Vector3.Up * 40 );
+				}
+			}
+		}
+		else
+		{
+			BecomeRagdollOnClient( LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ) );
+		}
 
 		Controller = null;
 
