@@ -18,20 +18,21 @@ partial class Tripmine : ModelEntity
 	public async Task Arm( float seconds )
 	{
 		// todo: PlaySound doesn't play any sound unless there's a little delay here?
-		await Task.DelaySeconds( .01f ); 
+		await Task.DelaySeconds( .01f );
 
 		PlaySound( "dm.tripmine_arming" );
 
-		await Task.DelaySeconds( seconds - .01f );
+		await Task.DelaySeconds( seconds );
 
 		if ( !IsValid ) return;
+
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
 		LaserParticle = Particles.Create( "particles/tripmine_laser.vpcf", this, "laser", true );
 		LaserParticle.SetPosition( 0, Position );
 
 		var tr = Trace.Ray( Position, Position + Rotation.Forward * 4000.0f )
-			.Ignore( this )
-			.Run();
+					.Ignore( this )
+					.Run();
 
 		LaserParticle.SetPosition( 1, tr.EndPosition );
 
@@ -102,6 +103,7 @@ public class LaserTrigger : ModelEntity
 		base.StartTouch( other );
 
 		if ( other is WorldEntity ) return;
+		if ( other is BaseTrigger ) return;
 
 		OnTriggered?.Invoke( other );
 	}
