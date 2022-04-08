@@ -25,8 +25,6 @@ partial class DeathmatchGame : Game
 		{
 			Hud = new DeathmatchHud();
 
-			PrecacheParticles();
-
 			_ = GameLoopAsync();
 		}
 
