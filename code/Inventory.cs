@@ -39,7 +39,6 @@
 
 			ItemRespawn.Taken( ent );
 
-			Log.Info( $"{ent} just took ammo" );
 			// Despawn it
 			ent.Delete();
 			return false;
@@ -61,6 +60,6 @@
 
 	public bool IsCarryingType( Type t )
 	{
-		return List.Any( x => x.GetType() == t );
+		return List.Any( x => x.IsValid() && x.GetType() == t );
 	}
 }
