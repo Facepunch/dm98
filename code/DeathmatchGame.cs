@@ -55,6 +55,41 @@ partial class DeathmatchGame : Game
 		cl.Pawn = player;
 	}
 
+	public override void MoveToSpawnpoint( Entity pawn )
+	{
+		var spawnpoint = Entity.All
+								.OfType<SpawnPoint>()
+								.OrderByDescending( x => SpawnpointWeight( x ) )
+								.ThenBy( x => Guid.NewGuid() )
+								.FirstOrDefault();
+
+		if ( spawnpoint == null )
+		{
+			Log.Warning( $"Couldn't find spawnpoint for {pawn}!" );
+			return;
+		}
+
+		pawn.Transform = spawnpoint.Transform;
+	}
+
+	/// <summary>
+	/// The higher the better
+	/// </summary>
+	public float SpawnpointWeight( Entity spawnpoint )
+	{
+		float distance = 0;
+
+		foreach ( var client in Client.All )
+		{
+			if ( client.Pawn == null ) continue;
+			if ( client.Pawn.LifeState != LifeState.Alive ) continue;
+
+			distance += spawnpoint.Position.Distance( client.Pawn.Position );
+		}
+
+		return distance;
+	}
+
 	public override void OnKilled( Client client, Entity pawn )
 	{
 		base.OnKilled( client, pawn );
