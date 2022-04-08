@@ -13,6 +13,7 @@ partial class Shotgun : DeathmatchWeapon
 	public override int ClipSize => 8;
 	public override float ReloadTime => 0.5f;
 	public override int Bucket => 2;
+	public override int BucketWeight => 200;
 
 	[Net, Predicted]
 	public bool StopReloading { get; set; }
@@ -29,7 +30,7 @@ partial class Shotgun : DeathmatchWeapon
 	{
 		base.Simulate( owner );
 
-		if ( IsReloading && ( Input.Pressed( InputButton.Attack1 ) || Input.Pressed( InputButton.Attack2 ) ) )
+		if ( IsReloading && (Input.Pressed( InputButton.Attack1 ) || Input.Pressed( InputButton.Attack2 )) )
 		{
 			StopReloading = true;
 		}

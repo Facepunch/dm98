@@ -14,6 +14,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 	public override AmmoType AmmoType => AmmoType.Tripmine;
 	public override int ClipSize => 1;
 	public override int Bucket => 5;
+	public override int BucketWeight => 200;
 
 	public override void Spawn()
 	{

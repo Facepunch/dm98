@@ -1,7 +1,5 @@
 ﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System.Collections.Generic;
-using System.Linq;
 
 public class InventoryColumn : Panel
 {
@@ -28,6 +26,8 @@ public class InventoryColumn : Panel
 			icon.Parent = this;
 			Icons.Add( icon );
 		}
+
+
 	}
 
 	internal void TickSelection( DeathmatchWeapon selectedWeapon )
@@ -38,6 +38,16 @@ public class InventoryColumn : Panel
 		{
 			Icons[i].TickSelection( selectedWeapon );
 		}
+
+		SortChildren( p =>
+		{
+			if ( p is InventoryIcon icon )
+			{
+				return icon.Weapon?.BucketWeight ?? 0;
+			}
+
+			return 0;
+		} );
 
 	}
 }
