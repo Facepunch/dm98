@@ -12,6 +12,9 @@
 		var player = Owner as DeathmatchPlayer;
 		var weapon = ent as DeathmatchWeapon;
 		var notices = !player.SupressPickupNotices;
+
+		if ( weapon == null )
+			return false;
 		//
 		// We don't want to pick up the same weapon twice
 		// But we'll take the ammo from it Winky Face
@@ -36,12 +39,14 @@
 
 			ItemRespawn.Taken( ent );
 
+			Log.Info( $"{ent} just took ammo" );
 			// Despawn it
 			ent.Delete();
 			return false;
 		}
 
-		if ( ent is HealthKit && player.Health >= player.MaxHealth ) return false;
+		if ( !base.Add( ent, makeActive ) )
+			return false;
 
 		if ( weapon != null && notices )
 		{
@@ -49,9 +54,9 @@
 			PickupFeed.OnPickupWeapon( To.Single( player ), ent.ClassInfo.Name );
 		}
 
-
 		ItemRespawn.Taken( ent );
-		return base.Add( ent, makeActive );
+
+		return true;
 	}
 
 	public bool IsCarryingType( Type t )
