@@ -10,34 +10,209 @@
 				children = 
 				[
 					{
-						_class = "RenderPrimitiveBox"
-						name = "box"
+						_class = "RenderMeshFile"
+						name = "Crowbar01_LOD0"
+						filename = "models/citizen_props/crowbar01.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
 						parent_bone = ""
-						material_name = "dev/helper/testgrid.vmat"
-						origin = [ -2.611916, -1.205795, 7.867661 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						max_u = 1.0
-						max_v = 1.0
-						dimensions = [ 2.0, 2.0, 30.0 ]
-						segments_x = 1
-						segments_y = 1
-						segments_z = 1
-						invert = false
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Crowbar01_LOD0",
+							]
+						}
 					},
 					{
-						_class = "RenderPrimitiveBox"
-						name = "box_copy"
+						_class = "RenderMeshFile"
+						name = "Crowbar01_LOD1"
+						filename = "models/citizen_props/crowbar01.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
 						parent_bone = ""
-						material_name = "dev/helper/testgrid.vmat"
-						origin = [ -2.611916, -3.009859, 21.371681 ]
-						angles = [ -0.0, 0.0, 30.342039 ]
-						max_u = 1.0
-						max_v = 1.0
-						dimensions = [ 2.0, 5.519733, 1.689961 ]
-						segments_x = 1
-						segments_y = 1
-						segments_z = 1
-						invert = false
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Crowbar01_LOD1",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "Crowbar01_LOD2"
+						filename = "models/citizen_props/crowbar01.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Crowbar01_LOD2",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "Crowbar01_LOD3"
+						filename = "models/citizen_props/crowbar01.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Crowbar01_LOD3",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "LODGroupList"
+				children = 
+				[
+					{
+						_class = "LODGroup"
+						name = "Crowbar01_LOD0"
+						switch_threshold = 0.0
+						meshes = 
+						[
+							"Crowbar01_LOD0",
+						]
+					},
+					{
+						_class = "LODGroup"
+						name = "Crowbar01_LOD1"
+						switch_threshold = 50.0
+						meshes = 
+						[
+							"Crowbar01_LOD1",
+						]
+					},
+					{
+						_class = "LODGroup"
+						name = "Crowbar01_LOD2"
+						switch_threshold = 100.0
+						meshes = 
+						[
+							"Crowbar01_LOD2",
+						]
+					},
+					{
+						_class = "LODGroup"
+						name = "Crowbar01_LOD3"
+						switch_threshold = 200.0
+						meshes = 
+						[
+							"Crowbar01_LOD3",
+						]
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = [  ]
+						use_global_default = true
+						global_default_material = "models/citizen_props/crowbar01.vmat"
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 2.60618
+							point0 = [ 0.4, 0.0, -33.8274 ]
+							point1 = [ 0.300083, 0.0, 44.9509 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 3.98327
+							point0 = [ -5.0, 0.0, -48.7092 ]
+							point1 = [ 0.399987, 0.0, -33.8174 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 4.14981
+							point0 = [ 6.98005, 0.0, 48.0508 ]
+							point1 = [ 19.8842, 0.0, 37.5687 ]
+						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFromRender"
+						parent_bone = ""
+						surface_prop = "metal.sheet"
+						collision_group = ""
+						collision_interact_as = ""
+						collision_interact_with = ""
+						collision_interact_exclude = ""
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
+					},
+				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 0.3937
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
 					},
 				]
 			},
@@ -48,15 +223,43 @@
 					{
 						_class = "Bone"
 						name = "hold_r"
-						origin = [ 0.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
+						origin = [ 4.730914, 4.840669, 0.944085 ]
+						angles = [ 14.518348, 48.078129, -10.209353 ]
 						do_not_discard = true
 					},
 				]
 			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "crowbar01"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/citizen_props/crowbar01.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "physics_prop_model"
+		primary_associated_entity = "prop_physics"
 		anim_graph_name = ""
 	}
 }
