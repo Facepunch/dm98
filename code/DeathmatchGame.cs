@@ -87,7 +87,7 @@ partial class DeathmatchGame : Game
 		if ( Local.Pawn is DeathmatchPlayer localPlayer )
 		{
 			var timeSinceDamage = localPlayer.TimeSinceDamage.Relative;
-			var damageUi = timeSinceDamage.LerpInverse( 0.25f, 0.0f, true );
+			var damageUi = timeSinceDamage.LerpInverse( 0.25f, 0.0f, true ) * 0.3f;
 			if ( damageUi > 0 )
 			{
 				postProcess.Saturate.Amount -= damageUi;
@@ -103,6 +103,7 @@ partial class DeathmatchGame : Game
 
 			var healthDelta = localPlayer.Health.LerpInverse( 0, 100.0f, true );
 
+			healthDelta = MathF.Pow( healthDelta, 0.5f );
 
 			postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, 1 - healthDelta );
 			postProcess.Vignette.Intensity += (1 - healthDelta) * 0.5f;
