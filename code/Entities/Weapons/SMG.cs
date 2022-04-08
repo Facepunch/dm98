@@ -13,6 +13,7 @@ partial class SMG : DeathmatchWeapon
 	public override int ClipSize => 50;
 	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
+	public override int BucketWeight => 100;
 
 	public override void Spawn()
 	{
