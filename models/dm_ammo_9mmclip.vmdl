@@ -14,11 +14,11 @@
 						name = "box"
 						parent_bone = ""
 						material_name = "dev/helper/testgrid.vmat"
-						origin = [ 0.0, 0.0, 0.947074 ]
+						origin = [ 0.191058, 1.609186, 1.244869 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						max_u = 1.0
 						max_v = 1.0
-						dimensions = [ 3.0, 10.0, 1.761518 ]
+						dimensions = [ 3.382115, 13.218372, 2.357109 ]
 						segments_x = 1
 						segments_y = 1
 						segments_z = 1
@@ -38,9 +38,9 @@
 						collision_interact_as = ""
 						collision_interact_with = ""
 						collision_interact_exclude = ""
-						origin = [ 0.0, 0.502051, 1.975202 ]
+						origin = [ 0.0, 1.254004, 1.975202 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 10.0, 11.004103, 3.821163 ]
+						dimensions = [ 10.0, 17.051153, 3.821163 ]
 					},
 				]
 			},
