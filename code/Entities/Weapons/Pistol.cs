@@ -1,8 +1,8 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
 
 [Library( "dm_pistol", Title = "Pistol" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
-[EntityTool( "Pistol", "DM98", "Pistol Weapon." )]
+[Display( Name = "Pistol" )]
 partial class Pistol : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );

@@ -1,8 +1,8 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
 
 [Library( "dm_crossbow", Title = "Crossbow" )]
 [Hammer.EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
-[EntityTool( "Crossbow", "DM98", "Crossbow Weapon." )]
+[Display( Name = "Crossbow" )]
 partial class Crossbow : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow.vmdl" );

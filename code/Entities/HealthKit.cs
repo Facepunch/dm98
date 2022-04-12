@@ -1,8 +1,12 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
+using Hammer;
 
+/// <summary>
+/// Gives 25 health points.
+/// </summary>
 [Library( "dm_healthkit", Title = "HealthKit" )]
 [EditorModel( "models/gameplay/healthkit/healthkit.vmdl" )]
-[EntityTool( "Health Kit", "DM98", "Health Kit Give 25 hp." )]
+[Display( Name = "Health Kit" )]
 partial class HealthKit : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/gameplay/healthkit/healthkit.vmdl" );

@@ -1,8 +1,9 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
+using Hammer;
 
 [Library( "dm_smg", Title = "SMG" )]
 [EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
-[EntityTool( "SMG", "DM98", "SMG Weapon." )]
+[Display( Name = "SMG" )]
 partial class SMG : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_smg/rust_smg.vmdl" );
@@ -59,7 +60,7 @@ partial class SMG : DeathmatchWeapon
 		// Screw this for now
 		return;
 
-		TimeSincePrimaryAttack = 0;
+		/*TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
 		if ( Owner is not DeathmatchPlayer player ) return;
@@ -95,7 +96,7 @@ partial class SMG : DeathmatchWeapon
 		{
 			Delete();
 			player.SwitchToBestWeapon();
-		}
+		}*/
 	}
 
 	[ClientRpc]

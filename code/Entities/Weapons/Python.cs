@@ -1,8 +1,8 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
 
 [Library( "dm_357", Title = ".357 Magnum Revolver" )]
 [Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
-[EntityTool( ".357 Magnum Revolver", "DM98", ".357 Magnum Revolver Weapon." )]
+[Display( Name = ".357 Magnum Revolver" )]
 partial class Python : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );

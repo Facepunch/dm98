@@ -1,8 +1,12 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
+using Hammer;
 
+/// <summary>
+/// Gives 25 Armour
+/// </summary>
 [Library( "dm_battery", Title = "Battery" )]
 [EditorModel( "models/dm_battery.vmdl" )]
-[EntityTool( "Battery", "DM98", "Gives 25 Armour" )]
+[Display( Name = "Battery" )]
 partial class Battery : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_battery.vmdl" );

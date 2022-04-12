@@ -1,4 +1,4 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// A wall-mounted device that gives a limited amount of health and armour.
@@ -6,7 +6,7 @@
 [Library( "dm_chargerstation" )]
 [Hammer.SupportsSolid]
 [Hammer.EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
-[EntityTool( "Charger Station", "DM98", "Charging Station for either Health or Armour." )]
+[Display( Name = "Charger Station" )]
 partial class ChargerStation : KeyframeEntity, IUse
 {
 	/// <summary>

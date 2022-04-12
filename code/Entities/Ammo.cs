@@ -1,4 +1,5 @@
 ﻿using Hammer;
+using System.ComponentModel.DataAnnotations;
 
 partial class BaseAmmo : ModelEntity, IRespawnableEntity
 {
@@ -47,7 +48,7 @@ partial class BaseAmmo : ModelEntity, IRespawnableEntity
 
 [Library( "dm_ammo9mmclip" )]
 [EditorModel( "models/dm_ammo_9mmclip.vmdl" )]
-[EntityTool( "Ammo - 9mm Clip", "DM98" )]
+[Display( Name = "Ammo - 9mm Clip" )]
 partial class Ammo9mmClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
@@ -58,7 +59,7 @@ partial class Ammo9mmClip : BaseAmmo
 
 [Library( "dm_ammo9mmbox" )]
 [EditorModel( "models/dm_ammo_9mmbox.vmdl" )]
-[EntityTool( "Ammo - 9mm Box", "DM98" )]
+[Display( Name = "Ammo - 9mm Box" )]
 partial class Ammo9mmBox : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
@@ -71,7 +72,7 @@ partial class Ammo9mmBox : BaseAmmo
 
 [Library( "dm_ammobuckshot" )]
 [EditorModel( "models/dm_ammo_buckshot.vmdl" )]
-[EntityTool( "Ammo - Buckshot", "DM98" )]
+[Display( Name = "Ammo - Buckshot" )]
 partial class AmmoBuckshot : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Buckshot;
@@ -82,7 +83,7 @@ partial class AmmoBuckshot : BaseAmmo
 
 [Library( "dm_ammo357" )]
 [EditorModel( "models/dm_ammo_357.vmdl" )]
-[EntityTool( "Ammo - 357", "DM98" )]
+[Display( Name = "Ammo - 357" )]
 partial class Ammo357 : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Python;
@@ -93,7 +94,7 @@ partial class Ammo357 : BaseAmmo
 
 [Library( "dm_ammocrossbow" )]
 [EditorModel( "models/dm_ammo_crossbow.vmdl" )]
-[EntityTool( "Ammo - Crossbow", "DM98" )]
+[Display( Name = "Ammo - Crossbow" )]
 partial class AmmoCrossbow : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Crossbow;

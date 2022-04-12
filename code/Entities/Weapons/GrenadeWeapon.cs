@@ -1,8 +1,8 @@
-﻿using Hammer;
+﻿using System.ComponentModel.DataAnnotations;
 
 [Library( "dm_grenade", Title = "Grenade" )]
 [Hammer.EditorModel( "models/dm_grenade.vmdl" )]
-[EntityTool( "Grenade", "DM98", "Grenade Weapon." )]
+[Display( Name = "Grenade Weapon" )]
 partial class GrenadeWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
