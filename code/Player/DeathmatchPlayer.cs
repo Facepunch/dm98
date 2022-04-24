@@ -212,8 +212,6 @@
 
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
-		setup.ZNear = 0.1f;
-
 		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
 			return;
 
