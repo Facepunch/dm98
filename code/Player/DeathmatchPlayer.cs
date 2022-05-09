@@ -296,6 +296,11 @@
 			}
 		}
 
+		if ( info.Flags.HasFlag( DamageFlags.Blast ) )
+		{
+			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
+		}
+
 		if ( Health > 0 && info.Damage > 0 )
 		{
 			Health -= info.Damage;
