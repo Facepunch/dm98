@@ -101,6 +101,7 @@ partial class DeathmatchGame : Game
 		Hud.OnPlayerDied( To.Everyone, pawn as DeathmatchPlayer );
 	}
 
+
 	public override void FrameSimulate( Client cl )
 	{
 		base.FrameSimulate( cl );
@@ -122,6 +123,8 @@ partial class DeathmatchGame : Game
 		postProcess.Saturate.Amount = 1;
 
 		postProcess.Blur.Enabled = false;
+
+		Audio.SetEffect( "core.player.death.muffle1", 0 );
 
 		if ( Local.Pawn is DeathmatchPlayer localPlayer )
 		{
@@ -151,9 +154,9 @@ partial class DeathmatchGame : Game
 			postProcess.Saturate.Amount *= healthDelta;
 			postProcess.FilmGrain.Intensity += (1 - healthDelta) * 0.5f;
 
+			Audio.SetEffect( "core.player.death.muffle1", 1 - healthDelta, velocity: 2.0f );
+
 		}
-
-
 
 
 		if ( CurrentState == GameStates.Warmup )
