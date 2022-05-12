@@ -9,3 +9,4 @@ dm98.csproj
 Properties/launchSettings.json
 *.csproj
 .vs
+*.generated.*
