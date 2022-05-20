@@ -4,7 +4,6 @@ using Sandbox.UI.Construct;
 
 internal class GameHud : Panel
 {
-
 	public Label Timer;
 	public Label State;
 

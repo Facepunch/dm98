@@ -23,7 +23,7 @@
 		{
 			if ( child is DeathmatchWeapon weapon )
 			{
-				Weapons.Add( weapon.ClassInfo.Name );
+				Weapons.Add( weapon.ClassName );
 			}
 		}
 	}

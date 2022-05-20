@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-[Library( "dm_pistol", Title = "Pistol" )]
-[Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
-[Display( Name = "Pistol" )]
+﻿[Library( "dm_pistol", Title = "Pistol" )]
+[EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[Title( "Pistol" )]
 partial class Pistol : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
@@ -24,13 +22,15 @@ partial class Pistol : DeathmatchWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return base.CanPrimaryAttack() && Input.Pressed( InputButton.Attack1 );
+		return base.CanPrimaryAttack() && Input.Pressed( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
+
+		Log.Info( $"Slop {Host.Name}" );
 
 		if ( !TakeAmmo( 1 ) )
 		{

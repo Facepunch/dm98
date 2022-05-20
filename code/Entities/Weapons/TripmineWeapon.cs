@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-[Hammer.EditorModel( "models/dm_tripmine.vmdl" )]
+[EditorModel( "models/dm_tripmine.vmdl" )]
 [Library( "dm_tripmine", Title = "Tripmine" )]
-[Display( Name = "Tripmine" )]
+[Title(  "Tripmine" )]
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );
@@ -26,7 +26,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return Input.Released( InputButton.Attack1 );
+		return Input.Released( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()

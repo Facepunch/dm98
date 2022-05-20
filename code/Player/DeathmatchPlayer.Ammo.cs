@@ -51,10 +51,10 @@
 	public bool Give( string weaponName )
 	{
 		// do we already have one?
-		var existing = Children.Where( x => x.ClassInfo.Name == weaponName ).FirstOrDefault();
+		var existing = Children.Where( x => x.ClassName == weaponName ).FirstOrDefault();
 		if ( existing != null ) return false;
 
-		var weapon = Library.Create<DeathmatchWeapon>( weaponName );
+		var weapon = Entity.CreateByName<DeathmatchWeapon>( weaponName );
 		if ( Inventory.Add( weapon ) )
 			return true;
 

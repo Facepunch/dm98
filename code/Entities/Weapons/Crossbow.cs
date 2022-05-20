@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-[Library( "dm_crossbow", Title = "Crossbow" )]
-[Hammer.EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
-[Display( Name = "Crossbow" )]
+﻿[Library( "dm_crossbow", Title = "Crossbow" )]
+[EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
+[Title( "Crossbow" )]
 partial class Crossbow : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow.vmdl" );
@@ -57,7 +55,7 @@ partial class Crossbow : DeathmatchWeapon
 	{
 		base.Simulate( cl );
 
-		Zoomed = Input.Down( InputButton.Attack2 );
+		Zoomed = Input.Down( InputButton.SecondaryAttack );
 	}
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )
@@ -84,12 +82,6 @@ partial class Crossbow : DeathmatchWeapon
 	{
 		Host.AssertClient();
 
-		if ( Owner == Local.Pawn )
-		{
-			new Sandbox.ScreenShake.Perlin( 0.5f, 4.0f, 1.0f, 0.5f );
-		}
-
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		CrosshairPanel?.CreateEvent( "fire" );
 	}
 }

@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-[Library( "dm_grenade", Title = "Grenade" )]
-[Hammer.EditorModel( "models/dm_grenade.vmdl" )]
-[Display( Name = "Grenade Weapon" )]
+﻿[Library( "dm_grenade", Title = "Grenade" )]
+[EditorModel( "models/dm_grenade.vmdl" )]
+[Title( "Grenade Weapon" )]
 partial class GrenadeWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );
@@ -25,7 +23,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return Input.Released( InputButton.Attack1 );
+		return Input.Released( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()

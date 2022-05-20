@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-[Library( "dm_shotgun", Title = "Shotgun" )]
-[Hammer.EditorModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" )]
-[Display( Name = "Shotgun" )]
+﻿[Library( "dm_shotgun", Title = "Shotgun" )]
+[EditorModel( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" )]
+[Title( "Shotgun" )]
 partial class Shotgun : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pumpshotgun/rust_pumpshotgun.vmdl" );
@@ -30,7 +28,7 @@ partial class Shotgun : DeathmatchWeapon
 	{
 		base.Simulate( owner );
 
-		if ( IsReloading && (Input.Pressed( InputButton.Attack1 ) || Input.Pressed( InputButton.Attack2 )) )
+		if ( IsReloading && (Input.Pressed( InputButton.PrimaryAttack ) || Input.Pressed( InputButton.SecondaryAttack )) )
 		{
 			StopReloading = true;
 		}
@@ -52,7 +50,7 @@ partial class Shotgun : DeathmatchWeapon
 			return;
 		}
 
-		(Owner as AnimEntity).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -77,7 +75,7 @@ partial class Shotgun : DeathmatchWeapon
 			return;
 		}
 
-		(Owner as AnimEntity).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -100,13 +98,6 @@ partial class Shotgun : DeathmatchWeapon
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-
-		if ( IsLocalPawn )
-		{
-			new Sandbox.ScreenShake.Perlin( 1.0f, 1.5f, 2.0f );
-		}
-
-		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	[ClientRpc]
@@ -117,12 +108,6 @@ partial class Shotgun : DeathmatchWeapon
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
 		ViewModelEntity?.SetAnimParameter( "fire_double", true );
-		CrosshairPanel?.CreateEvent( "fire" );
-
-		if ( IsLocalPawn )
-		{
-			new Sandbox.ScreenShake.Perlin( 3.0f, 3.0f, 3.0f );
-		}
 	}
 
 	public override void OnReloadFinish()

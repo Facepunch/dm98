@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Hammer;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Gives 25 Armour
 /// </summary>
 [Library( "dm_battery", Title = "Battery" )]
 [EditorModel( "models/dm_battery.vmdl" )]
-[Display( Name = "Battery" )]
+[Title(  "Battery" )]
 partial class Battery : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
@@ -37,7 +37,7 @@ partial class Battery : ModelEntity, IRespawnableEntity
 
 		player.Armour = newhealth;
 
-		Sound.FromWorld( "dm.item_battery", Position );
+		Sound.FromWorld( "dm_item_battery", Position );
 		PickupFeed.OnPickup( To.Single( player ), $"+25 Armour" );
 
 		ItemRespawn.Taken( this );

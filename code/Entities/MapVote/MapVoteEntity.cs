@@ -83,7 +83,7 @@ partial class MapVoteEntity : Entity
 		Panel.UpdateFromVotes( Votes );
 	}
 
-	[ServerCmd]
+	[ConCmd.Server]
 	public static void SetVote( string map )
 	{
 		if ( Current == null || ConsoleSystem.Caller == null )

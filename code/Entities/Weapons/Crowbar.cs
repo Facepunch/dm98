@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 [Library( "dm_crowbar", Title = "Crowbar" )]
-[Hammer.EditorModel( "models/dm_crowbar.vmdl" )]
-[Display( Name = "Crowbar" )]
+[EditorModel( "models/dm_crowbar.vmdl" )]
+[Title(  "Crowbar" )]
 partial class Crowbar : DeathmatchWeapon
 {
 	public static Model WorldModel = Model.Load( "models/dm_crowbar.vmdl" );

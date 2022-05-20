@@ -49,8 +49,10 @@
 
 		if ( weapon != null && notices )
 		{
+			var display = DisplayInfo.For( ent );
+
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
-			PickupFeed.OnPickupWeapon( To.Single( player ), ent.ClassInfo.Name );
+			PickupFeed.OnPickupWeapon( To.Single( player ), display.Name );
 		}
 
 		ItemRespawn.Taken( ent );

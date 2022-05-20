@@ -49,7 +49,7 @@ public class ItemRespawn
 		var record = new Record
 		{
 			Transform = ent.Transform,
-			ClassName = ent.ClassInfo.Name
+			ClassName = ent.ClassName
 		};
 
 		Records[ent] = record;
@@ -77,7 +77,7 @@ public class ItemRespawn
 		// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned
 		Sound.FromWorld( "dm.item_respawn", record.Transform.Position + Vector3.Up * 50 );
 
-		var ent = Library.Create<Entity>( record.ClassName );
+		var ent = Entity.CreateByName( record.ClassName );
 		ent.Transform = record.Transform;
 
 		Records[ent] = record;

@@ -58,7 +58,7 @@
 		base.Respawn();
 	}
 
-	[AdminCmd]
+	[ConCmd.Admin]
 	public static void GiveAll()
 	{
 		var ply = ConsoleSystem.Caller.Pawn as DeathmatchPlayer;
@@ -359,7 +359,7 @@
 		Sound.FromScreen( sound );
 	}
 
-	[ClientCmd]
+	[ConCmd.Client]
 	public static void InflictDamage()
 	{
 		if ( Local.Pawn is DeathmatchPlayer ply )
@@ -398,7 +398,7 @@
 		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
 	}
 
-	[AdminCmd]
+	[ConCmd.Admin]
 	public static void MapVote()
 	{
 		var vote = new MapVoteEntity();

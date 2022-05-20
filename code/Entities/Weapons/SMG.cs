@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Hammer;
-
-[Library( "dm_smg", Title = "SMG" )]
+﻿[Library( "dm_smg", Title = "SMG" )]
 [EditorModel( "weapons/rust_smg/rust_smg.vmdl" )]
-[Display( Name = "SMG" )]
+[Title( "SMG" )]
 partial class SMG : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_smg/rust_smg.vmdl" );
@@ -40,7 +37,7 @@ partial class SMG : DeathmatchWeapon
 			return;
 		}
 
-		(Owner as AnimEntity).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -107,13 +104,7 @@ partial class SMG : DeathmatchWeapon
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
 
-		if ( Owner == Local.Pawn )
-		{
-			new Sandbox.ScreenShake.Perlin( 0.5f, 4.0f, 1.0f, 0.5f );
-		}
-
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )

@@ -71,7 +71,7 @@
 
 		IsReloading = true;
 
-		(Owner as AnimEntity).SetAnimParameter( "b_reload", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_reload", true );
 
 		StartReloadEffects();
 	}
@@ -127,13 +127,7 @@
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 
-		if ( IsLocalPawn )
-		{
-			new Sandbox.ScreenShake.Perlin();
-		}
-
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		CrosshairPanel?.CreateEvent( "fire" );
 	}
 
 	/// <summary>
@@ -213,10 +207,6 @@
 	public override void CreateHudElements()
 	{
 		if ( Local.Hud == null ) return;
-
-		CrosshairPanel = new Crosshair();
-		CrosshairPanel.Parent = Local.Hud;
-		CrosshairPanel.AddClass( ClassInfo.Name );
 	}
 
 	public bool IsUsable()

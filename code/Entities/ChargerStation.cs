@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SandboxEditor;
 
 /// <summary>
 /// A wall-mounted device that gives a limited amount of health and armour.
 /// </summary>
 [Library( "dm_chargerstation" )]
-[Hammer.SupportsSolid]
-[Hammer.EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
-[Display( Name = "Charger Station" )]
+[SupportsSolid]
+[EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
+[Title( "Charger Station" )]
 partial class ChargerStation : KeyframeEntity, IUse
 {
 	/// <summary>
@@ -34,7 +34,7 @@ partial class ChargerStation : KeyframeEntity, IUse
 	public bool IsArmourCharger { get; set; } = false;
 
 	public static readonly Model HealthChargerModel = Model.Load( "models/gameplay/charger/charger_station.vmdl" );
-	public static readonly Model ArmourChargerModel = Model.Load( "models/gameplay/charger/armour_charger_station.vmdl");
+	public static readonly Model ArmourChargerModel = Model.Load( "models/gameplay/charger/armour_charger_station.vmdl" );
 
 	private TimeSince TimeSinceUsed;
 
@@ -62,7 +62,7 @@ partial class ChargerStation : KeyframeEntity, IUse
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
 
-		if(!IsArmourCharger)
+		if ( !IsArmourCharger )
 		{
 			Model = HealthChargerModel;
 		}

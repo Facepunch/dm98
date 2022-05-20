@@ -1,6 +1,6 @@
 ﻿public partial class DeathmatchPlayer
 {
-	public Clothing.Container Clothing { get; protected set; }
+	public ClothingContainer Clothing { get; protected set; }
 
 	/// <summary>
 	/// Set the clothes to whatever the player is wearing

@@ -13,7 +13,7 @@ partial class DeathmatchGame : Game
 	[Net]
 	public string NextMap { get; set; } = "facepunch.datacore";
 
-	[AdminCmd]
+	[ConCmd.Admin]
 	public static void SkipStage()
 	{
 		if ( Current is not DeathmatchGame dmg ) return;

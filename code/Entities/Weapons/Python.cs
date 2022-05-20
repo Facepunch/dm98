@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-[Library( "dm_357", Title = ".357 Magnum Revolver" )]
-[Hammer.EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
-[Display( Name = ".357 Magnum Revolver" )]
+﻿[Library( "dm_357", Title = ".357 Magnum Revolver" )]
+[EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
+[Title( ".357 Magnum Revolver" )]
 partial class Python : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );
@@ -33,7 +31,7 @@ partial class Python : DeathmatchWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return base.CanPrimaryAttack() && Input.Pressed( InputButton.Attack1 );
+		return base.CanPrimaryAttack() && Input.Pressed( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()
@@ -62,19 +60,13 @@ partial class Python : DeathmatchWeapon
 		// Shoot the bullets
 		//
 		ShootBullet( 0.01f, 1.5f, 40.0f, 2.0f );
-
-		if ( IsClient && IsLocalPawn )
-		{
-			new Sandbox.ScreenShake.Perlin( 2, 2, 3, 0 );
-		}
-
 	}
 
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );
 
-		Zoomed = Input.Down( InputButton.Attack2 );
+		Zoomed = Input.Down( InputButton.SecondaryAttack );
 	}
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )

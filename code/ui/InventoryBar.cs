@@ -79,9 +79,9 @@ public class InventoryBar : Panel
 		//
 		// Fire pressed when we're open - select the weapon and close.
 		//
-		if ( input.Down( InputButton.Attack1 ) )
+		if ( input.Down( InputButton.PrimaryAttack ) )
 		{
-			input.SuppressButton( InputButton.Attack1 );
+			input.SuppressButton( InputButton.PrimaryAttack );
 			input.ActiveChild = SelectedWeapon;
 			IsOpen = false;
 			Sound.FromScreen( "dm.ui_select" );

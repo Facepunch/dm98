@@ -10,17 +10,11 @@ $orange: #f70;
 @import "_pickupfeed.scss";
 @import "_scoreboard.scss";
 
-rootpanel
+HudRootPanel
 {
     background-color: rgba( #333, 0 );
     transition: background-color 0.2s ease-in;
     transform-origin: 50% 50%;
-
-    &.spawnmenuopen
-    {
-        transition: background-color 0.3s ease-out;
-        background-color: rgba( #333, 0.9 );
-    }
 
     &.devcamera
     {

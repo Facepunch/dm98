@@ -1,5 +1,5 @@
 ﻿[Library( "crossbow_bolt" )]
-[Hammer.Skip]
+[HideInEditor]
 partial class CrossbowBolt : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow_bolt.vmdl" );
