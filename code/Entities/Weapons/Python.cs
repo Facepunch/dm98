@@ -94,4 +94,19 @@ partial class Python : DeathmatchWeapon
 		LastViewmodelFov = lerpedViewmodelFov;
 	}
 
+	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
+	{
+		var draw = Render.Draw2D;
+
+		var shootEase = Easing.EaseInOut( lastAttack.LerpInverse( 0.3f, 0.0f ) );
+		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );
+
+		draw.BlendMode = BlendMode.Lighten;
+		draw.Color = color.WithAlpha( 0.2f + CrosshairLastShoot.Relative.LerpInverse( 1.2f, 0 ) * 0.5f );
+
+		var length = 3.0f + shootEase * 5.0f;
+
+		draw.Ring( center, length, length - 3.0f );
+	}
+
 }

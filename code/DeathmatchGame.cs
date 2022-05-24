@@ -223,4 +223,25 @@ partial class DeathmatchGame : Game
 	{
 		Sandbox.UI.KillFeed.Current?.AddEntry( leftid, left, rightid, right, method );
 	}
+
+	public override void RenderHud()
+	{
+		var localPawn = Local.Pawn as DeathmatchPlayer;
+		if ( localPawn == null ) return;
+
+		//
+		// scale the screen using a matrix, so the scale math doesn't invade everywhere
+		// (other than having to pass the new scale around)
+		//
+
+		var scale = Screen.Height / 1080.0f;
+		var screenSize = Screen.Size / scale;
+		var matrix = Matrix.CreateScale( scale );
+
+		using ( Render.Draw2D.MatrixScope( matrix ) )
+		{
+			localPawn.RenderHud( screenSize );
+		}
+	}
+
 }
