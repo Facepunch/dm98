@@ -88,7 +88,7 @@ partial class Pistol : DeathmatchWeapon
 		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );
 
 		draw.BlendMode = BlendMode.Lighten;
-		draw.Color = color.WithAlpha( 0.2f + CrosshairLastShoot.Relative.LerpInverse( 1.2f, 0 ) * 0.5f );
+		draw.Color = color.WithAlpha( 0.2f + lastAttack.LerpInverse( 1.2f, 0 ) * 0.5f );
 
 		var length = 8.0f - shootEase * 2.0f;
 		var gap = 10.0f + shootEase * 30.0f;
