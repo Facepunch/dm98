@@ -160,9 +160,7 @@
 
 				if ( tr.Distance > 200 )
 				{
-					var system = Particles.Create( "particles/tracer.standard.vpcf" );
-					system?.SetPosition( 0, tr.StartPosition );
-					system?.SetPosition( 1, tr.EndPosition );
+					CreateTracerEffect( tr.EndPosition );
 				}
 
 				if ( !IsServer ) continue;
@@ -176,6 +174,17 @@
 				tr.Entity.TakeDamage( damageInfo );
 			}
 		}
+	}
+
+	[ClientRpc]
+	public void CreateTracerEffect( Vector3 hitPosition )
+	{
+		// get the muzzle position on our effect entity - either viewmodel or world model
+		var pos = EffectEntity.GetAttachment( "muzzle" ) ?? Transform;
+
+		var system = Particles.Create( "particles/tracer.standard.vpcf" );
+		system?.SetPosition( 0, pos.Position );
+		system?.SetPosition( 1, hitPosition );
 	}
 
 	public bool TakeAmmo( int amount )
