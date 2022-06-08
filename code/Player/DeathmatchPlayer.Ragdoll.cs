@@ -18,9 +18,8 @@
 		ent.SetInteractsWith( CollisionLayer.WORLD_GEOMETRY );
 		ent.SetInteractsExclude( CollisionLayer.Player | CollisionLayer.Debris );
 
-		ent.SetModel( GetModelName() );
+		ent.CopyFrom( this );
 		ent.CopyBonesFrom( this );
-		ent.TakeDecalsFrom( this );
 		ent.SetRagdollVelocityFrom( this );
 		ent.DeleteAsync( 20.0f );
 
@@ -33,7 +32,7 @@
 			if ( child is ModelEntity e )
 			{
 				var clothing = new ModelEntity();
-				clothing.Model = e.Model;
+				clothing.CopyFrom( e );
 				clothing.SetParent( ent, true );
 			}
 		}
