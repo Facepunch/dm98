@@ -42,7 +42,7 @@ Layer0
 	g_flSelfIllumScale "15.905"
 	g_vSelfIllumScrollSpeed "[1.000 1.000]"
 	g_vSelfIllumTint "[0.988235 0.560784 0.560784 0.000000]"
-	TextureSelfIllumMask "materials/particles/beam_blue_energy_01.psd"
+	TextureSelfIllumMask "textures/tempmodels/templines.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"

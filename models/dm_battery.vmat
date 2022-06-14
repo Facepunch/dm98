@@ -43,7 +43,7 @@ Layer0
 	g_flSelfIllumScale "1.590"
 	g_vSelfIllumScrollSpeed "[0.000 0.000]"
 	g_vSelfIllumTint "[0.000000 0.898039 1.000000 0.000000]"
-	TextureSelfIllumMask "materials/particles/hamburger_menu.psd"
+	TextureSelfIllumMask "textures/tempmodels/templines.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
