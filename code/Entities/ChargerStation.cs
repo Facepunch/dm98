@@ -1,9 +1,7 @@
-﻿using SandboxEditor;
-
-/// <summary>
+﻿/// <summary>
 /// A wall-mounted device that gives a limited amount of health and armour.
 /// </summary>
-[Library( "dm_chargerstation" )]
+[Library( "dm_chargerstation" ), HammerEntity]
 [SupportsSolid]
 [EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
 [Title( "Charger Station" )]

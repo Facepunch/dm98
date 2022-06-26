@@ -1,6 +1,6 @@
-﻿[Library( "dm_crossbow", Title = "Crossbow" )]
+﻿[Library( "dm_crossbow" ), HammerEntity]
 [EditorModel( "weapons/rust_crossbow/rust_crossbow.vmdl" )]
-[Title( "Crossbow" )]
+[Title( "Crossbow" ), Category( "Weapons" )]
 partial class Crossbow : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_crossbow/rust_crossbow.vmdl" );

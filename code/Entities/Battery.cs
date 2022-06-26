@@ -1,10 +1,7 @@
-﻿
-using System.ComponentModel.DataAnnotations;
-
-/// <summary>
+﻿/// <summary>
 /// Gives 25 Armour
 /// </summary>
-[Library( "dm_battery", Title = "Battery" )]
+[Library( "dm_battery" ), HammerEntity]
 [EditorModel( "models/dm_battery.vmdl" )]
 [Title(  "Battery" )]
 partial class Battery : ModelEntity, IRespawnableEntity

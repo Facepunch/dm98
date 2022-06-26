@@ -1,6 +1,6 @@
-﻿[Library( "dm_pistol", Title = "Pistol" )]
+﻿[Library( "dm_pistol" ), HammerEntity]
 [EditorModel( "weapons/rust_pistol/rust_pistol.vmdl" )]
-[Title( "Pistol" )]
+[Title( "Pistol" ), Category( "Weapons" )]
 partial class Pistol : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "weapons/rust_pistol/rust_pistol.vmdl" );

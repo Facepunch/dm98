@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
+﻿[Library( "dm_tripmine" ), HammerEntity]
 [EditorModel( "models/dm_tripmine.vmdl" )]
-[Library( "dm_tripmine", Title = "Tripmine" )]
-[Title(  "Tripmine" )]
+[Title(  "Tripmine" ), Category( "Weapons" )]
 partial class TripmineWeapon : DeathmatchWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_tripmine.vmdl" );

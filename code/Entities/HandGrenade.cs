@@ -1,4 +1,5 @@
-﻿[Library( "dm_handgrenade", Title = "Hand Grenade" )]
+﻿[Library( "dm_handgrenade" ), HammerEntity]
+[Title( "Hand Grenade" )]
 partial class HandGrenade : BasePhysics
 {
 	public static readonly Model WorldModel = Model.Load( "models/dm_grenade.vmdl" );

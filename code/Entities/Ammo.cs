@@ -43,9 +43,9 @@
 }
 
 
-[Library( "dm_ammo9mmclip" )]
+[Library( "dm_ammo9mmclip" ), HammerEntity]
 [EditorModel( "models/dm_ammo_9mmclip.vmdl" )]
-[Title( "Ammo - 9mm Clip" )]
+[Title( "9mm Clip" ), Category( "Ammo" )]
 partial class Ammo9mmClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
@@ -54,9 +54,9 @@ partial class Ammo9mmClip : BaseAmmo
 
 }
 
-[Library( "dm_ammo9mmbox" )]
+[Library( "dm_ammo9mmbox" ), HammerEntity]
 [EditorModel( "models/dm_ammo_9mmbox.vmdl" )]
-[Title( "Ammo - 9mm Box" )]
+[Title( "9mm Box" ), Category( "Ammo" )]
 partial class Ammo9mmBox : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
@@ -67,9 +67,9 @@ partial class Ammo9mmBox : BaseAmmo
 
 
 
-[Library( "dm_ammobuckshot" )]
+[Library( "dm_ammobuckshot" ), HammerEntity]
 [EditorModel( "models/dm_ammo_buckshot.vmdl" )]
-[Title( "Ammo - Buckshot" )]
+[Title( "Buckshot" ), Category( "Ammo" )]
 partial class AmmoBuckshot : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Buckshot;
@@ -78,9 +78,9 @@ partial class AmmoBuckshot : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/dm_ammo_buckshot.vmdl" );
 }
 
-[Library( "dm_ammo357" )]
+[Library( "dm_ammo357" ), HammerEntity]
 [EditorModel( "models/dm_ammo_357.vmdl" )]
-[Title( "Ammo - 357" )]
+[Title( "357 Ammo" ), Category( "Ammo" )]
 partial class Ammo357 : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Python;
@@ -89,9 +89,9 @@ partial class Ammo357 : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/dm_ammo_357.vmdl" );
 }
 
-[Library( "dm_ammocrossbow" )]
+[Library( "dm_ammocrossbow" ), HammerEntity]
 [EditorModel( "models/dm_ammo_crossbow.vmdl" )]
-[Title( "Ammo - Crossbow" )]
+[Title( "Crossbow Bolts" ), Category( "Ammo" )]
 partial class AmmoCrossbow : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Crossbow;
