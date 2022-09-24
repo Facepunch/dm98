@@ -106,14 +106,14 @@ partial class ChargerStation : KeyframeEntity, IUse
 		if ( IsArmourCharger )
 		{
 			player.Armour += add;
-			player.Armour.Clamp( 0, 100 );
+			player.Armour = player.Armour.Clamp( 0, 100 );
 			return player.Armour < 100;
 		}
 
 		if ( !IsArmourCharger )
 		{
 			player.Health += add;
-			player.Health.Clamp( 0, 100 );
+			player.Health = player.Health.Clamp( 0, 100 );
 			return player.Health < 100;
 		}
 
