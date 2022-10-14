@@ -14,8 +14,6 @@ partial class DeathmatchGame : Game
 	[Net]
 	DeathmatchHud Hud { get; set; }
 
-	StandardPostProcess postProcess;
-
 	public DeathmatchGame()
 	{
 		//
@@ -27,12 +25,6 @@ partial class DeathmatchGame : Game
 			Hud = new DeathmatchHud();
 
 			_ = GameLoopAsync();
-		}
-
-		if ( IsClient )
-		{
-			postProcess = new StandardPostProcess();
-			PostProcess.Add( postProcess );
 		}
 	}
 
@@ -107,23 +99,21 @@ partial class DeathmatchGame : Game
 	{
 		base.FrameSimulate( cl );
 
-		postProcess.Sharpen.Enabled = true;
-		postProcess.Sharpen.Strength = 0.5f;
+		\var postProcess = Map.Camera.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
 
-		postProcess.FilmGrain.Enabled = true;
+		postProcess.Sharpen = 0.5f;
+
 		postProcess.FilmGrain.Intensity = 0.2f;
 		postProcess.FilmGrain.Response = 1;
 
-		postProcess.Vignette.Enabled = true;
 		postProcess.Vignette.Intensity = 1.0f;
 		postProcess.Vignette.Roundness = 1.5f;
 		postProcess.Vignette.Smoothness = 0.5f;
 		postProcess.Vignette.Color = Color.Black;
 
-		postProcess.Saturate.Enabled = true;
-		postProcess.Saturate.Amount = 1;
+		postProcess.Saturation = 1;
 
-		postProcess.Blur.Enabled = false;
+		postProcess.MotionBlur.Scale = 0;
 
 		Audio.SetEffect( "core.player.death.muffle1", 0 );
 
@@ -133,14 +123,13 @@ partial class DeathmatchGame : Game
 			var damageUi = timeSinceDamage.LerpInverse( 0.25f, 0.0f, true ) * 0.3f;
 			if ( damageUi > 0 )
 			{
-				postProcess.Saturate.Amount -= damageUi;
+				postProcess.Saturation -= damageUi;
 				postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, damageUi );
 				postProcess.Vignette.Intensity += damageUi;
 				postProcess.Vignette.Smoothness += damageUi;
 				postProcess.Vignette.Roundness += damageUi;
 
-				postProcess.Blur.Enabled = true;
-				postProcess.Blur.Strength = damageUi * 0.5f;
+				postProcess.MotionBlur.Scale = damageUi * 0.5f;
 			}
 
 
@@ -152,7 +141,7 @@ partial class DeathmatchGame : Game
 			postProcess.Vignette.Intensity += (1 - healthDelta) * 0.5f;
 			postProcess.Vignette.Smoothness += (1 - healthDelta);
 			postProcess.Vignette.Roundness += (1 - healthDelta) * 0.5f;
-			postProcess.Saturate.Amount *= healthDelta;
+			postProcess.Saturation *= healthDelta;
 			postProcess.FilmGrain.Intensity += (1 - healthDelta) * 0.5f;
 
 			Audio.SetEffect( "core.player.death.muffle1", 1 - healthDelta, velocity: 2.0f );
@@ -165,7 +154,7 @@ partial class DeathmatchGame : Game
 			postProcess.FilmGrain.Intensity = 0.4f;
 			postProcess.FilmGrain.Response = 0.5f;
 
-			postProcess.Saturate.Amount = 0;
+			postProcess.Saturation = 0;
 		}
 	}
 
@@ -230,19 +219,8 @@ partial class DeathmatchGame : Game
 		var localPawn = Local.Pawn as DeathmatchPlayer;
 		if ( localPawn == null ) return;
 
-		//
-		// scale the screen using a matrix, so the scale math doesn't invade everywhere
-		// (other than having to pass the new scale around)
-		//
 
-		var scale = Screen.Height / 1080.0f;
-		var screenSize = Screen.Size / scale;
-		var matrix = Matrix.CreateScale( scale );
-
-		using ( Render.Draw2D.MatrixScope( matrix ) )
-		{
-			localPawn.RenderHud( screenSize );
-		}
+		localPawn.RenderHud( Screen.Size );
 	}
 
 }
