@@ -104,7 +104,7 @@
 		}
 		else
 		{
-			BecomeRagdollOnClient( LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ) );
+			BecomeRagdollOnClient( LastDamage.Force, LastDamage.BoneIndex );
 		}
 
 		Controller = null;
@@ -269,9 +269,7 @@
 
 		LastDamage = info;
 
-		// hack - hitbox group 1 is head
-		// we should be able to get this from somewhere (it's pretty specific to citizen though?)
-		if ( GetHitboxGroup( info.HitboxIndex ) == 1 )
+		if ( info.Hitbox.HasTag( "head" ) )
 		{
 			info.Damage *= 2.0f;
 		}
