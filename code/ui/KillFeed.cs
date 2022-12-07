@@ -11,10 +11,10 @@ public partial class KillFeed : Sandbox.UI.KillFeed
 		e.AddClass( method );
 
 		e.Left.Text = left;
-		e.Left.SetClass( "me", lsteamid == Local.PlayerId );
+		e.Left.SetClass( "me", lsteamid == Local.SteamId );
 
 		e.Right.Text = right;
-		e.Right.SetClass( "me", rsteamid == Local.PlayerId );
+		e.Right.SetClass( "me", rsteamid == Local.SteamId );
 
 		return e;
 	}
