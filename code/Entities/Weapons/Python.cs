@@ -69,44 +69,27 @@ partial class Python : DeathmatchWeapon
 		Zoomed = Input.Down( InputButton.SecondaryAttack );
 	}
 
-	public override void PostCameraSetup( ref CameraSetup camSetup )
+	public override void UpdateCamera()
 	{
-		base.PostCameraSetup( ref camSetup );
-
-		float targetFov = camSetup.FieldOfView;
-		float targetViewmodelFov = camSetup.ViewModel.FieldOfView;
-		LastFov = LastFov ?? camSetup.FieldOfView;
-		LastViewmodelFov = LastViewmodelFov ?? camSetup.ViewModel.FieldOfView;
+		base.UpdateCamera();
 
 		if ( Zoomed )
 		{
-			targetFov = 40.0f;
-			targetViewmodelFov = 40.0f;
+			Camera.FieldOfView = 40.0f;
 		}
-
-		float lerpedFov = LastFov.Value.LerpTo( targetFov, Time.Delta * 24.0f );
-		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
-
-		camSetup.FieldOfView = lerpedFov;
-		camSetup.ViewModel.FieldOfView = lerpedViewmodelFov;
-
-		LastFov = lerpedFov;
-		LastViewmodelFov = lerpedViewmodelFov;
 	}
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
-		var draw = Render.Draw2D;
-
 		var shootEase = Easing.EaseInOut( lastAttack.LerpInverse( 0.3f, 0.0f ) );
 		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );
 
-		draw.BlendMode = BlendMode.Lighten;
-		draw.Color = color.WithAlpha( 0.2f + CrosshairLastShoot.Relative.LerpInverse( 1.2f, 0 ) * 0.5f );
+		//Graphics.BlendMode = BlendMode.Lighten;
+		//Graphics.Color = color.WithAlpha( 0.2f + CrosshairLastShoot.Relative.LerpInverse( 1.2f, 0 ) * 0.5f );
 
 		var length = 3.0f + shootEase * 5.0f;
 
-		draw.Ring( center, length, length - 3.0f );
+		//Graphics.Ring( center, length, length - 3.0f );
 	}
 
 }

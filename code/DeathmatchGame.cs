@@ -9,7 +9,7 @@ global using System.Threading.Tasks;
 /// This is the heart of the gamemode. It's responsible
 /// for creating the player and stuff.
 /// </summary>
-partial class DeathmatchGame : Game
+partial class DeathmatchGame : GameManager
 {
 	[Net]
 	DeathmatchHud Hud { get; set; }
@@ -76,7 +76,7 @@ partial class DeathmatchGame : Game
 		{
 			if ( client.Pawn == null ) continue;
 			if ( client.Pawn == pawn ) continue;
-			if ( client.Pawn.LifeState != LifeState.Alive ) continue;
+			//if ( client.Pawn.LifeState != LifeState.Alive ) continue;
 
 			var spawnDist = (spawnpoint.Position - client.Pawn.Position).Length;
 			distance = MathF.Max( distance, spawnDist );
@@ -99,16 +99,16 @@ partial class DeathmatchGame : Game
 	{
 		base.FrameSimulate( cl );
 
-		\var postProcess = Map.Camera.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
+		var postProcess = Camera.Main.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
 
-		postProcess.Sharpen = 0.5f;
+		postProcess.Sharpen = 0.3f;
 
-		postProcess.FilmGrain.Intensity = 0.2f;
+		postProcess.FilmGrain.Intensity = 0.1f;
 		postProcess.FilmGrain.Response = 1;
 
-		postProcess.Vignette.Intensity = 1.0f;
-		postProcess.Vignette.Roundness = 1.5f;
-		postProcess.Vignette.Smoothness = 0.5f;
+		postProcess.Vignette.Intensity = 0.7f;
+		postProcess.Vignette.Roundness = 0.2f;
+		postProcess.Vignette.Smoothness = 0.9f;
 		postProcess.Vignette.Color = Color.Black;
 
 		postProcess.Saturation = 1;
@@ -124,28 +124,24 @@ partial class DeathmatchGame : Game
 			if ( damageUi > 0 )
 			{
 				postProcess.Saturation -= damageUi;
-				postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, damageUi );
+				postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red.Darken( 0.2f ), damageUi );
 				postProcess.Vignette.Intensity += damageUi;
-				postProcess.Vignette.Smoothness += damageUi;
-				postProcess.Vignette.Roundness += damageUi;
-
-				postProcess.MotionBlur.Scale = damageUi * 0.5f;
+				//postProcess.Vignette.Smoothness += damageUi;
+				//postProcess.Vignette.Roundness += damageUi;
 			}
-
 
 			var healthDelta = localPlayer.Health.LerpInverse( 0, 100.0f, true );
 
 			healthDelta = MathF.Pow( healthDelta, 0.5f );
 
-			postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red, 1 - healthDelta );
-			postProcess.Vignette.Intensity += (1 - healthDelta) * 0.5f;
-			postProcess.Vignette.Smoothness += (1 - healthDelta);
-			postProcess.Vignette.Roundness += (1 - healthDelta) * 0.5f;
-			postProcess.Saturation *= healthDelta;
-			postProcess.FilmGrain.Intensity += (1 - healthDelta) * 0.5f;
+			postProcess.Vignette.Color = Color.Lerp( postProcess.Vignette.Color, Color.Red.Darken( 0.7f ), 1 - healthDelta );
+			postProcess.Vignette.Intensity += (1 - healthDelta) * 0.1f;
+			//postProcess.Vignette.Smoothness += (1 - healthDelta);
+			//postProcess.Vignette.Roundness += (1 - healthDelta) * 0.5f;
+			//postProcess.Saturation *= healthDelta;
+			//postProcess.FilmGrain.Intensity += (1 - healthDelta) * 0.5f;
 
 			Audio.SetEffect( "core.player.death.muffle1", 1 - healthDelta, velocity: 2.0f );
-
 		}
 
 

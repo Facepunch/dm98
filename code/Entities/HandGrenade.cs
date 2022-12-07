@@ -15,6 +15,7 @@ partial class HandGrenade : BasePhysics
 
 		GrenadeParticles = Particles.Create( "particles/grenade.vpcf", this, "trail_particle", true );
 		GrenadeParticles.SetPosition( 0, Position );
+		Tags.Add( "grenade" );
 	}
 
 	public async Task BlowIn( float seconds )

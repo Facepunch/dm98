@@ -12,7 +12,7 @@ partial class Tripmine : ModelEntity
 		base.Spawn();
 
 		Model = WorldModel;
-
+		Tags.Add( "solid" );
 	}
 
 	public async Task Arm( float seconds )
@@ -95,7 +95,8 @@ public class LaserTrigger : ModelEntity
 	public void CreateTrigger( float length )
 	{
 		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, new Capsule( Vector3.Zero, Rotation.Forward * length, 0.2f ) );
-		CollisionGroup = CollisionGroup.Trigger;
+		Tags.Add( "trigger" );
+		Tags.Add( "laser" );
 	}
 
 	public override void StartTouch( Entity other )

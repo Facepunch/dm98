@@ -143,10 +143,11 @@
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
 		Rand.SetSeed( Time.Tick );
+		var aim = Owner.AimRay;
 
 		for ( int i = 0; i < bulletCount; i++ )
 		{
-			var forward = Owner.EyeRotation.Forward;
+			var forward = aim.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 			forward = forward.Normal;
 
@@ -154,7 +155,7 @@
 			// ShootBullet is coded in a way where we can have bullets pass through shit
 			// or bounce off shit, in which case it'll return multiple results
 			//
-			foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize ) )
+			foreach ( var tr in TraceBullet( aim.Position, aim.Position + forward * 5000, bulletSize ) )
 			{
 				tr.Surface.DoBulletImpact( tr );
 
@@ -264,7 +265,18 @@
 
 	public virtual void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
-		var draw = Render.Draw2D;
+		
 	}
 
+	public virtual void UpdateCamera()
+	{
+
+	}
+	public virtual void UpdateViewmodelCamera()
+	{
+		if ( ViewModelEntity is DmViewModel dmv )
+		{
+			dmv.UpdateCamera();
+		}
+	}
 }

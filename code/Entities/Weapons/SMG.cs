@@ -108,14 +108,15 @@ partial class SMG : DeathmatchWeapon
 		CrosshairLastShoot = 0;
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
-		anim.SetAnimParameter( "holdtype", 2 ); // TODO this is shit
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		anim.HoldType = CitizenAnimationHelper.HoldTypes.Rifle;
+		anim.AimBodyWeight = 1.0f;
 	}
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
+		/*
 		var draw = Render.Draw2D;
 
 		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );
@@ -145,6 +146,7 @@ partial class SMG : DeathmatchWeapon
 			draw.Line( thickness, center + Vector2.Left * gap + Vector2.Up * length, center + Vector2.Left * gap - Vector2.Up * length );
 			draw.Line( thickness, center - Vector2.Left * gap + Vector2.Up * length, center - Vector2.Left * gap - Vector2.Up * length );
 		}
+		*/
 	}
 
 }

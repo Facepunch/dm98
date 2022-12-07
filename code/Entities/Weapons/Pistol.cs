@@ -82,6 +82,7 @@ partial class Pistol : DeathmatchWeapon
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
+		/*
 		var draw = Render.Draw2D;
 
 		var shootEase = Easing.EaseIn( lastAttack.LerpInverse( 0.2f, 0.0f ) );
@@ -99,6 +100,7 @@ partial class Pistol : DeathmatchWeapon
 
 		draw.Line( thickness, center + Vector2.Up * gap, center + Vector2.Up * (length + gap) );
 		draw.Line( thickness, center - Vector2.Up * gap, center - Vector2.Up * (length + gap) );
+		*/
 	}
 
 }

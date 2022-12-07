@@ -6,13 +6,14 @@
 	{
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+		Tags.Add( "grenade" );
 	}
 
 	[Event.Tick.Server]
 	public void Simulate()
 	{
 		var trace = Trace.Ray( Position, Position )
-			.HitLayer( CollisionLayer.Water, true )
+			//.HitLayer( CollisionLayer.Water, true )
 			.Size( 24 )
 			.Ignore( this )
 			.Ignore( Owner )

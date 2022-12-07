@@ -1,4 +1,6 @@
-﻿public partial class DeathmatchPlayer : Player
+﻿using Sandbox;
+
+public partial class DeathmatchPlayer : Player
 {
 	TimeSince timeSinceDropped;
 
@@ -12,6 +14,9 @@
 
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
+
+	[Net, Predicted]
+	public bool ThirdPerson { get; set; }
 
 	public DeathmatchPlayer()
 	{
@@ -30,10 +35,6 @@
 			AirAcceleration = 10,
 
 		};
-
-		Animator = new StandardPlayerAnimator();
-
-		CameraMode = new FirstPersonCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -108,9 +109,6 @@
 		}
 
 		Controller = null;
-
-		CameraMode = new SpectateRagdollCamera();
-
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
@@ -120,32 +118,12 @@
 		}
 	}
 
-	public override void BuildInput( InputBuilder input )
-	{
-		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
-		{
-			input.ViewAngles = input.OriginalViewAngles;
-			return;
-		};
-
-		base.BuildInput( input );
-	}
-
-
 	public override void Simulate( Client cl )
 	{
 		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
 			return;
 
 		base.Simulate( cl );
-
-		//
-		// Input requested a weapon switch
-		//
-		if ( Input.ActiveChild != null )
-		{
-			ActiveChild = Input.ActiveChild;
-		}
 
 		if ( LifeState != LifeState.Alive )
 			return;
@@ -154,14 +132,7 @@
 
 		if ( Input.Pressed( InputButton.View ) )
 		{
-			if ( CameraMode is ThirdPersonCamera )
-			{
-				CameraMode = new FirstPersonCamera();
-			}
-			else
-			{
-				CameraMode = new ThirdPersonCamera();
-			}
+			ThirdPerson = !ThirdPerson;
 		}
 
 		if ( Input.Pressed( InputButton.Drop ) )
@@ -179,6 +150,7 @@
 			}
 		}
 
+		DoPlayerAnimation();
 		SimulateActiveChild( cl, ActiveChild );
 
 		//
@@ -210,54 +182,9 @@
 		base.StartTouch( other );
 	}
 
-	public override void PostCameraSetup( ref CameraSetup setup )
+	public override void FrameSimulate( Client cl )
 	{
-		setup.ZNear = 0.1f;
-
-		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
-			return;
-
-		base.PostCameraSetup( ref setup );
-
-		if ( setup.Viewer != null )
-		{
-			AddCameraEffects( ref setup );
-		}
-	}
-
-	float walkBob = 0;
-	float lean = 0;
-	float fov = 0;
-
-	private void AddCameraEffects( ref CameraSetup setup )
-	{
-		var speed = Velocity.Length.LerpInverse( 0, 320 );
-		var forwardspeed = Velocity.Normal.Dot( setup.Rotation.Forward );
-
-		var left = setup.Rotation.Left;
-		var up = setup.Rotation.Up;
-
-		if ( GroundEntity != null )
-		{
-			walkBob += Time.Delta * 25.0f * speed;
-		}
-
-		setup.Position += up * MathF.Sin( walkBob ) * speed * 2;
-		setup.Position += left * MathF.Sin( walkBob * 0.6f ) * speed * 1;
-
-		// Camera lean
-		lean = lean.LerpTo( Velocity.Dot( setup.Rotation.Right ) * 0.01f, Time.Delta * 15.0f );
-
-		var appliedLean = lean;
-		appliedLean += MathF.Sin( walkBob ) * speed * 0.3f;
-		setup.Rotation *= Rotation.From( 0, 0, appliedLean );
-
-		speed = (speed - 0.7f).Clamp( 0, 1 ) * 3.0f;
-
-		fov = fov.LerpTo( speed * 20 * MathF.Abs( forwardspeed ), Time.Delta * 4.0f );
-
-		setup.FieldOfView += fov;
-
+		UpdateCamera();
 	}
 
 	DamageInfo LastDamage;
@@ -412,29 +339,6 @@
 		if ( ActiveChild is DeathmatchWeapon weapon )
 		{
 			weapon.RenderHud( screenSize );
-		}
-	}
-
-	void RenderOverlayTest( Vector2 screenSize )
-	{
-		foreach ( var ent in Entity.FindInSphere( Position, 1500 ) )
-		{
-			var pos = ent.Position.ToScreen( screenSize );
-			if ( !pos.HasValue ) continue;
-
-			var str = $"{ent}";
-			Render.Draw2D.FontFamily = "Poppins";
-			Render.Draw2D.FontWeight = 1000;
-			Render.Draw2D.FontSize = 14;
-
-			var textRect = Render.Draw2D.TextSize( pos.Value, str );
-
-			Render.Draw2D.BlendMode = BlendMode.Normal;
-			Render.Draw2D.Color = Color.Black.WithAlpha( 0.7f );
-			Render.Draw2D.BoxWithBorder( textRect.Expand( 16, 12 ), 2.0f, Color.Black.WithAlpha( 0.2f ), new Vector4( 4.0f ) );
-
-			Render.Draw2D.Color = Color.White;
-			Render.Draw2D.Text( pos.Value, str );
 		}
 	}
 

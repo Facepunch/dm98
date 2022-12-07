@@ -150,14 +150,15 @@ partial class Shotgun : DeathmatchWeapon
 		ViewModelEntity?.SetAnimParameter( "reload_finished", true );
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
-		anim.SetAnimParameter( "holdtype", 3 ); // TODO this is shit
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		anim.HoldType = CitizenAnimationHelper.HoldTypes.Shotgun;
+		anim.AimBodyWeight = 1.0f;
 	}
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
+		/*
 		var draw = Render.Draw2D;
 
 		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );
@@ -185,5 +186,6 @@ partial class Shotgun : DeathmatchWeapon
 			draw.CircleEx( center + Vector2.Right * gap * 2.6f, length, length - thickness * 0.5f, 32, 220, 320 );
 			draw.CircleEx( center - Vector2.Right * gap * 2.6f, length, length - thickness * 0.5f, 32, 40, 140 );
 		}
+		*/
 	}
 }

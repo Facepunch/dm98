@@ -41,7 +41,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 
 		// woosh sound
 		// screen shake
-
+		var aim = Owner.AimRay;
 		PlaySound( "dm.grenade_throw" );
 
 		Rand.SetSeed( Time.Tick );
@@ -52,16 +52,16 @@ partial class GrenadeWeapon : DeathmatchWeapon
 			{
 				var grenade = new HandGrenade
 				{
-					Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
+					Position = aim.Position + aim.Forward * 3.0f,
 					Owner = Owner
 				};
 
-				grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f + Owner.EyeRotation.Up * 200.0f + Owner.Velocity;
+				grenade.PhysicsBody.Velocity = aim.Forward * 600.0f + Owner.Rotation.Up * 200.0f + Owner.Velocity;
 
 				// This is fucked in the head, lets sort this this year
-				grenade.CollisionGroup = CollisionGroup.Debris;
-				grenade.SetInteractsExclude( CollisionLayer.Player );
-				grenade.SetInteractsAs( CollisionLayer.Debris );
+				//grenade.CollisionGroup = CollisionGroup.Debris;
+				//grenade.SetInteractsExclude( CollisionLayer.Player );
+				//grenade.SetInteractsAs( CollisionLayer.Debris );
 
 				_ = grenade.BlowIn( 3.0f );
 			}
@@ -77,9 +77,9 @@ partial class GrenadeWeapon : DeathmatchWeapon
 		}
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
-		anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		anim.HoldType = CitizenAnimationHelper.HoldTypes.Swing;
+		anim.AimBodyWeight = 1.0f;
 	}
 }

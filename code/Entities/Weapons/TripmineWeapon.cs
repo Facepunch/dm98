@@ -36,10 +36,11 @@ partial class TripmineWeapon : DeathmatchWeapon
 
 		// woosh sound
 		// screen shake
+		var aim = Owner.AimRay;
 
 		Rand.SetSeed( Time.Tick );
 
-		var tr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * 150 )
+		var tr = Trace.Ray( aim, 150 )
 				.Ignore( Owner )
 				.Run();
 
@@ -71,9 +72,9 @@ partial class TripmineWeapon : DeathmatchWeapon
 		}
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
-		anim.SetAnimParameter( "holdtype", 4 ); // TODO this is shit
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		anim.HoldType = CitizenAnimationHelper.HoldTypes.Shotgun;
+		anim.AimBodyWeight = 1;
 	}
 }

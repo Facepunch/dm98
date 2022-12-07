@@ -1,7 +1,7 @@
 ﻿
 
 
-partial class DeathmatchGame : Game
+partial class DeathmatchGame : GameManager
 {
 	public static GameStates CurrentState => (Current as DeathmatchGame)?.GameState ?? GameStates.Warmup;
 
