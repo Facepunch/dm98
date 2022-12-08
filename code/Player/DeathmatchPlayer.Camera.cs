@@ -2,13 +2,11 @@
 {
 	private void UpdateCamera()
 	{
-		Camera.ZNear = 1f;
-		Camera.ZFar = 25000.0f;
 		Camera.Rotation = ViewAngles.ToRotation();
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Local.UserPreference.FieldOfView );
 
 		if ( ThirdPerson )
 		{
-			Camera.FieldOfView = Local.UserPreference.FieldOfView;
 			Camera.FirstPersonViewer = null;
 
 			Vector3 targetPos;
@@ -32,7 +30,6 @@
 		else
 		{
 			Camera.Position = EyePosition;
-			Camera.FieldOfView = Local.UserPreference.FieldOfView;
 			Camera.FirstPersonViewer = this;
 
 			if ( ActiveChild is DeathmatchWeapon weapon )
@@ -41,7 +38,7 @@
 				weapon.UpdateCamera();
 			}
 
-			Camera.Main.SetViewModelCamera( Camera.FieldOfView, 0.01f, 100.0f );
+			Camera.Main.SetViewModelCamera( Camera.FieldOfView );
 
 			AddCameraEffects();
 		}

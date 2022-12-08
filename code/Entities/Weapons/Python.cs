@@ -75,7 +75,7 @@ partial class Python : DeathmatchWeapon
 
 		if ( Zoomed )
 		{
-			Camera.FieldOfView = 40.0f;
+			Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 40 ); ;
 		}
 	}
 

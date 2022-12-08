@@ -72,7 +72,7 @@ partial class Crossbow : DeathmatchWeapon
 	{
 		if ( Zoomed )
 		{
-			Camera.FieldOfView = 20;
+			Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 30 );
 		}
 	}
 
