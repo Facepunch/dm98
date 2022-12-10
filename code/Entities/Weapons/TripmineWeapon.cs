@@ -38,7 +38,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 		// screen shake
 		var aim = Owner.AimRay;
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 		var tr = Trace.Ray( aim, 150 )
 				.Ignore( Owner )

@@ -18,7 +18,7 @@ public class Ammo : Panel
 
 	public override void Tick()
 	{
-		var player = Local.Pawn as Player;
+		var player = Game.LocalPawn as Player;
 		if ( player == null ) return;
 
 		var weapon = player.ActiveChild as DeathmatchWeapon;

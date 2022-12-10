@@ -3,7 +3,7 @@
 	private void UpdateCamera()
 	{
 		Camera.Rotation = ViewAngles.ToRotation();
-		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Local.UserPreference.FieldOfView );
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
 
 		if ( ThirdPerson )
 		{

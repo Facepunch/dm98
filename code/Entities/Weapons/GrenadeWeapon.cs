@@ -44,7 +44,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 		var aim = Owner.AimRay;
 		PlaySound( "dm.grenade_throw" );
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 
 		if ( IsServer )

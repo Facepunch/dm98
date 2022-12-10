@@ -71,7 +71,7 @@ partial class SMG : DeathmatchWeapon
 		// woosh sound
 		// screen shake
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 		if ( IsServer )
 		{
@@ -99,7 +99,7 @@ partial class SMG : DeathmatchWeapon
 	[ClientRpc]
 	protected override void ShootEffects()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );

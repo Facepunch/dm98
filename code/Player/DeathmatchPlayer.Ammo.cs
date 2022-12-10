@@ -20,7 +20,7 @@
 	public bool SetAmmo( AmmoType type, int amount )
 	{
 		var iType = (int)type;
-		if ( !Host.IsServer ) return false;
+		if ( !Game.IsServer ) return false;
 		if ( Ammo == null ) return false;
 
 		while ( Ammo.Count <= iType )
@@ -34,7 +34,7 @@
 
 	public int GiveAmmo( AmmoType type, int amount )
 	{
-		if ( !Host.IsServer ) return 0;
+		if ( !Game.IsServer ) return 0;
 		if ( Ammo == null ) return 0;
 		if ( type == AmmoType.None ) return 0;
 

@@ -14,7 +14,7 @@
 		Position = Camera.Position;
 		Rotation = Rotation.Lerp( Rotation, Camera.Rotation, RealTime.Delta * rotationDistance * 1.1f );
 
-		if ( Local.Pawn.LifeState == LifeState.Dead )
+		if ( Game.LocalPawn.LifeState == LifeState.Dead )
 			return;
 
 		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
@@ -23,11 +23,11 @@
 		//
 		// Bob up and down based on our walk movement
 		//
-		var speed = Local.Pawn.Velocity.Length.LerpInverse( 0, 400 );
+		var speed = Game.LocalPawn.Velocity.Length.LerpInverse( 0, 400 );
 		var left = Camera.Rotation.Left;
 		var up = Camera.Rotation.Up;
 
-		if ( Local.Pawn.GroundEntity != null )
+		if ( Game.LocalPawn.GroundEntity != null )
 		{
 			walkBob += Time.Delta * 2.0f * speed;
 		}

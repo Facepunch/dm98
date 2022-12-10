@@ -52,7 +52,7 @@ partial class Crossbow : DeathmatchWeapon
 		}
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 
@@ -62,7 +62,7 @@ partial class Crossbow : DeathmatchWeapon
 	[ClientRpc]
 	protected override void ShootEffects()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;

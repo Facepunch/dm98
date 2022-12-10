@@ -14,7 +14,7 @@ public class HealthHud : Panel
 
 	public override void Tick()
 	{
-		var player = Local.Pawn as DeathmatchPlayer;
+		var player = Game.LocalPawn as DeathmatchPlayer;
 		if ( player == null ) return;
 
 		Value.Text = $"{player.Health.CeilToInt()}";
@@ -38,7 +38,7 @@ public class ArmourHud : Panel
 
 	public override void Tick()
 	{
-		var player = Local.Pawn as DeathmatchPlayer;
+		var player = Game.LocalPawn as DeathmatchPlayer;
 		if ( player == null ) return;
 
 		Value.Text = $"{player.Armour.CeilToInt()}";

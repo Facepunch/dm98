@@ -1,4 +1,5 @@
 ﻿using Sandbox.UI;
+using Sandbox.Diagnostics;
 
 /// <summary>
 /// The main inventory panel, top left of the screen.
@@ -26,7 +27,7 @@ public class InventoryBar : Panel
 
 		SetClass( "active", IsOpen );
 
-		var player = Local.Pawn as Player;
+		var player = Game.LocalPawn as Player;
 		if ( player == null ) return;
 
 		Weapons.Clear();
@@ -48,7 +49,7 @@ public class InventoryBar : Panel
 		if ( DeathmatchGame.CurrentState != DeathmatchGame.GameStates.Live ) return;
 
 		bool wantOpen = IsOpen;
-		var localPlayer = Local.Pawn as Player;
+		var localPlayer = Game.LocalPawn as Player;
 
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?

@@ -24,7 +24,7 @@ partial class Shotgun : DeathmatchWeapon
 		AmmoClip = 6;
 	}
 
-	public override void Simulate( Client owner )
+	public override void Simulate( IClient owner )
 	{
 		base.Simulate( owner );
 
@@ -92,7 +92,7 @@ partial class Shotgun : DeathmatchWeapon
 	[ClientRpc]
 	protected override void ShootEffects()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
@@ -104,7 +104,7 @@ partial class Shotgun : DeathmatchWeapon
 	[ClientRpc]
 	protected virtual void DoubleShootEffects()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
 

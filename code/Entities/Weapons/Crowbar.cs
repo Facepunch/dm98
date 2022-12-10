@@ -35,7 +35,7 @@ partial class Crowbar : DeathmatchWeapon
 		// screen shake
 		PlaySound( "dm.crowbar_attack" );
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 		var aim = Owner.AimRay;
 

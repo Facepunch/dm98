@@ -1,5 +1,5 @@
 ﻿global using Sandbox;
-global using SandboxEditor;
+global using Editor;
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
@@ -35,7 +35,7 @@ partial class DeathmatchGame : GameManager
 		ItemRespawn.Init();
 	}
 
-	public override void ClientJoined( Client cl )
+	public override void ClientJoined( IClient cl )
 	{
 		base.ClientJoined( cl );
 
@@ -72,7 +72,7 @@ partial class DeathmatchGame : GameManager
 	{
 		float distance = 0;
 
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients )
 		{
 			if ( client.Pawn == null ) continue;
 			if ( client.Pawn == pawn ) continue;
@@ -87,7 +87,7 @@ partial class DeathmatchGame : GameManager
 		return distance;
 	}
 
-	public override void OnKilled( Client client, Entity pawn )
+	public override void OnKilled( IClient client, Entity pawn )
 	{
 		base.OnKilled( client, pawn );
 
@@ -95,7 +95,7 @@ partial class DeathmatchGame : GameManager
 	}
 
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
 		base.FrameSimulate( cl );
 
@@ -117,7 +117,7 @@ partial class DeathmatchGame : GameManager
 
 		Audio.SetEffect( "core.player.death.muffle1", 0 );
 
-		if ( Local.Pawn is DeathmatchPlayer localPlayer )
+		if ( Game.LocalPawn is DeathmatchPlayer localPlayer )
 		{
 			var timeSinceDamage = localPlayer.TimeSinceDamage.Relative;
 			var damageUi = timeSinceDamage.LerpInverse( 0.25f, 0.0f, true ) * 0.3f;
@@ -196,7 +196,7 @@ partial class DeathmatchGame : GameManager
 			var force = (forceScale * distanceMul) * ent.PhysicsBody.Mass;
 			var forceDir = (targetPos - position).Normal;
 
-			var damageInfo = DamageInfo.Explosion( position, forceDir * force, dmg )
+			var damageInfo = DamageInfo.FromExplosion( position, forceDir * force, dmg )
 				.WithWeapon( weapon )
 				.WithAttacker( owner );
 
@@ -212,7 +212,7 @@ partial class DeathmatchGame : GameManager
 
 	public override void RenderHud()
 	{
-		var localPawn = Local.Pawn as DeathmatchPlayer;
+		var localPawn = Game.LocalPawn as DeathmatchPlayer;
 		if ( localPawn == null ) return;
 
 

@@ -92,7 +92,7 @@ public partial class DeathmatchPlayer : Player
 
 		Inventory.DeleteContents();
 
-		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
+		if ( LastDamage.HasTag( "blast" ) )
 		{
 			using ( Prediction.Off() )
 			{
@@ -118,7 +118,7 @@ public partial class DeathmatchPlayer : Player
 		}
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		if ( DeathmatchGame.CurrentState == DeathmatchGame.GameStates.GameEnd )
 			return;
@@ -182,7 +182,7 @@ public partial class DeathmatchPlayer : Player
 		base.StartTouch( other );
 	}
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
 		UpdateCamera();
 	}
@@ -221,7 +221,7 @@ public partial class DeathmatchPlayer : Player
 			}
 		}
 
-		if ( info.Flags.HasFlag( DamageFlags.Blast ) )
+		if ( info.HasTag( "blast" ) )
 		{
 			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
 		}
@@ -287,7 +287,7 @@ public partial class DeathmatchPlayer : Player
 	[ConCmd.Client]
 	public static void InflictDamage()
 	{
-		if ( Local.Pawn is DeathmatchPlayer ply )
+		if ( Game.LocalPawn is DeathmatchPlayer ply )
 		{
 			ply.TookDamage( ply.Position + ply.EyeRotation.Forward * 100.0f );
 		}
