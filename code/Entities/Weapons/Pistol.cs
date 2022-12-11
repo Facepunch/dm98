@@ -27,8 +27,6 @@ partial class Pistol : DeathmatchWeapon
 
 	public override void AttackPrimary()
 	{
-		Game.ResetMap( Entity.All.Where( x => x is DeathmatchHud || x is Player ).ToArray() );
-
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
