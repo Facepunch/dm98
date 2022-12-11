@@ -164,7 +164,7 @@
 					CreateTracerEffect( tr.EndPosition );
 				}
 
-				if ( !IsServer ) continue;
+				if ( !Game.IsServer ) continue;
 				if ( !tr.Entity.IsValid() ) continue;
 
 				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 100 * force, damage )

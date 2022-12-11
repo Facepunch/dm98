@@ -31,7 +31,7 @@
 	{
 		base.StartTouch( other );
 
-		if ( IsClient )
+		if ( Game.IsClient )
 			return;
 
 		if ( other is not DeathmatchPlayer player )

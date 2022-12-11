@@ -47,7 +47,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 		Game.SetRandomSeed( Time.Tick );
 
 
-		if ( IsServer )
+		if ( Game.IsServer )
 			using ( Prediction.Off() )
 			{
 				var grenade = new HandGrenade
@@ -70,7 +70,7 @@ partial class GrenadeWeapon : DeathmatchWeapon
 
 		Reload();
 
-		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
+		if ( Game.IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
 		{
 			Delete();
 			player.SwitchToBestWeapon();

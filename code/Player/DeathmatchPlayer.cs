@@ -206,7 +206,7 @@ public partial class DeathmatchPlayer : Player
 		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
 
-		if ( IsServer && Armour > 0 )
+		if ( Game.IsServer && Armour > 0 )
 		{
 			Armour -= info.Damage;
 
@@ -300,7 +300,7 @@ public partial class DeathmatchPlayer : Player
 		if ( LifeState != LifeState.Alive )
 			return;
 
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( timeSinceLastFootstep < 0.2f )

@@ -50,7 +50,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 		if ( !tr.Entity.IsWorld )
 			return;
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			var grenade = new Tripmine
 			{
@@ -65,7 +65,7 @@ partial class TripmineWeapon : DeathmatchWeapon
 		TakeAmmo( 1 );
 		Reload();
 
-		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Tripmine ) == 0 )
+		if ( Game.IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Tripmine ) == 0 )
 		{
 			Delete();
 			player.SwitchToBestWeapon();
