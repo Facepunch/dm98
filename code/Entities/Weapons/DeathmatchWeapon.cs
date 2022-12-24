@@ -139,14 +139,14 @@
 	/// </summary>
 	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
 	{
-		//
-		// Seed rand using the tick, so bullet cones match on client and server
-		//
-		Game.SetRandomSeed( Time.Tick );
 		var aim = Owner.AimRay;
 
 		for ( int i = 0; i < bulletCount; i++ )
 		{
+			//
+			// Seed rand using the tick, so bullet cones match on client and server, done with the loop added in so multi bullet shots match up too.
+			//
+			Game.SetRandomSeed( Time.Tick + i );
 			var forward = aim.Forward;
 			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 			forward = forward.Normal;
